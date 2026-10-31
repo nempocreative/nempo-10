@@ -38,7 +38,6 @@ const stats = [
   { value: "150+", label: "Event terlaksana" },
   { value: "50rb+", label: "Peserta dilayani" },
   { value: "Jabar", label: "Area layanan" },
-  { value: "5★", label: "Rating klien" },
 ];
 
 const faqs = [
@@ -261,7 +260,7 @@ export default function EventOrganizerPage() {
         {/* Stats */}
         <section className="relative -mt-0 px-4 pt-8">
           <Reveal>
-            <div className="grid grid-cols-4 divide-x divide-border rounded-3xl border-2 border-dashed border-brand/25 bg-card py-5 shadow-xl shadow-brand-navy/10">
+            <div className="grid grid-cols-3 divide-x divide-border rounded-3xl border-2 border-dashed border-brand/25 bg-card py-5 shadow-xl shadow-brand-navy/10">
               {stats.map((s) => (
                 <div key={s.label} className="px-1 text-center">
                   <CountUp value={s.value} className="text-lg font-extrabold text-brand" />
