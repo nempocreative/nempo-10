@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Sparkles, Eye, Leaf, Diamond, Flower2, Check } from "lucide-react";
+import { Crown, Eye, Brush, Palette, Heart, Check } from "lucide-react";
 import { Link } from "@/lib/wouter";
 import {
   weddingDecor,
@@ -19,6 +19,14 @@ import { deliverFile } from "@/lib/download";
 import { moodboardFilename, renderMoodboardCard } from "@/lib/moodboard-card";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+
+const makeupIcons = {
+  barbie: Crown,
+  bold: Eye,
+  natural: Brush,
+  "soft-glam": Palette,
+  korean: Heart,
+};
 
 function Swatch({ tone, size = "sm" }: { tone: WeddingTone; size?: "sm" | "md" }) {
   return (
@@ -307,8 +315,8 @@ export function WeddingConceptStudio() {
         <div className="mt-8">
           <h3 className="text-[11px] font-bold uppercase tracking-[0.18em] text-muted-foreground">Makeup Pengantin</h3>
           <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-5">
-            {weddingMakeup.map((option, index) => {
-              const Icon = [Sparkles, Eye, Leaf, Diamond, Flower2][index] ?? Sparkles;
+            {weddingMakeup.map((option) => {
+              const Icon = makeupIcons[option.key as keyof typeof makeupIcons] ?? Brush;
               const selected = makeupKey === option.key;
               return (
                 <Button
