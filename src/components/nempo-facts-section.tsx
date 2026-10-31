@@ -68,7 +68,13 @@ export function NempoFactsSection({ factIdx, onFactChange }: NempoFactsSectionPr
               Fakta Menarik
             </p>
             <h2 className="text-xl font-extrabold leading-tight text-gray-900">
-              Nempo <span className="text-[#0194f3]">Organizer</span>
+              Nempo{" "}
+              <span className="nempo-org-word">
+                Organizer
+                <svg className="nempo-org-underline" viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden>
+                  <path d="M2 7 C 22 2, 38 9, 58 5 S 88 3, 98 6" fill="none" pathLength={100} />
+                </svg>
+              </span>
             </h2>
             <p className="mt-1 text-[10px] font-semibold text-gray-500">
               Satu tim kreatif, banyak ide seru.
@@ -128,7 +134,13 @@ export function NempoFactsSection({ factIdx, onFactChange }: NempoFactsSectionPr
             Fakta Menarik
           </p>
           <h2 className="self-start text-2xl font-extrabold leading-tight text-gray-900 lg:text-3xl">
-            Nempo <span className="text-[#0194f3]">Organizer</span>
+            Nempo{" "}
+            <span className="nempo-org-word">
+              Organizer
+              <svg className="nempo-org-underline" viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden>
+                <path d="M2 7 C 22 2, 38 9, 58 5 S 88 3, 98 6" fill="none" pathLength={100} />
+              </svg>
+            </span>
           </h2>
           <p className="self-start text-xs leading-relaxed text-gray-500">
             Satu tim kreatif, banyak ide seru.
