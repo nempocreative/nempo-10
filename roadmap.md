@@ -1,4 +1,5 @@
 # Roadmap
+- [ ] Tambah kategori tema undangan sesuai referensi, dengan pilihan foto dan tanpa foto yang bisa dibuka.
 - [x] Hapus unduhan moodboard dari studio wedding, tetap pertahankan konsultasi WhatsApp.
 - [x] Rapikan judul dan pilihan studio wedding supaya ringkas dan sejajar.
 - [x] Ganti ikon makeup dengan ikon sesuai gaya, termasuk Barbie tanpa bintang.

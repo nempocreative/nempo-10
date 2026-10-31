@@ -33,12 +33,14 @@ function useCountdown(target: number) {
 
 export default function InvitationDemoPage() {
   const { slug } = useParams<{ slug: string }>();
-  const theme = findInvitationTheme(slug ?? "") ?? invitationThemes[0]!;
+  const theme = findInvitationTheme(slug ?? "") ?? invitationThemes[0];
   const [open, setOpen] = useState(false);
-  const c = theme.colors;
   const cd = useCountdown(new Date("2026-12-20T09:00:00+07:00").getTime());
 
   useEffect(() => { document.body.style.overflow = open ? "" : "hidden"; return () => { document.body.style.overflow = ""; }; }, [open]);
+
+  if (!theme) return null;
+  const c = theme.colors;
 
   return (
     <div className="relative min-h-screen overflow-x-hidden" style={{ background: c.surface, color: c.ink }}>
@@ -46,7 +48,7 @@ export default function InvitationDemoPage() {
 
       {/* Cover */}
       <div className={`inv-cover fixed inset-0 z-50 flex flex-col items-center justify-center overflow-hidden px-6 text-center ${open ? "open pointer-events-none" : ""}`} style={{ background: c.bg }}>
-        <img src="/images/invitation-hero.jpg" alt="" className="absolute inset-0 h-full w-full object-cover opacity-30" />
+        {theme.withPhoto ? <img src="/images/invitation-hero.jpg" alt="" className="absolute inset-0 h-full w-full object-cover opacity-30" /> : <div className="absolute inset-x-0 top-12 text-center"><Ornament kind={theme.ornament} color={c.accent} /></div>}
         <div className="relative rounded-[2rem] px-8 py-10 shadow-2xl backdrop-blur" style={{ background: `${c.surface}e6` }}>
           <p className="text-xs uppercase tracking-[0.3em]">The Wedding of</p>
           <h1 className={`${hand} my-3 text-5xl`} style={{ color: c.accent }}>Habib &amp; Adiba</h1>
@@ -81,7 +83,7 @@ export default function InvitationDemoPage() {
           <section className="inv-rise pt-10 text-center">
             <Ornament kind={theme.ornament} color={c.accent} />
             <p className="mt-4 text-xs uppercase tracking-[0.3em]">Bismillah, kami menikah</p>
-            <img src="/images/invitation-hero.jpg" alt="Foto pasangan" className="mx-auto mt-5 aspect-[3/4] w-56 rounded-t-full object-cover shadow-xl" style={{ border: `4px solid ${c.accent}` }} />
+            {theme.withPhoto && <img src="/images/invitation-hero.jpg" alt="Foto pasangan" className="mx-auto mt-5 aspect-[3/4] w-56 rounded-t-full object-cover shadow-xl" style={{ border: `4px solid ${c.accent}` }} />}
             <h2 className={`${hand} mt-5 text-5xl`} style={{ color: c.accent }}>Habib &amp; Adiba</h2>
             <p className="mt-2 text-sm">Minggu, 20 Desember 2026</p>
             <div className="mt-5 grid grid-cols-4 gap-2">
@@ -123,14 +125,14 @@ export default function InvitationDemoPage() {
             ))}
           </section>
 
-          <section className="pt-14">
+          {theme.withPhoto && <section className="pt-14">
             <h4 className={`${serif} text-center text-2xl font-semibold`}>Galeri</h4>
             <div className="mt-4 grid grid-cols-2 gap-3">
               {["/images/invitation-story.jpg", "/images/invitation-detail.jpg", "/images/invitation-hero.jpg", "/images/invitation-story.jpg"].map((s, i) => (
                 <img key={i} src={s} alt="" loading="lazy" className={`w-full rounded-2xl object-cover shadow ${i % 3 === 0 ? "aspect-[3/4]" : "aspect-square"}`} />
               ))}
             </div>
-          </section>
+          </section>}
 
           <section className="pt-14 text-center">
             <Gift className="mx-auto h-6 w-6" style={{ color: c.accent }} />

@@ -11,7 +11,7 @@ import {
   INVITATION_BILLING, INVITATION_CONSULT_EXTRAS, INVITATION_FEATURES, INVITATION_INCLUDED,
   INVITATION_PRICE, invitationRupiah, woPackagesWithFreeInvitation,
 } from "@/data/wedding-invitation";
-import { invitationThemes } from "@/data/invitation-themes";
+import { invitationCategories, filterInvitationThemes, type InvitationCategoryKey } from "@/data/invitation-themes";
 
 const serif = "font-[family-name:var(--font-wed-serif)]";
 const hand = "font-[family-name:var(--font-wed-hand)]";
@@ -104,6 +104,8 @@ function InvitationPhone() {
 
 export default function WeddingInvitationPage() {
   const [open, setOpen] = useState<number | null>(0);
+  const [category, setCategory] = useState<InvitationCategoryKey | "all">("all");
+  const visibleThemes = filterInvitationThemes(category);
 
   return (
     <Layout>
@@ -193,13 +195,25 @@ export default function WeddingInvitationPage() {
           {/* Themes */}
           <section id="tema" className="scroll-mt-20 pt-14">
             <SectionHead eyebrow="Tema" title="Pilih tema, buka contohnya" note="klik untuk lihat undangan" />
+            <div className="mb-4 grid grid-cols-2 gap-2 lg:grid-cols-4" aria-label="Kategori tema undangan">
+              {invitationCategories.map((item) => (
+                <Button key={item.key} variant="outline" type="button" aria-pressed={category === item.key} onClick={() => setCategory(item.key)} className={`h-auto min-h-9 whitespace-normal rounded-md px-2 py-2 text-[11px] leading-snug sm:text-xs ${category === item.key ? "border-primary bg-primary text-primary-foreground" : "border-primary/40 bg-card text-primary"}`}>
+                  {item.name}
+                </Button>
+              ))}
+            </div>
+            <div className="mb-4 flex items-center justify-between gap-3">
+              <span className="text-xs text-muted-foreground">{visibleThemes.length} tema</span>
+              <Button variant="ghost" size="sm" onClick={() => setCategory("all")} aria-pressed={category === "all"} className="text-primary">Semua Tema</Button>
+            </div>
             <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-              {invitationThemes.map((t, i) => (
+              {visibleThemes.map((t, i) => (
                 <Link key={t.slug} href={`/wedding-invitation/tema/${t.slug}`} className="wed-card-pop group overflow-hidden rounded-3xl bg-card shadow-md transition hover:-translate-y-1 hover:shadow-xl">
                   <div className="relative flex aspect-square items-center justify-center pt-6" style={{ background: t.colors.bg }}>
                     <span className="absolute top-3 text-[10px] font-bold tracking-widest" style={{ color: t.colors.surface }}>SPESIAL {String(i + 1).padStart(2, "0")}</span>
                     <div className="flex h-[66%] w-[45%] flex-col items-center justify-center rounded-2xl border-4 p-2 text-center shadow-xl transition group-hover:rotate-2" style={{ background: t.colors.surface, borderColor: t.colors.ink, color: t.colors.ink }}>
                       <span className="text-[8px] uppercase tracking-widest">The Wedding of</span>
+                      {t.withPhoto ? <img src="/images/invitation-hero.jpg" alt="" loading="lazy" className="my-1 h-10 w-8 rounded-t-full object-cover sm:h-14 sm:w-10" /> : <Heart aria-hidden className="my-2 h-6 w-6" />}
                       <span className={`${hand} text-lg leading-tight`} style={{ color: t.colors.accent }}>Habib &amp; Adiba</span>
                       <span className="mt-1 rounded-full px-2 py-0.5 text-[7px]" style={{ background: t.colors.accent, color: t.colors.surface }}>Buka Undangan</span>
                     </div>
@@ -207,6 +221,7 @@ export default function WeddingInvitationPage() {
                   <div className="p-4">
                     <p className="font-bold text-primary">{t.name}</p>
                     <p className="text-xs text-muted-foreground">{t.mood}</p>
+                    <p className="mt-1 text-[10px] font-semibold text-muted-foreground">{invitationCategories.find((item) => item.key === t.category)?.name}</p>
                     <span className="mt-3 inline-flex items-center gap-1 rounded-full bg-primary px-4 py-1.5 text-xs font-semibold text-primary-foreground">Lihat Contoh <ArrowRight className="h-3 w-3" /></span>
                   </div>
                 </Link>
