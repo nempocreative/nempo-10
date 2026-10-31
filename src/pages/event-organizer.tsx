@@ -266,18 +266,18 @@ export default function EventOrganizerPage() {
         {/* Testimonials */}
         <section className="pt-12">
           <div className="px-4"><SectionHead eyebrow="Testimoni" title="Kata klien kami" note="mereka puas, kamu kapan?" /></div>
-          <div className="flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-2 [scrollbar-width:none]">
+          <div className="flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {testimonials.map((t) => (
-              <div key={t.name} className="wed-card-pop flex w-[78%] shrink-0 snap-start flex-col rounded-3xl border-2 border-dashed border-border bg-card p-5 sm:w-[46%]">
+              <div key={t.name} className="wed-card-pop flex w-[86%] shrink-0 snap-center scroll-ml-4 flex-col rounded-3xl border-2 border-dashed border-border bg-card p-5 sm:w-[46%] sm:snap-start">
                 <p className={`${hand} mb-1 text-3xl leading-none text-brand`} aria-hidden>”</p>
                 <p className="flex-1 text-[13px] leading-relaxed text-foreground">“{t.text}”</p>
                 <div className="mt-4 flex items-center gap-3 border-t border-dashed border-border pt-4">
-                  <div className="flex h-9 w-9 items-center justify-center rounded-full bg-brand-sky text-sm font-bold text-brand">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-sky text-sm font-bold text-brand">
                     {t.name.charAt(0)}
                   </div>
-                  <div>
-                    <p className="text-xs font-bold text-brand-navy">{t.name}</p>
-                    <p className="text-[11px] text-muted-foreground">{t.role}</p>
+                  <div className="min-w-0">
+                    <p className="truncate text-xs font-bold text-brand-navy">{t.name}</p>
+                    <p className="truncate text-[11px] text-muted-foreground">{t.role}</p>
                   </div>
                 </div>
               </div>
