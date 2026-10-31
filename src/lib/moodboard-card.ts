@@ -159,7 +159,7 @@ export async function renderMoodboardCard(data: MoodboardCardData): Promise<Blob
   ctx.fillText(`Konsultasi WhatsApp ${NEMPO_WA_NUMBER}`, 96, 1288);
   ctx.font = `400 22px ${SANS}`;
   ctx.fillStyle = "rgba(43,33,24,0.55)";
-  ctx.fillText(`@${NEMPO_INSTAGRAM_HANDLE} · nempo garut organizer`, 66, 1338);
+  ctx.fillText(`${NEMPO_INSTAGRAM_HANDLE} · nempo garut organizer`, 66, 1338);
 
   return new Promise<Blob>((resolve, reject) => {
     canvas.toBlob(blob => (blob ? resolve(blob) : reject(new Error("Gagal membuat gambar moodboard"))), "image/png");
