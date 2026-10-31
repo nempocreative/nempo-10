@@ -38,7 +38,7 @@ export default function InvitationDemoPage() {
   const [open, setOpen] = useState(false);
   const cd = useCountdown(new Date("2026-12-20T09:00:00+07:00").getTime());
 
-  useEffect(() => { document.body.style.overflow = open ? "" : "hidden"; return () => { document.body.style.overflow = ""; }; }, [open]);
+  useEffect(() => { document.body.style.overflow = open || theme?.code === "NEMPO 01" ? "" : "hidden"; return () => { document.body.style.overflow = ""; }; }, [open, theme?.code]);
 
   if (!theme) return null;
   if (theme.code === "NEMPO 01") return <Nempo01Invitation />;
