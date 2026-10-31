@@ -1,4 +1,5 @@
 # Roadmap
+- [ ] Tambah pilihan khusus gaun dengan jas senada dalam empat tone, manekin tanpa wajah, konsultasi dan moodboard.
 - [x] Studio wedding: setiap kebaya didampingi busana pria senada di semua tone, termasuk moodboard.
 - [x] Foto pasangan busana tanpa wajah/orang, hanya pajangan baju lengkap.
 - [x] Manekin busana berleher tertutup dengan knop kuningan seperti referensi, tanpa wajah; ujung baju tidak diubah.
