@@ -4,5 +4,5 @@
 - [ ] Import existing data — waiting for backup JSON from old app's /backup page
 - [x] Check remix-of-nempo-5 (older copy of nempo-5; nempo-5 used as source)
 - [ ] Login user & admin panel, Midtrans payments, SMTP email (carried over from old roadmap)
-- [x] Tambah event portofolio: Night Out Maxi (Temu Space), Color The Beat (Biang), Riuh Rona (Maru)
+- [x] Tambah event portofolio: Night Out Maxi (Temu Space), Color The Beat (Biang), Riuh Rona (Maru), Opening GGS (GGS Beauty)
 - [ ] Foto acara untuk kartu portofolio — menunggu foto dari pengguna
