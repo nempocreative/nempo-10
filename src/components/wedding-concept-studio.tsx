@@ -3,6 +3,8 @@ import { Link } from "@/lib/wouter";
 import {
   weddingDecor,
   weddingKebaya,
+  weddingGowns,
+  weddingOutfits,
   weddingMoodConsultUrl,
   weddingTones,
   type ToneKey,
@@ -105,7 +107,7 @@ function ComboCard({
         />
         <img
           src={kebaya.images[tone.key]}
-          alt={`Kebaya ${kebaya.name} dan ${kebaya.groomName} pada manekin tanpa wajah, tone ${tone.name}`}
+          alt={`${kebaya.category === "gown" ? "Gaun" : "Kebaya"} ${kebaya.name} dan ${kebaya.groomName} pada manekin tanpa wajah, tone ${tone.name}`}
           loading="lazy"
           width={kebaya.width}
           height={kebaya.height}
@@ -151,7 +153,7 @@ export function WeddingConceptStudio() {
     [decorKey],
   );
   const kebaya = useMemo(
-    () => weddingKebaya.find((k) => k.key === kebayaKey) ?? weddingKebaya[0],
+    () => weddingOutfits.find((k) => k.key === kebayaKey) ?? weddingKebaya[0],
     [kebayaKey],
   );
 
@@ -215,7 +217,7 @@ export function WeddingConceptStudio() {
             Bandingkan dulu, baru pilih
           </h2>
           <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">
-            Pelaminan · Kebaya · Beskap senada
+            Pelaminan · Kebaya & Gaun · Busana pria senada
           </p>
         </div>
 
@@ -239,9 +241,26 @@ export function WeddingConceptStudio() {
           </div>
           <div className="flex flex-wrap items-center gap-2">
             <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
-              Busana pasangan
+              Kebaya & Beskap
             </span>
             {weddingKebaya.map((option) => (
+              <OptionChip
+                key={option.key}
+                option={option}
+                tone={tone}
+                active={option.key === kebaya.key}
+                onSelect={() => {
+                  setKebayaKey(option.key);
+                  scrollIntoViewOnMobile();
+                }}
+              />
+            ))}
+          </div>
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
+              Khusus Gaun & Jas
+            </span>
+            {weddingGowns.map((option) => (
               <OptionChip
                 key={option.key}
                 option={option}

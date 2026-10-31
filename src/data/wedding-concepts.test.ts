@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { weddingDecor, weddingKebaya, weddingMoodConsultUrl, weddingTones } from "./wedding-concepts";
+import { weddingDecor, weddingGowns, weddingKebaya, weddingMoodConsultUrl, weddingTones } from "./wedding-concepts";
 
 describe("wedding concept studio", () => {
   it("shows four tones, each with swatch colors", () => {
@@ -30,6 +30,25 @@ describe("wedding concept studio", () => {
         expect(outfit.images[tone.key]).toContain(`wedding-mannequins-${outfit.key}--${tone.key}.jpg`);
       }
     }
+  });
+
+  it("offers a dedicated gown with matching suit in every tone", () => {
+    expect(weddingGowns.length).toBeGreaterThan(0);
+    for (const gown of weddingGowns) {
+      expect(gown.category).toBe("gown");
+      expect(gown.groomName).toMatch(/^Jas/);
+      for (const tone of weddingTones) {
+        expect(gown.images[tone.key]).toContain(`wedding-mannequins-gown--${tone.key}.jpg`);
+      }
+    }
+    const gown = weddingGowns[0];
+    const tone = weddingTones[0];
+    const decor = weddingDecor[0];
+    if (!gown || !tone || !decor) throw new Error("Missing gown options");
+    const text = new URL(weddingMoodConsultUrl({ tone, decor, kebaya: gown })).searchParams.get("text");
+    expect(text).toContain(`Gaun: ${gown.name}`);
+    expect(text).toContain(`Busana pria: ${gown.groomName}`);
+    expect(text).not.toContain("Kebaya:");
   });
 
   it("sends the chosen combination to the official WhatsApp number", () => {
