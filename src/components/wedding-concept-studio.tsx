@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Link } from "wouter";
+import { Link } from "@/lib/wouter";
 import {
   weddingDecor,
   weddingKebaya,
