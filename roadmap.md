@@ -1,4 +1,5 @@
 # Roadmap
+- [x] Tambah pilihan inspirasi dekor pelaminan, kebaya, tone warna, dan konsep acara di Wedding Organizer, dengan rangkuman konsultasi WhatsApp.
 - [x] Migrate nempo-5 code into this project
 - [x] Recreate 18 database tables in Lovable Cloud
 - [ ] Import existing data — waiting for backup JSON from old app's /backup page
