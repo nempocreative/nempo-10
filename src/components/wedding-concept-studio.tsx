@@ -267,7 +267,10 @@ export function WeddingConceptStudio() {
           ))}
         </div>
 
-        <div className="mt-5 flex flex-col gap-3 rounded-xl border border-border bg-background/70 p-4 sm:flex-row sm:items-center sm:justify-between">
+        <div
+          key={activeTone.key + "-" + decor.key + "-" + kebaya.key}
+          className="wed-mood-enter mt-5 flex flex-col gap-3 rounded-xl border border-border bg-background/70 p-4 sm:flex-row sm:items-center sm:justify-between"
+        >
           <div className="flex flex-wrap items-center gap-3">
             <Swatch tone={activeTone} size="md" />
             <span className="text-sm font-bold text-foreground">{activeTone.name}</span>
