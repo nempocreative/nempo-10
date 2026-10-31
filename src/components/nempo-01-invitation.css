@@ -1,0 +1,13 @@
+.nempo-one{--background:#f5f8fa;--foreground:#284653;--primary:#416b85;--primary-border:#416b85;--primary-foreground:#fff;--border:#cbdce4;--inv-soft:#e4eef3;--inv-white:#fff;--inv-shade:#182f40;background:var(--background);color:var(--foreground);font-family:var(--font-wed-serif),Georgia,serif}
+.nempo-one .pointer-events-none{max-width:90px;opacity:.12}
+.nempo-one .n01-soft{background:var(--inv-soft)}
+.nempo-one .n01-blue{color:var(--primary)}
+.nempo-one .n01-light{color:var(--inv-white)}
+.nempo-one .n01-line{border-color:var(--border)}
+.nempo-one .n01-shade{background:linear-gradient(180deg,transparent 15%,color-mix(in srgb,var(--inv-shade) 25%,transparent) 45%,color-mix(in srgb,var(--inv-shade) 90%,transparent) 100%)}
+.nempo-one .n01-label{font-family:sans-serif;font-size:10px;text-transform:uppercase;letter-spacing:.16em}
+.nempo-one .n01-body{font-family:sans-serif}
+.nempo-one .n01-nav{background:var(--background)}
+.nempo-one .n01-enter{animation:n01-enter .8s ease-out both}
+@keyframes n01-enter{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.nempo-one .n01-enter{animation:none}}
