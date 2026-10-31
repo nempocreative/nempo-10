@@ -90,7 +90,7 @@ function ComboCard({
           : "border-border hover:border-primary/50 hover:-translate-y-0.5",
       )}
     >
-      <span className="grid grid-cols-2 items-start gap-px overflow-hidden bg-border/60">
+      <span className="flex flex-col gap-px overflow-hidden bg-border/60">
         <img
           src={decor.images[tone.key]}
           alt={`Pelaminan ${decor.name} tone ${tone.name}`}
