@@ -8,6 +8,7 @@
 .nempo-one .n01-label{font-family:sans-serif;font-size:10px;text-transform:uppercase;letter-spacing:.16em}
 .nempo-one .n01-body{font-family:sans-serif}
 .nempo-one .n01-nav{background:var(--background)}
+.nempo-one button.n01-nav{position:fixed}
 .nempo-one .n01-enter{animation:n01-enter .8s ease-out both}
 .nempo-one{--input:var(--border);--ring:var(--primary);--muted-foreground:#617680;--inv-overlay:#142b3de8}
 .nempo-one .n01-reveal{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s ease}
