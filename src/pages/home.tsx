@@ -1137,6 +1137,14 @@ export default function Home() {
       date: "20–21 Juni 2026",
       badge: "Olahraga",
     },
+    {
+      id: "night-out-maxi-2026",
+      name: "Night Out Maxi",
+      image: undefined,
+      location: "Temu Space",
+      date: "22 Agustus 2026",
+      badge: "Night Out",
+    },
   ];
   const [eventRowEl, eventRowRef] = useState<HTMLElement | null>(null);
   useEffect(() => {
