@@ -16,3 +16,4 @@
 - [ ] Studio wedding: tambah pilihan tone warna, dekor, dan kebaya
 - [ ] Studio wedding: moodboard bisa di-download / dikirim jadi satu gambar
 - [ ] Studio wedding: animasi & transisi ganti tone lebih halus
+- [ ] Studio wedding: mode bandingkan — beberapa kombinasi tone + dekor + kebaya berdampingan
