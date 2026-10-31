@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type CSSProperties } from "react";
 import { ArrowRight, Check, Flower2, Gem, Heart, Palette, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { weddingDecor, weddingKebaya, weddingTones, weddingConcepts, weddingMoodConsultUrl } from "@/data/wedding-concepts";
@@ -23,6 +23,7 @@ export function WeddingConceptStudio() {
   if (!decor || !kebaya || !tone || !concept) return null;
   const choices = tab === 0 ? weddingDecor : weddingKebaya;
   const imageIndex = tab === 0 ? decorIndex : kebayaIndex;
+  const toneStyle = { "--tone-deep": tone.deep, "--tone-light": tone.light } as CSSProperties;
 
   return (
     <section id="konsep-wedding" aria-label="Pilihan konsep wedding" className="scroll-mt-24 bg-card px-4 py-14 text-wed-ink sm:px-6 sm:py-20">
@@ -39,11 +40,15 @@ export function WeddingConceptStudio() {
           <div>
             <div className="grid grid-cols-[1.6fr_1fr] gap-2 overflow-hidden rounded-lg">
               <figure className="relative min-w-0 overflow-hidden bg-wed-blush">
-                <img key={decor.image} src={decor.image} alt={`Inspirasi pelaminan ${decor.name}`} loading="lazy" width={1200} height={800} className="wed-mood-enter aspect-[4/5] h-full w-full object-cover" />
+                <div className="wed-tone-frame aspect-[4/5] w-full" style={toneStyle}>
+                  <img key={decor.image} src={decor.image} alt={`Inspirasi pelaminan ${decor.name} dengan tone ${tone.name}`} loading="lazy" width={1200} height={800} className="wed-mood-enter wed-tone-img h-full w-full object-cover" />
+                </div>
                 <figcaption className="absolute bottom-3 left-3 right-3 rounded-md bg-card/95 px-3 py-2 text-xs font-semibold">{decor.name}</figcaption>
               </figure>
               <figure className="relative min-w-0 overflow-hidden bg-wed-blush">
-                <img key={kebaya.image} src={kebaya.image} alt={`Inspirasi kebaya ${kebaya.name}`} loading="lazy" width={800} height={1104} className="wed-mood-enter h-full w-full object-cover" />
+                <div className="wed-tone-frame wed-tone-frame--soft h-full w-full" style={toneStyle}>
+                  <img key={kebaya.image} src={kebaya.image} alt={`Inspirasi kebaya ${kebaya.name} dengan tone ${tone.name}`} loading="lazy" width={800} height={1104} className="wed-mood-enter wed-tone-img h-full w-full object-cover" />
+                </div>
                 <figcaption className="absolute bottom-3 left-2 right-2 rounded-md bg-card/95 px-2 py-2 text-xs font-semibold">{kebaya.name}</figcaption>
               </figure>
             </div>
