@@ -201,7 +201,7 @@ export default function TalentManagementPage() {
                   disabled={!ready}
                   className="wed-sticker mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-stage-gold px-6 py-3 text-sm font-bold text-stage-night disabled:cursor-not-allowed disabled:opacity-50"
                 >
-                  <Copy className="h-4 w-4" /> Salin & Chat via Instagram
+                  <Copy className="h-4 w-4" /> Salin & Chat via WhatsApp
                 </button>
                 <p className="mt-2 text-center text-[11px] text-stage-cream/60">
                   {ready ? (copied ? "Pesan tersalin — tinggal tempel di chat Instagram." : "Pesan akan disalin, lalu Instagram terbuka.") : "Pilih jenis acara dan minimal satu talent dulu."}

@@ -866,7 +866,7 @@ export default function DigitalServicesPage() {
               <div className="mb-6">
                 <p className="text-[10px] font-black uppercase tracking-[0.16em] text-cyan-600">Form kebutuhan</p>
                 <h3 className="mt-2 text-xl font-extrabold leading-tight text-gray-900">Kirim kebutuhanmu</h3>
-                <p className="mt-2 text-xs leading-5 text-gray-500">Jawab singkat. Ringkasannya akan disiapkan untuk DM Instagram.</p>
+                <p className="mt-2 text-xs leading-5 text-gray-500">Jawab singkat. Ringkasannya akan disiapkan untuk chat WhatsApp.</p>
               </div>
               <div className="grid gap-4 sm:grid-cols-2">
                 <label className="text-xs font-bold text-gray-700">
@@ -916,7 +916,7 @@ export default function DigitalServicesPage() {
                    <button type="submit" className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-cyan-600 px-4 py-3 text-sm font-bold text-white shadow-md shadow-cyan-600/20 transition-colors hover:bg-cyan-700 sm:w-auto">
                   Kirim ke Instagram <ArrowUpRight className="h-4 w-4" />
                 </button>
-                {consultationReady ? <span className="text-xs font-semibold text-emerald-600">Ringkasan sudah disiapkan untuk DM Instagram.</span> : null}
+                {consultationReady ? <span className="text-xs font-semibold text-emerald-600">Ringkasan sudah disiapkan untuk chat WhatsApp.</span> : null}
               </div>
               <p className="mt-4 text-[10px] leading-4 text-gray-400">Instagram Nempo akan terbuka di tab baru.</p>
             </form>

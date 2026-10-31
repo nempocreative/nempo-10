@@ -314,7 +314,7 @@ export default function SosmedManagementPage() {
               <MessageCircle className="relative mx-auto h-10 w-10" strokeWidth={2.2} />
               <p className={`${hand} relative mt-3 text-2xl`}>posting rutin itu capek, serahin aja</p>
               <h2 className="relative mt-1 text-2xl font-extrabold leading-snug">Siap bikin sosmed kamu hidup?</h2>
-              <p className="relative mx-auto mt-2 max-w-sm text-sm text-primary-foreground/85">Konsultasi gratis lewat Instagram — kami bantu pilih paket yang paling pas.</p>
+              <p className="relative mx-auto mt-2 max-w-sm text-sm text-primary-foreground/85">Konsultasi gratis lewat WhatsApp — kami bantu pilih paket yang paling pas.</p>
               <div className="relative mt-6 flex flex-wrap justify-center gap-3">
                 <a href={NEMPO_CONSULT_URL} target="_blank" rel="noopener noreferrer" className="wed-sticker inline-flex items-center gap-2 rounded-full bg-sos-ink px-7 py-3.5 text-sm font-bold text-primary-foreground">
                   Chat via Instagram <ArrowRight className="h-4 w-4" />

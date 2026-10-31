@@ -280,7 +280,7 @@ export default function WebDevelopmentPage() {
               <h2 className="mt-3 text-3xl font-extrabold leading-tight">Siap bikin usahamu online?</h2>
               <p className="mx-auto mt-2 max-w-sm text-sm text-primary-foreground/75">Konsultasi gratis lewat WhatsApp — ceritakan kebutuhanmu, kami bantu pilih yang paling pas.</p>
               <a href={NEMPO_CONSULT_URL} target="_blank" rel="noopener noreferrer" className="wed-sticker mt-6 inline-flex items-center gap-2 rounded-full bg-dev-lime px-7 py-3.5 text-sm font-bold text-dev-ink">
-                Chat via Instagram <ArrowRight className="h-4 w-4" />
+                Chat via WhatsApp <ArrowRight className="h-4 w-4" />
               </a>
             </div>
           </section>

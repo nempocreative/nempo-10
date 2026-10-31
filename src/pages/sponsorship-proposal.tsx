@@ -620,7 +620,7 @@ export default function HalloweenProposalPage() {
             </a>
             <div className="sponsor-proposal-contact-details">
               <span><b>INSTAGRAM</b>@kalamudacom · {NEMPO_INSTAGRAM_HANDLE}</span>
-              <span><b>CHANNEL</b>Instagram DM / partnership meeting</span>
+              <span><b>CHANNEL</b>WhatsApp / partnership meeting</span>
               <span><b>PIC</b>Tim Partnership Nempo</span>
             </div>
             <div className="sponsor-proposal-contact-footer">

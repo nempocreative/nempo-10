@@ -1184,7 +1184,7 @@ export function Layout({ children, hideBottomNav, minimalChrome }: { children: R
                         {msg.from === "bot" && msg.wa && (
                           <a href={NEMPO_CONSULT_URL} target="_blank" rel="noopener noreferrer" className="ml-9 mt-0.5 flex items-center gap-3 p-3 rounded-2xl bg-white hover:bg-pink-50 border border-pink-200 transition-colors group w-fit shadow-sm">
                             <div className="h-9 w-9 rounded-xl bg-gradient-to-br from-pink-500 to-violet-600 flex items-center justify-center shrink-0 shadow-sm shadow-pink-200"><Instagram className="h-4 w-4 text-white" /></div>
-                            <div><p className="font-bold text-gray-900 text-xs">Chat via DM Instagram</p><p className="text-gray-400 text-[10px]">Konsultasi kebutuhanmu dengan admin</p></div>
+                            <div><p className="font-bold text-gray-900 text-xs">Chat via WhatsApp</p><p className="text-gray-400 text-[10px]">Konsultasi kebutuhanmu dengan admin</p></div>
                             <ChevronRightIcon className="h-4 w-4 text-gray-300 group-hover:text-pink-500 transition-colors" />
                           </a>
                         )}
@@ -1371,7 +1371,7 @@ export function Layout({ children, hideBottomNav, minimalChrome }: { children: R
                               </div>
                             </div>
                             <a href={NEMPO_CONSULT_URL} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 w-full text-center text-[12px] font-bold py-2.5 rounded-xl text-white shadow-sm shadow-pink-200 transition-all active:scale-95 bg-gradient-to-r from-pink-500 to-violet-600">
-                              <Instagram className="h-3.5 w-3.5" /> Chat Admin via Instagram
+                              <Instagram className="h-3.5 w-3.5" /> Chat Admin via WhatsApp
                             </a>
                           </div>
                         );
