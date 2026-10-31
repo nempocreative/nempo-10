@@ -10,6 +10,7 @@
 <!-- LOVABLE:END -->
 
 ## Architecture rules
+- Bespoke invitation designs are separate components selected by stable theme code in the invitation demo; why: refining one theme must not alter the others.
 - Invitation theme categories, stable sequential codes, and photo/no-photo variants live in browser-safe `src/data/invitation-themes.ts`; why: the category filters and opened invitations must use the same theme identity and photo behavior.
 - Wedding concept options (tone, decor, paired bridal/groom outfits including separate kebaya and gown collections, makeup styles), the per-tone photo matrix, and consultation-message formatting live in browser-safe `src/data/wedding-concepts.ts`, rendered by the wedding concept studio; why: one source drives the side-by-side compare grid and WhatsApp summary, and each tone shows complete paired mannequin outfit photos instead of CSS filters.
 - Nempo Buddy lives within the shared Layout with its original mode and chat state; its chat answers and service matching live in browser-safe `src/data/buddy-chat.ts` with routing tests; why: update chat content without replacing the restored widget or changing other modes.

@@ -1,4 +1,6 @@
 # Roadmap
+- [ ] Perbagus NEMPO 01 sesuai kategori Spesial Foto dan tema Biru Bunga.
+- [x] Periksa migration kosong setelah remix, tanpa mengubah database.
 - [x] Beri setiap tema undangan kode berurutan NEMPO 01 dan seterusnya, tetap sama saat difilter.
 - [x] Tambah kategori tema undangan sesuai referensi, dengan pilihan foto dan tanpa foto yang bisa dibuka.
 - [x] Hapus unduhan moodboard dari studio wedding, tetap pertahankan konsultasi WhatsApp.

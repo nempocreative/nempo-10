@@ -3,6 +3,7 @@ import { Link, useParams } from "@/lib/wouter";
 import { MailOpen, MapPin, CalendarHeart, ArrowLeft, Heart, Gift } from "lucide-react";
 import { findInvitationTheme, invitationThemes } from "@/data/invitation-themes";
 import { NEMPO_CONSULT_URL } from "@/lib/contact";
+import { Nempo01Invitation } from "@/components/nempo-01-invitation";
 
 const serif = "font-[family-name:var(--font-wed-serif)]";
 const hand = "font-[family-name:var(--font-wed-hand)]";
@@ -40,6 +41,7 @@ export default function InvitationDemoPage() {
   useEffect(() => { document.body.style.overflow = open ? "" : "hidden"; return () => { document.body.style.overflow = ""; }; }, [open]);
 
   if (!theme) return null;
+  if (theme.code === "NEMPO 01") return <Nempo01Invitation />;
   const c = theme.colors;
 
   return (
