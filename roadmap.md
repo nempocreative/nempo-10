@@ -12,3 +12,9 @@
 - [x] Testimoni EO: 14 orang, nama + bagian saja, tanpa nama perusahaan
 - [x] Bersihkan migration Drizzle yang tersalin dari remix, set migration kosong baru (tabel di database tetap ada)
 - [x] Studio wedding: pilih tone warna langsung mengubah warna foto dekor pelaminan dan kebaya
+- [x] Studio wedding: foto dekor & kebaya versi asli per tone (4 tone × 4 dekor × 3 kebaya, tanpa tint CSS)
+- [x] Studio wedding: tambah pilihan tone warna, dekor, dan kebaya
+- [x] Studio wedding: moodboard bisa di-download / dikirim jadi satu gambar
+- [x] Studio wedding: transisi hover, penanda dipilih, dan ringkasan yang muncul dengan animasi
+- [x] Studio wedding: mode bandingkan — empat kombinasi tone + dekor + kebaya berdampingan
+- [x] Studio wedding: foto tampil penuh sesuai aslinya, tidak terpotong

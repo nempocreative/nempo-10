@@ -1247,35 +1247,3 @@ html, body, #root {
 .animate-shake {
   animation: shake 0.5s ease-in-out;
 }
-
-
-/* Wedding moodboard: tone warna ikut mewarnai dekor & kebaya */
-.wed-tone-frame {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-  background-color: var(--tone-light, #f7f2e7);
-  transition: background-color 0.55s ease;
-}
-.wed-tone-img {
-  mix-blend-mode: multiply;
-  filter: grayscale(1) contrast(1.08) brightness(1.03);
-  transition: filter 0.55s ease;
-}
-.wed-tone-frame::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background-color: var(--tone-deep, #4f6a4a);
-  mix-blend-mode: lighten;
-  opacity: var(--tone-strength, 1);
-  transition: background-color 0.55s ease, opacity 0.55s ease;
-}
-.wed-tone-frame--soft { --tone-strength: 0.8; }
-.wed-tone-frame--soft .wed-tone-img { filter: grayscale(0.78) contrast(1.05) brightness(1.05); }
-@media (prefers-reduced-motion: reduce) {
-  .wed-tone-frame,
-  .wed-tone-img,
-  .wed-tone-frame::after { transition: none; }
-}
