@@ -86,7 +86,7 @@ function ComboCard({
       className={cn(
         "group flex flex-col overflow-hidden rounded-xl border bg-background/70 text-left transition-all duration-300",
         active
-          ? "border-primary shadow-[0_14px_34px_-18px_var(--shadow-soft)]"
+          ? "border-primary shadow-lg"
           : "border-border hover:border-primary/50 hover:-translate-y-0.5",
       )}
     >
