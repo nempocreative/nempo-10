@@ -55,7 +55,7 @@ function OptionChip({
       onClick={onSelect}
       aria-pressed={active}
       className={cn(
-        "flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-semibold transition-colors",
+        "h-8 min-h-8 shrink-0 items-center gap-1.5 rounded-md border px-2.5 py-1 text-[11px] font-semibold transition-colors sm:text-xs",
         active
           ? "border-primary bg-primary text-primary-foreground"
           : "border-border bg-background/70 text-foreground/80 hover:border-primary/50 hover:text-primary",
@@ -65,7 +65,7 @@ function OptionChip({
         src={option.images[tone]}
         alt=""
         loading="lazy"
-        className="h-5 w-5 rounded-full object-cover"
+        className="h-4 w-4 shrink-0 rounded-full object-cover"
       />
       {option.name}
     </Button>
@@ -209,29 +209,30 @@ export function WeddingConceptStudio() {
   }
 
   return (
-    <section id="konsep" className="relative bg-background py-16 md:py-20">
+    <section id="konsep" className="relative bg-background py-10 md:py-12">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_12%,var(--wed-pearl),transparent_42%),radial-gradient(circle_at_82%_78%,var(--wed-champagne),transparent_40%)]"
       />
       <div ref={scrollRef} className="relative mx-auto max-w-6xl px-4">
-        <div className="flex flex-col gap-2">
-          <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-primary">
+        <div className="flex flex-col gap-1">
+          <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-primary">
             Studio Konsep
           </span>
-          <h2 className="font-display text-3xl leading-tight text-foreground md:text-4xl">
+          <h2 className="font-display text-xl leading-tight text-foreground sm:text-2xl">
             Bandingkan dulu, baru pilih
           </h2>
-          <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">
+          <p className="max-w-2xl text-xs leading-relaxed text-muted-foreground">
             Pelaminan · Kebaya & Gaun · Busana pria · Makeup
           </p>
         </div>
 
-        <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
-          <div className="flex flex-wrap items-center gap-2">
-            <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
+        <div className="mt-4 grid gap-2">
+          <div className="grid min-w-0 grid-cols-[84px_minmax(0,1fr)] items-center gap-2 sm:grid-cols-[112px_minmax(0,1fr)]">
+            <span className="text-[10px] font-semibold leading-snug text-muted-foreground sm:text-xs">
               Pelaminan
             </span>
+            <div className="flex min-w-0 items-center gap-1.5 overflow-x-auto py-0.5 sm:flex-wrap">
             {weddingDecor.map((option) => (
               <OptionChip
                 key={option.key}
@@ -244,11 +245,13 @@ export function WeddingConceptStudio() {
                 }}
               />
             ))}
+            </div>
           </div>
-          <div className="flex flex-wrap items-center gap-2">
-            <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
+          <div className="grid min-w-0 grid-cols-[84px_minmax(0,1fr)] items-center gap-2 sm:grid-cols-[112px_minmax(0,1fr)]">
+            <span className="text-[10px] font-semibold leading-snug text-muted-foreground sm:text-xs">
               Kebaya & Beskap
             </span>
+            <div className="flex min-w-0 items-center gap-1.5 overflow-x-auto py-0.5 sm:flex-wrap">
             {weddingKebaya.map((option) => (
               <OptionChip
                 key={option.key}
@@ -261,11 +264,13 @@ export function WeddingConceptStudio() {
                 }}
               />
             ))}
+            </div>
           </div>
-          <div className="flex flex-wrap items-center gap-2">
-            <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
+          <div className="grid min-w-0 grid-cols-[84px_minmax(0,1fr)] items-center gap-2 sm:grid-cols-[112px_minmax(0,1fr)]">
+            <span className="text-[10px] font-semibold leading-snug text-muted-foreground sm:text-xs">
               Khusus Gaun & Jas
             </span>
+            <div className="flex min-w-0 items-center gap-1.5 overflow-x-auto py-0.5 sm:flex-wrap">
             {weddingGowns.map((option) => (
               <OptionChip
                 key={option.key}
@@ -278,10 +283,11 @@ export function WeddingConceptStudio() {
                 }}
               />
             ))}
+            </div>
           </div>
         </div>
 
-        <div className="mt-6 grid grid-cols-2 gap-2 sm:gap-3 lg:grid-cols-4">
+        <div className="mt-4 grid grid-cols-2 gap-2 sm:gap-3 lg:grid-cols-4">
           {weddingTones.map((option) => (
             <ComboCard
               key={option.key}
