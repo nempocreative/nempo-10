@@ -1,4 +1,5 @@
 # Roadmap
+- [x] Lengkapi NEMPO 01 dengan cerita, kalender, galeri, RSVP dan ucapan contoh, serta animasi halus.
 - [x] Perbagus NEMPO 01 sesuai kategori Spesial Foto dan tema Biru Bunga, memakai foto yang tersedia.
 - [x] Periksa migration kosong setelah remix, tanpa mengubah database.
 - [x] Beri setiap tema undangan kode berurutan NEMPO 01 dan seterusnya, tetap sama saat difilter.
