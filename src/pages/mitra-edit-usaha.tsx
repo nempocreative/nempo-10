@@ -3,7 +3,7 @@ import { useLocation } from "@/lib/wouter";
 import { Layout } from "@/components/layout";
 import { SEO } from "@/components/seo";
 import { useAuth } from "@/contexts/auth-context";
-import { NEMPO_INSTAGRAM_DM_URL } from "@/lib/contact";
+import { NEMPO_CONSULT_URL } from "@/lib/contact";
 import {
   ArrowLeft, Store, MapPin, Clock, Phone, FileText, Star, Wallet, Calendar,
   Ticket, Globe, Loader2, AlertCircle, CheckCircle, Upload, ImageIcon, X,
@@ -318,7 +318,7 @@ export default function MitraEditUsahaPage() {
           </div>
           <p className="font-bold text-gray-800 mb-2">Usaha belum ditautkan</p>
           <p className="text-sm text-gray-500 mb-6">
-             <a href={NEMPO_INSTAGRAM_DM_URL} target="_blank" rel="noopener noreferrer" className="font-bold underline">
+             <a href={NEMPO_CONSULT_URL} target="_blank" rel="noopener noreferrer" className="font-bold underline">
                Hubungi admin Nempo Organizer via DM Instagram
              </a>{" "}
              untuk menautkan usaha atau destinasi ke akun mitra Anda.

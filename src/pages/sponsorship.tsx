@@ -14,7 +14,7 @@ import {
   Target,
   Users,
 } from "lucide-react";
-import { NEMPO_INSTAGRAM_DM_URL } from "@/lib/contact";
+import { NEMPO_CONSULT_URL } from "@/lib/contact";
 import "./sponsorship.css";
 
 const COLLABORATION_PATHS = [
@@ -116,7 +116,7 @@ export default function SponsorshipPage() {
             </p>
             <div className="sponsor-collab-hero-actions">
               <a
-                href={NEMPO_INSTAGRAM_DM_URL}
+                href={NEMPO_CONSULT_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="sponsor-button sponsor-button-primary"
@@ -228,7 +228,7 @@ export default function SponsorshipPage() {
                     ))}
                   </ul>
                   <a
-                    href={NEMPO_INSTAGRAM_DM_URL}
+                    href={NEMPO_CONSULT_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="sponsor-collab-path-link"
@@ -302,7 +302,7 @@ export default function SponsorshipPage() {
               sponsorship dan kolaborasi yang paling relevan.
             </p>
             <a
-              href={NEMPO_INSTAGRAM_DM_URL}
+              href={NEMPO_CONSULT_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="sponsor-button sponsor-button-light"

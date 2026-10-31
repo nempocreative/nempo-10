@@ -2,7 +2,7 @@ import { ArrowLeft, ArrowRight, MessageCircle } from "lucide-react";
 import { useLocation } from "@/lib/wouter";
 import { Layout } from "@/components/layout";
 import { SEO } from "@/components/seo";
-import { NEMPO_INSTAGRAM_DM_URL } from "@/lib/contact";
+import { NEMPO_CONSULT_URL } from "@/lib/contact";
 import "./sponsorship-event.css";
 
 type EventDetail = {
@@ -192,7 +192,7 @@ export default function SponsorshipEventPage() {
           <p className="sponsor-event-eyebrow sponsor-event-eyebrow-light">Let&apos;s make it memorable</p>
           <h2>Punya brand yang cocok<br />untuk event ini?</h2>
           <p>Ceritakan target dan kebutuhan Anda. Tim Nempo akan bantu menyusun bentuk kolaborasi yang paling relevan.</p>
-          <a href={NEMPO_INSTAGRAM_DM_URL} target="_blank" rel="noopener noreferrer" className="sponsor-event-button sponsor-event-button-light">
+          <a href={NEMPO_CONSULT_URL} target="_blank" rel="noopener noreferrer" className="sponsor-event-button sponsor-event-button-light">
             <MessageCircle className="h-4 w-4" /> Hubungi Tim Partnership
           </a>
         </section>

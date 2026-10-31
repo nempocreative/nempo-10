@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { SedangDipersiapkan } from "@/components/sedang-dipersiapkan";
-import { NEMPO_INSTAGRAM_DM_URL } from "@/lib/contact";
+import { NEMPO_CONSULT_URL } from "@/lib/contact";
 
 /* ─────────────────────────────────────────────────────────────── */
 /* CSS                                                             */
@@ -106,7 +106,7 @@ const FLOATS = [
   { label:"8+ Kategori",       icon:"✨", top:"33%", right:"20%" },
 ];
 
-const TALENT_CONTACT_URL = NEMPO_INSTAGRAM_DM_URL;
+const TALENT_CONTACT_URL = NEMPO_CONSULT_URL;
 const TALENT_IS_PREPARING = true;
 
 /* ─────────────────────────────────────────────────────────────── */

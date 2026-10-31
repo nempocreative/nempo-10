@@ -3,7 +3,7 @@ import { SEO } from "@/components/seo";
 import { useRoute, Link, useLocation, useSearch } from "@/lib/wouter";
 import { useState, useEffect } from "react";
 import { useAuth } from "@/contexts/auth-context";
-import { NEMPO_INSTAGRAM_DM_URL } from "@/lib/contact";
+import { NEMPO_CONSULT_URL } from "@/lib/contact";
 import {
   ChevronRight, ChevronLeft, Check, Ticket, MapPin, Calendar,
   User, Users, Mail, Phone, Building2, CheckCircle2, Instagram,
@@ -593,7 +593,7 @@ export default function EventCheckout() {
             </div>
             <p className="text-gray-400 text-xs mb-4">E-tiket dikirim ke <strong className="text-gray-700">{email || "emailmu"}</strong></p>
             <a
-              href={NEMPO_INSTAGRAM_DM_URL}
+              href={NEMPO_CONSULT_URL}
               target="_blank" rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl font-extrabold text-sm text-white mb-3 transition-colors"
                style={{ background: "linear-gradient(135deg, #ec4899, #7c3aed)" }}

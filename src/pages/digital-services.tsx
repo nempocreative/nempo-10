@@ -1,6 +1,6 @@
 import { Layout } from "@/components/layout";
 import { SEO } from "@/components/seo";
-import { NEMPO_INSTAGRAM_DM_URL } from "@/lib/contact";
+import { NEMPO_CONSULT_URL } from "@/lib/contact";
 import "./digital-services.css";
 import digitalServicesHeroImage from "@/assets/generated_images/digital-services-hero.jpg";
 import type { LucideIcon } from "lucide-react";
@@ -495,7 +495,7 @@ export default function DigitalServicesPage() {
       // Clipboard may be unavailable in an embedded preview; Instagram still opens.
     }
     setConsultationReady(true);
-    window.open(NEMPO_INSTAGRAM_DM_URL, "_blank", "noopener,noreferrer");
+    window.open(NEMPO_CONSULT_URL, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -952,7 +952,7 @@ export default function DigitalServicesPage() {
                 <h2 className="mt-2 max-w-2xl text-2xl font-extrabold leading-tight sm:text-3xl">Ceritakan kebutuhanmu, kami bantu pilihkan alurnya.</h2>
                 <p className="mt-2 max-w-xl text-sm leading-6 text-white/75">Sebutkan jenis bisnis, kendala utama, dan layanan yang sedang kamu pertimbangkan.</p>
               </div>
-               <a href={NEMPO_INSTAGRAM_DM_URL} target="_blank" rel="noopener noreferrer" className="inline-flex w-full shrink-0 items-center justify-center gap-2 rounded-xl bg-white px-4 py-3 text-sm font-bold text-[#0f766e] transition-colors hover:bg-[#f2f8f7] sm:w-auto">
+               <a href={NEMPO_CONSULT_URL} target="_blank" rel="noopener noreferrer" className="inline-flex w-full shrink-0 items-center justify-center gap-2 rounded-xl bg-white px-4 py-3 text-sm font-bold text-[#0f766e] transition-colors hover:bg-[#f2f8f7] sm:w-auto">
                 Konsultasi sekarang <ArrowUpRight className="h-4 w-4" />
               </a>
             </div>

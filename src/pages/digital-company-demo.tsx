@@ -1,7 +1,7 @@
 import { Layout } from "@/components/layout";
 import { SEO } from "@/components/seo";
 import { DigitalPreviewGate } from "@/components/digital-preview-gate";
-import { NEMPO_INSTAGRAM_DM_URL } from "@/lib/contact";
+import { NEMPO_CONSULT_URL } from "@/lib/contact";
 import "./digital-demo-super-app.css";
 import {
   ArrowRight,
@@ -338,7 +338,7 @@ function CompanyWebsiteWorkspace() {
 
          <section id="contact" className="bg-[#0f766e] text-white">
           <div className="mx-auto grid max-w-7xl gap-10 px-5 py-20 sm:px-8 lg:grid-cols-[1fr_.9fr] lg:px-10 lg:py-24">
-             <div><p className="text-[10px] font-black uppercase tracking-[0.2em] text-white/70">Punya cerita untuk dibentuk?</p><h2 className="mt-4 max-w-xl text-4xl font-black leading-[0.95] tracking-[-0.06em] sm:text-6xl">Mari buat website yang terasa seperti kamu.</h2><a href={NEMPO_INSTAGRAM_DM_URL} target="_blank" rel="noopener noreferrer" className="mt-8 inline-flex items-center gap-2 bg-[#123f47] px-5 py-3.5 text-sm font-black text-white transition-transform hover:-translate-y-0.5">Konsultasi via Instagram <ArrowUpRight className="h-4 w-4" /></a><p className="mt-5 flex items-center gap-2 text-xs font-semibold text-white/70"><CheckCircle2 className="h-4 w-4 text-[#8bd6cc]" /> Brief akan masuk ke alur CRM dalam demo ini.</p></div>
+             <div><p className="text-[10px] font-black uppercase tracking-[0.2em] text-white/70">Punya cerita untuk dibentuk?</p><h2 className="mt-4 max-w-xl text-4xl font-black leading-[0.95] tracking-[-0.06em] sm:text-6xl">Mari buat website yang terasa seperti kamu.</h2><a href={NEMPO_CONSULT_URL} target="_blank" rel="noopener noreferrer" className="mt-8 inline-flex items-center gap-2 bg-[#123f47] px-5 py-3.5 text-sm font-black text-white transition-transform hover:-translate-y-0.5">Konsultasi via Instagram <ArrowUpRight className="h-4 w-4" /></a><p className="mt-5 flex items-center gap-2 text-xs font-semibold text-white/70"><CheckCircle2 className="h-4 w-4 text-[#8bd6cc]" /> Brief akan masuk ke alur CRM dalam demo ini.</p></div>
             <form onSubmit={submitContact} className="bg-white/10 p-5 backdrop-blur-sm sm:p-7">
               <div className="mb-5 flex items-center gap-2 text-xs font-black"><Send className="h-4 w-4" /> Kirim brief singkat</div>
               <div className="grid gap-3"><input required placeholder="Nama / nama bisnis" className="border border-white/25 bg-white/10 px-4 py-3 text-sm text-white outline-none placeholder:text-white/55 focus:border-white" /><input required type="email" placeholder="Email untuk dihubungi" className="border border-white/25 bg-white/10 px-4 py-3 text-sm text-white outline-none placeholder:text-white/55 focus:border-white" /><textarea required rows={4} placeholder="Ceritakan website yang ingin dibuat..." className="resize-none border border-white/25 bg-white/10 px-4 py-3 text-sm text-white outline-none placeholder:text-white/55 focus:border-white" /></div>

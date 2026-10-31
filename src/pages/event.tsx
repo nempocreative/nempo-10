@@ -12,7 +12,7 @@ import {
   XCircle, Clock, RefreshCw, Copy, Check, CalendarDays, CheckCircle2,
   Instagram, Users,
 } from "lucide-react";
-import { NEMPO_INSTAGRAM_DM_URL } from "@/lib/contact";
+import { NEMPO_CONSULT_URL } from "@/lib/contact";
 
 const API = import.meta.env.BASE_URL.replace(/\/$/, "") + "/../api";
 
@@ -657,7 +657,7 @@ export default function EventPage() {
                             <XCircle className="h-4 w-4 text-red-500 shrink-0 mt-0.5" />
                             <p className="text-red-700 text-[11px] leading-relaxed">
                               Pesananmu tidak dapat dikonfirmasi.{" "}
-                              <a href={NEMPO_INSTAGRAM_DM_URL} target="_blank" rel="noopener noreferrer" className="font-bold underline">
+                              <a href={NEMPO_CONSULT_URL} target="_blank" rel="noopener noreferrer" className="font-bold underline">
                                 Hubungi admin Nempo Organizer via DM Instagram
                               </a>{" "}
                               untuk info lebih lanjut.

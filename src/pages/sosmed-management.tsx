@@ -2,7 +2,7 @@ import type React from "react";
 import { useState } from "react";
 import { Layout } from "@/components/layout";
 import { Link } from "@/lib/wouter";
-import { NEMPO_INSTAGRAM_DM_URL } from "@/lib/contact";
+import { NEMPO_CONSULT_URL } from "@/lib/contact";
 import {
   Lightbulb, PenLine, CalendarClock, BarChart3, Megaphone, Image as ImageIcon,
   MessageCircle, Check, ChevronDown, ArrowRight, Heart, Play,
@@ -134,7 +134,7 @@ export default function SosmedManagementPage() {
                 <a href="#paket" className="wed-sticker flex-1 rounded-full bg-sos-pink px-5 py-3.5 text-center text-sm font-bold text-primary-foreground sm:flex-none sm:px-8">
                   Lihat Paket
                 </a>
-                <a href={NEMPO_INSTAGRAM_DM_URL} target="_blank" rel="noopener noreferrer" className="flex-1 rounded-full border border-primary-foreground/30 bg-primary-foreground/10 px-5 py-3.5 text-center text-sm font-bold backdrop-blur sm:flex-none sm:px-8">
+                <a href={NEMPO_CONSULT_URL} target="_blank" rel="noopener noreferrer" className="flex-1 rounded-full border border-primary-foreground/30 bg-primary-foreground/10 px-5 py-3.5 text-center text-sm font-bold backdrop-blur sm:flex-none sm:px-8">
                   Konsultasi Gratis
                 </a>
               </div>
@@ -211,7 +211,7 @@ export default function SosmedManagementPage() {
                     ))}
                   </ul>
                   <a
-                    href={NEMPO_INSTAGRAM_DM_URL}
+                    href={NEMPO_CONSULT_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`wed-sticker mt-6 block rounded-full py-3 text-center text-sm font-bold ${
@@ -316,7 +316,7 @@ export default function SosmedManagementPage() {
               <h2 className="relative mt-1 text-2xl font-extrabold leading-snug">Siap bikin sosmed kamu hidup?</h2>
               <p className="relative mx-auto mt-2 max-w-sm text-sm text-primary-foreground/85">Konsultasi gratis lewat Instagram — kami bantu pilih paket yang paling pas.</p>
               <div className="relative mt-6 flex flex-wrap justify-center gap-3">
-                <a href={NEMPO_INSTAGRAM_DM_URL} target="_blank" rel="noopener noreferrer" className="wed-sticker inline-flex items-center gap-2 rounded-full bg-sos-ink px-7 py-3.5 text-sm font-bold text-primary-foreground">
+                <a href={NEMPO_CONSULT_URL} target="_blank" rel="noopener noreferrer" className="wed-sticker inline-flex items-center gap-2 rounded-full bg-sos-ink px-7 py-3.5 text-sm font-bold text-primary-foreground">
                   Chat via Instagram <ArrowRight className="h-4 w-4" />
                 </a>
                 <Link href="/price-list#paket-promosi" className="inline-flex items-center rounded-full border-2 border-primary-foreground/50 px-6 py-3.5 text-sm font-bold">

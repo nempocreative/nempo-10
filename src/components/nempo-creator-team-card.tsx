@@ -14,7 +14,7 @@ import weddingCreator01 from "@/assets/lib/nempo-kenalan-deck/src/assets/deck/cr
 import weddingCreator02 from "@/assets/lib/nempo-kenalan-deck/src/assets/deck/creator-daily-ai.jpg";
 import weddingCreator03 from "@/assets/lib/nempo-kenalan-deck/src/assets/deck/creator-travel-ai.jpg";
 import weddingCreator04 from "@/assets/lib/nempo-kenalan-deck/src/assets/deck/creator-influencer-ai.jpg";
-import { NEMPO_INSTAGRAM_DM_URL } from "@/lib/contact";
+import { NEMPO_CONSULT_URL } from "@/lib/contact";
 import "./nempo-creator-team-card.css";
 
 const creatorImages = [
@@ -188,7 +188,7 @@ export function NempoCreatorTeamCard() {
 
           <a
             className="nempo-creator-team__contact"
-            href={NEMPO_INSTAGRAM_DM_URL}
+            href={NEMPO_CONSULT_URL}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Hubungi Nempo melalui Instagram"

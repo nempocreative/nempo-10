@@ -7,7 +7,7 @@ import {
   Star, Coffee, Ticket, KeyRound,
 } from "lucide-react";
 import { useAuth } from "@/contexts/auth-context";
-import { NEMPO_INSTAGRAM_DM_URL } from "@/lib/contact";
+import { NEMPO_CONSULT_URL } from "@/lib/contact";
 
 type AccountType = "pengguna" | "mitra";
 
@@ -385,7 +385,7 @@ export default function LoginPage() {
                   <p className="text-xs leading-relaxed text-gray-600">
                     <span className="block font-bold text-gray-800">Belum punya akun mitra?</span>
                     ID dan password akun mitra dibuat oleh admin Nempo Organizer.{" "}
-                    <a href={NEMPO_INSTAGRAM_DM_URL} target="_blank" rel="noopener noreferrer" className="font-bold underline">
+                    <a href={NEMPO_CONSULT_URL} target="_blank" rel="noopener noreferrer" className="font-bold underline">
                       Hubungi admin via DM Instagram
                     </a>{" "}
                     untuk mendapatkannya.

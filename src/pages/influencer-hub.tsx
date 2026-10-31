@@ -3,7 +3,7 @@ import { Layout } from "@/components/layout";
 import { SEO } from "@/components/seo";
 import { SedangDipersiapkan } from "@/components/sedang-dipersiapkan";
 import { Instagram, BadgeCheck, MapPin, Star, Phone, Camera, Users, TrendingUp, Megaphone, Shuffle, Palette, Shirt, LayoutGrid, BarChart3, CheckCircle2, Send } from "lucide-react";
-import { NEMPO_INSTAGRAM_DM_URL } from "@/lib/contact";
+import { NEMPO_CONSULT_URL } from "@/lib/contact";
 
 /* ── Keyframe CSS injected once ─────────────────────────────── */
 const BANNER_CSS = `
@@ -586,7 +586,7 @@ function BenefitsSection() {
         <div className="mt-8 sm:mt-12 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3"
           style={{ opacity: sectionVis ? 1 : 0, transition: "opacity 0.7s ease 0.5s" }}>
           <a
-            href={NEMPO_INSTAGRAM_DM_URL}
+            href={NEMPO_CONSULT_URL}
             target="_blank" rel="noopener noreferrer"
             className="text-center px-8 py-3.5 rounded-xl text-white font-black text-sm hover:opacity-90 active:scale-95 transition-all"
             style={{ background: "linear-gradient(135deg, #EC4899, #A855F7)", boxShadow: "0 8px 28px rgba(168,85,247,0.3)" }}>
@@ -815,7 +815,7 @@ function JoinSection() {
       `• TikTok     : ${form.ttHandle} (${form.ttFollowers} followers)`,
     ].join("\n");
     void navigator.clipboard?.writeText(msg);
-    window.open(NEMPO_INSTAGRAM_DM_URL, "_blank", "noopener,noreferrer");
+    window.open(NEMPO_CONSULT_URL, "_blank", "noopener,noreferrer");
     setSent(true);
   };
 

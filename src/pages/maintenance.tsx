@@ -1,4 +1,4 @@
-import { NEMPO_INSTAGRAM_DM_URL } from "@/lib/contact";
+import { NEMPO_CONSULT_URL } from "@/lib/contact";
 
 export default function MaintenancePage() {
   return (
@@ -155,7 +155,7 @@ export default function MaintenancePage() {
             </svg>
             @nempo.id
           </a>
-           <a href={NEMPO_INSTAGRAM_DM_URL} target="_blank" rel="noopener noreferrer"
+           <a href={NEMPO_CONSULT_URL} target="_blank" rel="noopener noreferrer"
             style={{
               display:"inline-flex", alignItems:"center", gap:6,
               fontSize: 12, fontWeight: 700,

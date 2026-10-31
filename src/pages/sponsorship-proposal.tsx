@@ -1,7 +1,7 @@
 import { ArrowLeft, ArrowUpRight, Camera, Download, Drama, Gift, Megaphone, MessageCircle, Music, Radio, Search, Shirt, Users } from "lucide-react";
 import { Layout } from "@/components/layout";
 import { SEO } from "@/components/seo";
-import { NEMPO_INSTAGRAM_DM_URL, NEMPO_INSTAGRAM_HANDLE } from "@/lib/contact";
+import { NEMPO_CONSULT_URL, NEMPO_INSTAGRAM_HANDLE } from "@/lib/contact";
 import "./sponsorship-proposal.css";
 
 const assetUrl = (path: string) => `${import.meta.env.BASE_URL}${path}`;
@@ -615,7 +615,7 @@ export default function HalloweenProposalPage() {
               <div><b>BATAS KONFIRMASI</b><span>30 September 2026 · D–30</span></div>
             </div>
             <p className="sponsor-proposal-contact-invite">Kami mencari partner yang siap membangun momen, bukan hanya menempatkan logo.</p>
-            <a href={NEMPO_INSTAGRAM_DM_URL} target="_blank" rel="noopener noreferrer" className="sponsor-proposal-contact-button">
+            <a href={NEMPO_CONSULT_URL} target="_blank" rel="noopener noreferrer" className="sponsor-proposal-contact-button">
               <MessageCircle className="h-4 w-4" /> Hubungi Tim Partnership
             </a>
             <div className="sponsor-proposal-contact-details">

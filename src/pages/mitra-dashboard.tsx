@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 import { useAuth } from "@/contexts/auth-context";
 import { MitraBusinessPanel } from "@/components/mitra-business-panel";
-import { NEMPO_INSTAGRAM_DM_URL } from "@/lib/contact";
+import { NEMPO_CONSULT_URL } from "@/lib/contact";
 
 const API = "/api";
 
@@ -220,7 +220,7 @@ export default function MitraDashboardPage() {
                 <p className="text-xs font-bold text-amber-800">MoU dalam proses penandatanganan</p>
                 <p className="text-[11px] text-amber-700 mt-0.5">
                   Akun kamu sudah aktif, namun MoU dengan Nempo Organizer belum ditandatangani.{" "}
-                  <a href={NEMPO_INSTAGRAM_DM_URL} target="_blank" rel="noopener noreferrer" className="font-bold underline">
+                  <a href={NEMPO_CONSULT_URL} target="_blank" rel="noopener noreferrer" className="font-bold underline">
                     Hubungi admin via DM Instagram
                   </a>{" "}
                   untuk melanjutkan proses.
@@ -235,7 +235,7 @@ export default function MitraDashboardPage() {
                 <p className="text-xs font-bold text-red-800">MoU telah berakhir</p>
                 <p className="text-[11px] text-red-700 mt-0.5">
                   Masa berlaku MoU kerja sama kamu dengan Nempo Organizer sudah habis. Segera{" "}
-                  <a href={NEMPO_INSTAGRAM_DM_URL} target="_blank" rel="noopener noreferrer" className="font-bold underline">
+                  <a href={NEMPO_CONSULT_URL} target="_blank" rel="noopener noreferrer" className="font-bold underline">
                     hubungi admin via DM Instagram
                   </a>{" "}
                   untuk pembaruan.
@@ -407,7 +407,7 @@ export default function MitraDashboardPage() {
             <div className="flex gap-2">
               <button onClick={() => setPanel(null)} className="flex-1 py-3 rounded-xl border border-gray-200 text-gray-600 text-sm font-bold">Tutup</button>
               <a
-                href={NEMPO_INSTAGRAM_DM_URL}
+                href={NEMPO_CONSULT_URL}
                 target="_blank" rel="noopener noreferrer"
                 className="flex-1 py-3 rounded-xl bg-[#25d366] text-white text-sm font-black flex items-center justify-center gap-1.5"
               >

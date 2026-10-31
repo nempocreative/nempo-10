@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Layout } from "@/components/layout";
-import { NEMPO_INSTAGRAM_DM_URL } from "@/lib/contact";
+import { NEMPO_CONSULT_URL } from "@/lib/contact";
 import {
   Mic2, Guitar, Footprints, Music2, Sparkles, Drum, Clapperboard, Camera,
   Plus, Check, ArrowRight, ChevronDown, Copy, Star,
@@ -54,7 +54,7 @@ export default function TalentManagementPage() {
     } catch {
       setCopied(false);
     }
-    window.open(NEMPO_INSTAGRAM_DM_URL, "_blank", "noopener,noreferrer");
+    window.open(NEMPO_CONSULT_URL, "_blank", "noopener,noreferrer");
   }
 
   return (
@@ -232,7 +232,7 @@ export default function TalentManagementPage() {
               <p className={`${hand} text-2xl text-stage-gold`}>kamu yang di atas panggung?</p>
               <h2 className={`${serif} mt-1 max-w-md text-3xl font-bold leading-tight`}>Gabung jadi talent Nempo</h2>
               <p className="mt-2 max-w-md text-sm text-stage-cream/80">MC, musisi, penari, model, atau creator — kirim portofolio dan dapatkan kesempatan tampil di acara yang dikelola Nempo.</p>
-              <a href={NEMPO_INSTAGRAM_DM_URL} target="_blank" rel="noopener noreferrer" className="wed-sticker mt-6 inline-flex items-center gap-2 rounded-full bg-stage-cream px-6 py-3 text-sm font-bold text-stage-violet">
+              <a href={NEMPO_CONSULT_URL} target="_blank" rel="noopener noreferrer" className="wed-sticker mt-6 inline-flex items-center gap-2 rounded-full bg-stage-cream px-6 py-3 text-sm font-bold text-stage-violet">
                 Kirim Portofolio <ArrowRight className="h-4 w-4" />
               </a>
             </div>

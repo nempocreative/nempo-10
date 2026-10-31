@@ -4,7 +4,7 @@ import { SEO } from "@/components/seo";
 import { SedangDipersiapkan } from "@/components/sedang-dipersiapkan";
 import { Link } from "@/lib/wouter";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
-import { NEMPO_INSTAGRAM_DM_URL } from "@/lib/contact";
+import { NEMPO_CONSULT_URL } from "@/lib/contact";
 import {
   Trophy, Search, X, MapPin, Calendar, Users,
   ChevronRight, Loader2, Filter, LayoutGrid,
@@ -392,7 +392,7 @@ export default function PerlombaanPage() {
                 </div>
 
                 <a
-                  href={NEMPO_INSTAGRAM_DM_URL}
+                  href={NEMPO_CONSULT_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-400 to-amber-500 text-yellow-900 font-extrabold text-sm px-5 py-3 rounded-2xl shadow-lg shadow-yellow-500/30 hover:from-yellow-300 hover:to-amber-400 transition-all active:scale-95"

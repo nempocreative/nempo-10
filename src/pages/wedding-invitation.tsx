@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Layout } from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/lib/wouter";
-import { NEMPO_INSTAGRAM_DM_URL } from "@/lib/contact";
+import { NEMPO_CONSULT_URL } from "@/lib/contact";
 import {
   Heart, Check, ArrowRight, MailOpen, CalendarHeart, MapPin, BookHeart, Images,
   MessageSquareHeart, Music, Gift, Share2, ChevronDown, Plus,
@@ -128,7 +128,7 @@ export default function WeddingInvitationPage() {
               </div>
               <div className="mt-7 flex flex-wrap justify-center gap-3 sm:justify-start">
                 <Button asChild size="lg" className="wed-sticker rounded-full bg-wed-rose px-7 text-primary-foreground hover:bg-wed-rose/90">
-                  <a href={NEMPO_INSTAGRAM_DM_URL} target="_blank" rel="noopener noreferrer">Pesan Undangan <ArrowRight /></a>
+                  <a href={NEMPO_CONSULT_URL} target="_blank" rel="noopener noreferrer">Pesan Undangan <ArrowRight /></a>
                 </Button>
                 <Button asChild size="lg" variant="outline" className="rounded-full border-wed-rose/40 bg-card/70 px-7 text-wed-rose hover:bg-card">
                   <a href="#fitur">Lihat Fitur</a>
@@ -211,7 +211,7 @@ export default function WeddingInvitationPage() {
                     </li>
                   ))}
                 </ul>
-                <a href={NEMPO_INSTAGRAM_DM_URL} target="_blank" rel="noopener noreferrer" className="wed-sticker mt-6 block rounded-full bg-wed-rose py-3 text-center text-sm font-bold">
+                <a href={NEMPO_CONSULT_URL} target="_blank" rel="noopener noreferrer" className="wed-sticker mt-6 block rounded-full bg-wed-rose py-3 text-center text-sm font-bold">
                   Pesan Sekarang
                 </a>
               </div>
@@ -279,7 +279,7 @@ export default function WeddingInvitationPage() {
               <p className={`${hand} mt-3 text-2xl text-wed-gold`}>tanggal sudah fix?</p>
               <h2 className={`${serif} mt-1 text-3xl font-bold`}>Yuk, bikin undangannya sekarang</h2>
               <p className="mx-auto mt-2 max-w-sm text-sm opacity-80">Chat tim Nempo lewat Instagram, kirim datanya, undangan siap disebar.</p>
-              <a href={NEMPO_INSTAGRAM_DM_URL} target="_blank" rel="noopener noreferrer" className="wed-sticker mt-6 inline-flex items-center gap-2 rounded-full bg-wed-rose px-7 py-3.5 text-sm font-bold">
+              <a href={NEMPO_CONSULT_URL} target="_blank" rel="noopener noreferrer" className="wed-sticker mt-6 inline-flex items-center gap-2 rounded-full bg-wed-rose px-7 py-3.5 text-sm font-bold">
                 Chat via Instagram <ArrowRight className="h-4 w-4" />
               </a>
             </div>

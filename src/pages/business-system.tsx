@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Layout } from "@/components/layout";
 import { Link } from "@/lib/wouter";
-import { NEMPO_INSTAGRAM_DM_URL } from "@/lib/contact";
+import { NEMPO_CONSULT_URL } from "@/lib/contact";
 import {
   ArrowRight, Check, ChevronDown, Plus, LayoutDashboard, ReceiptText, Boxes, Users,
   Coffee, Store, BedDouble, CalendarCheck, NotebookPen, PackageX, UserMinus, Sparkles,
@@ -233,7 +233,7 @@ export default function BusinessSystemPage() {
                     </button>
                   </>
                 )}
-                <a href={NEMPO_INSTAGRAM_DM_URL} target="_blank" rel="noopener noreferrer" className="wed-sticker mt-5 flex items-center justify-center gap-2 rounded-full bg-biz-teal py-3 text-sm font-bold">
+                <a href={NEMPO_CONSULT_URL} target="_blank" rel="noopener noreferrer" className="wed-sticker mt-5 flex items-center justify-center gap-2 rounded-full bg-biz-teal py-3 text-sm font-bold">
                   Konsultasi Modul <ArrowRight className="h-4 w-4" />
                 </a>
               </aside>
@@ -324,7 +324,7 @@ export default function BusinessSystemPage() {
               <h2 className="mt-1 text-3xl font-extrabold">Bikin usahamu lebih rapi mulai bulan ini</h2>
               <p className="mx-auto mt-2 max-w-sm text-sm text-primary-foreground/75">Konsultasi gratis — kami bantu pilih modul atau paket yang paling pas.</p>
               <div className="mt-6 flex flex-wrap justify-center gap-3">
-                <a href={NEMPO_INSTAGRAM_DM_URL} target="_blank" rel="noopener noreferrer" className="wed-sticker inline-flex items-center gap-2 rounded-full bg-biz-amber px-7 py-3.5 text-sm font-bold text-biz-ink">
+                <a href={NEMPO_CONSULT_URL} target="_blank" rel="noopener noreferrer" className="wed-sticker inline-flex items-center gap-2 rounded-full bg-biz-amber px-7 py-3.5 text-sm font-bold text-biz-ink">
                   Chat via Instagram <ArrowRight className="h-4 w-4" />
                 </a>
                 <Link href="/web-development" className="inline-flex items-center rounded-full border-2 border-primary-foreground/40 px-6 py-3.5 text-sm font-bold">

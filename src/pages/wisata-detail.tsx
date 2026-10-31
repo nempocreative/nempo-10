@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 import { UserRating } from "@/components/user-rating";
 import { useWishlist } from "@/lib/use-wishlist";
-import { NEMPO_INSTAGRAM_DM_URL } from "@/lib/contact";
+import { NEMPO_CONSULT_URL } from "@/lib/contact";
 
 interface WisataItem {
   id: number;
@@ -694,7 +694,7 @@ export default function WisataDetail() {
                     </>
                   )}
                   <a
-                    href={NEMPO_INSTAGRAM_DM_URL}
+                    href={NEMPO_CONSULT_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full flex items-center justify-center gap-2 bg-gray-50 hover:bg-gray-100 border border-gray-200 text-gray-700 font-semibold text-sm py-3 rounded-xl transition-colors"

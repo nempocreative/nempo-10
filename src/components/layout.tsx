@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { useJingle, JINGLE_TRACK } from "@/contexts/jingle-context";
 import { useAuth } from "@/contexts/auth-context";
 import { ALL_CITIES, CITY_OPTIONS, useCityFilter, type CityName } from "@/contexts/city-filter-context";
-import { NEMPO_INSTAGRAM_DM_URL } from "@/lib/contact";
+import { NEMPO_CONSULT_URL } from "@/lib/contact";
 import { mainNavItems } from "@/data/main-nav-items";
 import { GREET_MSG, botReply, type ChatMsg } from "@/data/buddy-chat";
 import {
@@ -1165,7 +1165,7 @@ export function Layout({ children, hideBottomNav, minimalChrome }: { children: R
                             <div className="flex flex-wrap gap-1.5">
                               {msg.chips.map((chip) =>
                                 chip === "Hubungi Admin CS" ? (
-                                  <a key={chip} href={NEMPO_INSTAGRAM_DM_URL} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-[11px] font-bold px-3 py-1.5 rounded-full bg-gradient-to-r from-pink-500 to-violet-600 text-white hover:opacity-90 transition-colors shadow-sm shadow-pink-200">
+                                  <a key={chip} href={NEMPO_CONSULT_URL} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-[11px] font-bold px-3 py-1.5 rounded-full bg-gradient-to-r from-pink-500 to-violet-600 text-white hover:opacity-90 transition-colors shadow-sm shadow-pink-200">
                                     <Instagram className="h-3 w-3" /> DM Admin Instagram
                                   </a>
                                 ) : chip === "Instagram @nempo.id" ? (
@@ -1182,7 +1182,7 @@ export function Layout({ children, hideBottomNav, minimalChrome }: { children: R
                           </div>
                         )}
                         {msg.from === "bot" && msg.wa && (
-                          <a href={NEMPO_INSTAGRAM_DM_URL} target="_blank" rel="noopener noreferrer" className="ml-9 mt-0.5 flex items-center gap-3 p-3 rounded-2xl bg-white hover:bg-pink-50 border border-pink-200 transition-colors group w-fit shadow-sm">
+                          <a href={NEMPO_CONSULT_URL} target="_blank" rel="noopener noreferrer" className="ml-9 mt-0.5 flex items-center gap-3 p-3 rounded-2xl bg-white hover:bg-pink-50 border border-pink-200 transition-colors group w-fit shadow-sm">
                             <div className="h-9 w-9 rounded-xl bg-gradient-to-br from-pink-500 to-violet-600 flex items-center justify-center shrink-0 shadow-sm shadow-pink-200"><Instagram className="h-4 w-4 text-white" /></div>
                             <div><p className="font-bold text-gray-900 text-xs">Chat via DM Instagram</p><p className="text-gray-400 text-[10px]">Konsultasi kebutuhanmu dengan admin</p></div>
                             <ChevronRightIcon className="h-4 w-4 text-gray-300 group-hover:text-pink-500 transition-colors" />
@@ -1370,7 +1370,7 @@ export function Layout({ children, hideBottomNav, minimalChrome }: { children: R
                                 <p className="text-[11.5px] text-gray-700 leading-relaxed">{r.tips}</p>
                               </div>
                             </div>
-                            <a href={NEMPO_INSTAGRAM_DM_URL} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 w-full text-center text-[12px] font-bold py-2.5 rounded-xl text-white shadow-sm shadow-pink-200 transition-all active:scale-95 bg-gradient-to-r from-pink-500 to-violet-600">
+                            <a href={NEMPO_CONSULT_URL} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 w-full text-center text-[12px] font-bold py-2.5 rounded-xl text-white shadow-sm shadow-pink-200 transition-all active:scale-95 bg-gradient-to-r from-pink-500 to-violet-600">
                               <Instagram className="h-3.5 w-3.5" /> Chat Admin via Instagram
                             </a>
                           </div>

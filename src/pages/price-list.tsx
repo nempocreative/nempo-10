@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Layout } from "@/components/layout";
 import { SEO } from "@/components/seo";
 import "./price-list.css";
-import { NEMPO_INSTAGRAM_HANDLE, NEMPO_INSTAGRAM_URL, NEMPO_INSTAGRAM_DM_URL } from "@/lib/contact";
+import { NEMPO_INSTAGRAM_HANDLE, NEMPO_INSTAGRAM_URL, NEMPO_CONSULT_URL } from "@/lib/contact";
 import {
   MessageCircle, Instagram, Video,
   BarChart3, FileText, Send, Headset, Ticket, Award, Wallet,
@@ -407,7 +407,7 @@ const DEFAULT_PARTNERSHIP_CONTENT: PartnershipContent = {
     titleLine2: "ditemukan.",
     description: "Kamu punya kafe, destinasi, atau acara yang ingin dikenal lebih banyak orang? Ceritakan dulu. Kita cari cara yang paling masuk akal untuk membawanya lebih jauh.",
     primaryLabel: "Bahas konsep event",
-    primaryHref: NEMPO_INSTAGRAM_DM_URL,
+    primaryHref: NEMPO_CONSULT_URL,
     secondaryLabel: "Lihat cara kerja",
     secondaryHref: "#cara-kolaborasi",
     captionEyebrow: "Di balik setiap kolaborasi",
@@ -819,7 +819,7 @@ export default function PriceListPage() {
                     <div className="price-list-partnership-cta mt-8 flex flex-col gap-3 border-t border-[#e5ddd3] pt-5 sm:flex-row sm:items-center sm:justify-between">
                       <p className="max-w-md text-xs leading-relaxed text-[#8a9292]">Belum menemukan layanan yang pas? Ceritakan kebutuhannya, lalu kita susun bentuk kerja samanya.</p>
                       <a
-                        href={NEMPO_INSTAGRAM_DM_URL}
+                        href={NEMPO_CONSULT_URL}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-[#0b79b5] px-4 py-3 text-xs font-extrabold text-white transition-colors hover:bg-[#173243]"
@@ -878,7 +878,7 @@ export default function PriceListPage() {
                  </div>
               </div>
               <p className="mt-5 text-xs text-gray-500">
-                Punya bentuk acara sendiri? <a href={NEMPO_INSTAGRAM_DM_URL} target="_blank" rel="noopener noreferrer" className="font-bold text-[#0194f3] underline decoration-[#0194f3]/30 underline-offset-4 hover:decoration-[#0194f3]">Ceritakan idemu ke tim Nempo</a>.
+                Punya bentuk acara sendiri? <a href={NEMPO_CONSULT_URL} target="_blank" rel="noopener noreferrer" className="font-bold text-[#0194f3] underline decoration-[#0194f3]/30 underline-offset-4 hover:decoration-[#0194f3]">Ceritakan idemu ke tim Nempo</a>.
               </p>
             </div>
           </div>
@@ -1059,7 +1059,7 @@ export default function PriceListPage() {
                           ))}
                         </div>
                         <a
-                          href={NEMPO_INSTAGRAM_DM_URL}
+                          href={NEMPO_CONSULT_URL}
                           target="_blank" rel="noopener noreferrer"
                           className="mt-5 inline-flex items-center gap-1.5 text-[11px] font-bold text-[#0b79b5] transition-all hover:gap-2.5 active:scale-95"
                         >
@@ -1075,7 +1075,7 @@ export default function PriceListPage() {
             <div className="price-list-service-catalog-footer flex flex-col gap-3 border-t border-[#e5ddd3] px-5 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-8">
               <p className="text-xs leading-relaxed text-[#6d777b]">Belum yakin mulai dari mana? Ceritakan kebutuhanmu, kami bantu pilihkan bidang yang paling relevan.</p>
               <a
-                href={NEMPO_INSTAGRAM_DM_URL}
+                href={NEMPO_CONSULT_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex shrink-0 items-center gap-2 text-xs font-extrabold text-[#0b79b5] transition-colors hover:text-[#173243]"
@@ -1136,7 +1136,7 @@ export default function PriceListPage() {
                       <p className="font-black text-gray-900 text-2xl leading-none">{pkg.price}</p>
                     </div>
                     {/* CTA */}
-                    <a href={NEMPO_INSTAGRAM_DM_URL} target="_blank" rel="noopener noreferrer"
+                    <a href={NEMPO_CONSULT_URL} target="_blank" rel="noopener noreferrer"
                       className="flex items-center justify-center gap-1.5 text-[11px] font-bold text-white py-2.5 rounded-xl mb-4 active:scale-95 transition-all"
                      style={{ background: "var(--pl-coral)" }}>
                       <Instagram className="h-3 w-3" /> Hubungi via DM Instagram
@@ -1181,7 +1181,7 @@ export default function PriceListPage() {
                         </div>
                       ))}
                     </div>
-                    <a href={NEMPO_INSTAGRAM_DM_URL} target="_blank" rel="noopener noreferrer"
+                    <a href={NEMPO_CONSULT_URL} target="_blank" rel="noopener noreferrer"
                       className="flex items-center justify-center gap-2 text-xs font-bold text-white py-3 rounded-xl mb-4 active:scale-95 transition-all"
                        style={{ background: "var(--pl-coral)" }}>
                       <Instagram className="h-3.5 w-3.5" /> Hubungi via DM Instagram
@@ -1222,7 +1222,7 @@ export default function PriceListPage() {
                         </div>
                         <p className="text-gray-300 text-xs line-through mb-0.5">{pkg.originalPrice}</p>
                         <p className="font-black text-gray-900 text-xl sm:text-2xl mb-5 leading-none">{pkg.price}</p>
-                        <a href={NEMPO_INSTAGRAM_DM_URL} target="_blank" rel="noopener noreferrer"
+                        <a href={NEMPO_CONSULT_URL} target="_blank" rel="noopener noreferrer"
                           className="mt-auto flex items-center justify-center gap-1.5 text-xs font-bold py-2.5 rounded-xl active:scale-95 transition-all"
                           style={{
                             background: isRecommended ? "linear-gradient(135deg,#65b9f5,#0194f3)" : "linear-gradient(135deg,#0194f3,#0052b0)",
@@ -1479,7 +1479,7 @@ export default function PriceListPage() {
                 </p>
               </div>
               <div className="flex flex-col sm:items-end gap-3 shrink-0">
-                  <a href={NEMPO_INSTAGRAM_DM_URL} target="_blank" rel="noopener noreferrer"
+                  <a href={NEMPO_CONSULT_URL} target="_blank" rel="noopener noreferrer"
                   className="flex items-center gap-3 px-7 py-4 rounded-2xl font-extrabold text-sm active:scale-95 transition-all"
                   style={{ background: "linear-gradient(135deg,#25D366,#1EBE57)", boxShadow: "0 6px 24px rgba(37,211,102,0.45)", color: "#fff" }}>
                   <MessageCircle className="h-5 w-5" />
@@ -1500,7 +1500,7 @@ export default function PriceListPage() {
                 <p className="mt-1 text-[11px] font-extrabold leading-tight text-[#173243]">Ceritakan kebutuhanmu ke tim Nempo.</p>
               </div>
               <a
-                href={NEMPO_INSTAGRAM_DM_URL}
+                href={NEMPO_CONSULT_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex shrink-0 items-center gap-1.5 rounded-xl bg-[#25D366] px-3 py-2.5 text-[11px] font-extrabold text-white shadow-sm"

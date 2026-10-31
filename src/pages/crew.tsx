@@ -20,7 +20,7 @@ import {
   XCircle, RefreshCw, KeyRound, History, AlertCircle, Clock3, Ticket,
   Plus, Minus, Moon, Instagram,
 } from "lucide-react";
-import { NEMPO_INSTAGRAM_DM_URL } from "@/lib/contact";
+import { NEMPO_CONSULT_URL } from "@/lib/contact";
 
 /* ─────────────────────────────────────────────────────────────────
    CONSTANTS
@@ -832,7 +832,7 @@ function KontakDaruratCard({ onNav }: { onNav: (tab: string) => void }) {
           <div
             key={i}
             onClick={() => (k as any).instagram
-              ? window.open(NEMPO_INSTAGRAM_DM_URL, "_blank", "noopener,noreferrer")
+              ? window.open(NEMPO_CONSULT_URL, "_blank", "noopener,noreferrer")
               : k.wa
                 ? window.open(`https://wa.me/${k.wa}`, "_blank")
                 : onNav("kontak")}
@@ -4790,7 +4790,7 @@ function KontakTab() {
                   <p className="text-[11px] text-gray-400 mt-0.5 leading-tight">{k.note}</p>
                 </div>
                 {(k.wa || (k as any).instagram) && (
-                  <a href={(k as any).instagram ? NEMPO_INSTAGRAM_DM_URL : `https://wa.me/${k.wa}`} target="_blank" rel="noopener noreferrer"
+                  <a href={(k as any).instagram ? NEMPO_CONSULT_URL : `https://wa.me/${k.wa}`} target="_blank" rel="noopener noreferrer"
                     aria-label={(k as any).instagram ? `Hubungi ${k.role} via DM Instagram` : `Hubungi ${k.role} via WhatsApp`}
                     className={`shrink-0 w-8 h-8 rounded-xl flex items-center justify-center shadow-sm ${(k as any).instagram ? "bg-gradient-to-br from-pink-500 to-violet-600 shadow-pink-200" : "bg-green-500 shadow-green-200"}`}>
                     {(k as any).instagram ? <Instagram className="h-3.5 w-3.5 text-white" /> : <Phone className="h-3.5 w-3.5 text-white" />}
@@ -4874,7 +4874,7 @@ function KontakTab() {
                     <p className="text-[10px] text-gray-400 mt-0.5 leading-tight">{k.note}</p>
                   </div>
                   {(k.wa || (k as any).instagram) && (
-                    <a href={(k as any).instagram ? NEMPO_INSTAGRAM_DM_URL : `https://wa.me/${k.wa}`} target="_blank" rel="noopener noreferrer"
+                    <a href={(k as any).instagram ? NEMPO_CONSULT_URL : `https://wa.me/${k.wa}`} target="_blank" rel="noopener noreferrer"
                       aria-label={(k as any).instagram ? `Hubungi ${k.role} via DM Instagram` : `Hubungi ${k.role} via WhatsApp`}
                       className={`shrink-0 w-8 h-8 rounded-xl flex items-center justify-center shadow-sm ${(k as any).instagram ? "bg-gradient-to-br from-pink-500 to-violet-600 shadow-pink-200" : "bg-green-500 shadow-green-200"}`}>
                       {(k as any).instagram ? <Instagram className="h-3.5 w-3.5 text-white" /> : <Phone className="h-3.5 w-3.5 text-white" />}
