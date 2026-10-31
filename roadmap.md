@@ -1,6 +1,6 @@
 # Roadmap
-- [ ] Rapikan judul dan pilihan studio wedding supaya ringkas dan sejajar.
-- [ ] Ganti ikon makeup dengan ikon sesuai gaya, termasuk Barbie tanpa bintang.
+- [x] Rapikan judul dan pilihan studio wedding supaya ringkas dan sejajar.
+- [x] Ganti ikon makeup dengan ikon sesuai gaya, termasuk Barbie tanpa bintang.
 - [x] Tambah foto ilustrasi contoh untuk kelima gaya makeup pengantin.
 - [x] Tambah jenis makeup Barbie, Bold, Natural, Soft Glam, Korean beserta pilihan konsultasi dan moodboard.
 - [x] Tambah pilihan khusus gaun dengan jas senada dalam empat tone, manekin tanpa wajah, konsultasi dan moodboard.
