@@ -168,10 +168,12 @@ export function WeddingConceptStudio() {
     setError("");
     try {
       const blob = await renderMoodboardCard({
-        tone: activeTone,
-        decor,
-        kebaya,
+        toneName: activeTone.name,
+        toneHexes: activeTone.hexes,
+        toneNote: activeTone.note,
+        decorName: decor.name,
         decorImage: decor.images[tone],
+        kebayaName: kebaya.name,
         kebayaImage: kebaya.images[tone],
       });
       await deliverFile(blob, moodboardFilename(activeTone.name));
