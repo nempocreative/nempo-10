@@ -7,11 +7,13 @@ import {
   weddingTones,
   type ToneKey,
   type WeddingOption,
+  type WeddingOutfit,
   type WeddingTone,
 } from "@/data/wedding-concepts";
 import { NEMPO_INSTAGRAM_HANDLE, NEMPO_WA_NUMBER } from "@/lib/contact";
 import { deliverFile } from "@/lib/download";
 import { moodboardFilename, renderMoodboardCard } from "@/lib/moodboard-card";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 function Swatch({ tone, size = "sm" }: { tone: WeddingTone; size?: "sm" | "md" }) {
@@ -43,7 +45,8 @@ function OptionChip({
   onSelect: () => void;
 }) {
   return (
-    <button
+    <Button
+      variant="ghost"
       type="button"
       onClick={onSelect}
       aria-pressed={active}
@@ -61,7 +64,7 @@ function OptionChip({
         className="h-5 w-5 rounded-full object-cover"
       />
       {option.name}
-    </button>
+    </Button>
   );
 }
 
@@ -74,17 +77,18 @@ function ComboCard({
 }: {
   tone: WeddingTone;
   decor: WeddingOption;
-  kebaya: WeddingOption;
+  kebaya: WeddingOutfit;
   active: boolean;
   onSelect: () => void;
 }) {
   return (
-    <button
+    <Button
+      variant="ghost"
       type="button"
       onClick={onSelect}
       aria-pressed={active}
       className={cn(
-        "group flex flex-col overflow-hidden rounded-xl border bg-background/70 text-left transition-all duration-300",
+        "group h-auto min-h-0 items-stretch justify-start whitespace-normal p-0 flex flex-col overflow-hidden rounded-xl border bg-background/70 text-left transition-all duration-300",
         active
           ? "border-primary shadow-lg"
           : "border-border hover:border-primary/50 hover:-translate-y-0.5",
@@ -97,15 +101,15 @@ function ComboCard({
           loading="lazy"
           width={decor.width}
           height={decor.height}
-          className="h-auto w-full transition-transform duration-500 group-hover:scale-[1.04]"
+          className="h-auto w-full"
         />
         <img
           src={kebaya.images[tone.key]}
-          alt={`Kebaya ${kebaya.name} tone ${tone.name}`}
+          alt={`Kebaya ${kebaya.name} dan ${kebaya.groomName} pada manekin tanpa wajah, tone ${tone.name}`}
           loading="lazy"
           width={kebaya.width}
           height={kebaya.height}
-          className="h-auto w-full transition-transform duration-500 group-hover:scale-[1.04]"
+          className="h-auto w-full"
         />
       </span>
       <span className="flex flex-1 flex-col gap-1 p-2 sm:p-3">
@@ -121,13 +125,13 @@ function ComboCard({
           <Swatch tone={tone} />
         </span>
         <span className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground sm:text-[11px]">
-          {decor.name} · {kebaya.name}
+          {decor.name} · {kebaya.name} + {kebaya.groomName}
         </span>
         <span className="mt-auto pt-2 text-[11px] font-bold text-primary">
           {active ? "Dipilih ✓" : "Pilih kombinasi ini"}
         </span>
       </span>
-    </button>
+    </Button>
   );
 }
 
@@ -141,13 +145,13 @@ export function WeddingConceptStudio() {
   const [hint, setHint] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  const activeTone = useMemo(() => weddingTones.find((t) => t.key === tone) ?? weddingTones[0]!, [tone]);
+  const activeTone = useMemo(() => weddingTones.find((t) => t.key === tone) ?? weddingTones[0], [tone]);
   const decor = useMemo(
-    () => weddingDecor.find((d) => d.key === decorKey) ?? weddingDecor[0]!,
+    () => weddingDecor.find((d) => d.key === decorKey) ?? weddingDecor[0],
     [decorKey],
   );
   const kebaya = useMemo(
-    () => weddingKebaya.find((k) => k.key === kebayaKey) ?? weddingKebaya[0]!,
+    () => weddingKebaya.find((k) => k.key === kebayaKey) ?? weddingKebaya[0],
     [kebayaKey],
   );
 
@@ -157,13 +161,16 @@ export function WeddingConceptStudio() {
     return () => window.clearTimeout(t);
   }, [downloaded]);
 
-  const consultUrl = useMemo(() => weddingMoodConsultUrl({ tone: activeTone, decor, kebaya }), [
+  const consultUrl = useMemo(() => activeTone && decor && kebaya ? weddingMoodConsultUrl({ tone: activeTone, decor, kebaya }) : "", [
     activeTone,
     decor,
     kebaya,
   ]);
 
+  if (!activeTone || !decor || !kebaya) return null;
+
   async function downloadMoodboard() {
+    if (!activeTone || !decor || !kebaya) return;
     setDownloading(true);
     setError("");
     try {
@@ -173,7 +180,7 @@ export function WeddingConceptStudio() {
         toneNote: activeTone.note,
         decorName: decor.name,
         decorImage: decor.images[tone],
-        kebayaName: kebaya.name,
+        kebayaName: `${kebaya.name} + ${kebaya.groomName}`,
         kebayaImage: kebaya.images[tone],
       });
       await deliverFile(blob, moodboardFilename(activeTone.name));
@@ -208,8 +215,7 @@ export function WeddingConceptStudio() {
             Bandingkan dulu, baru pilih
           </h2>
           <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">
-            Empat tone warna berdampingan dengan pelaminan dan kebaya yang sama. Klik salah satu
-            untuk memilih, lalu kirim hasilnya ke tim kami.
+            Pelaminan · Kebaya · Beskap senada
           </p>
         </div>
 
@@ -233,7 +239,7 @@ export function WeddingConceptStudio() {
           </div>
           <div className="flex flex-wrap items-center gap-2">
             <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
-              Kebaya
+              Busana pasangan
             </span>
             {weddingKebaya.map((option) => (
               <OptionChip
@@ -275,11 +281,12 @@ export function WeddingConceptStudio() {
             <Swatch tone={activeTone} size="md" />
             <span className="text-sm font-bold text-foreground">{activeTone.name}</span>
             <span className="text-xs text-muted-foreground">
-              {decor.name} · {kebaya.name}
+              {decor.name} · {kebaya.name} + {kebaya.groomName}
             </span>
           </div>
           <div className="flex flex-wrap gap-2">
-            <button
+            <Button
+      variant="ghost"
               type="button"
               onClick={downloadMoodboard}
               disabled={downloading}
@@ -295,7 +302,7 @@ export function WeddingConceptStudio() {
                 : downloaded
                   ? "Moodboard tersimpan ✓"
                   : "Download moodboard"}
-            </button>
+            </Button>
             <a
               href={consultUrl}
               target="_blank"
@@ -324,7 +331,7 @@ export function WeddingConceptStudio() {
         ) : null}
 
         <p className="mt-3 text-[11px] text-muted-foreground">
-          Foto adalah ilustrasi konsep; realisasi dekor, bunga, dan kebaya bisa disesuaikan budget
+          Foto adalah ilustrasi konsep; realisasi dekor, bunga, dan busana bisa disesuaikan budget
           dan venue. Detail:{" "}
           <Link href="/wedding-invitation" className="font-semibold text-primary underline-offset-4 hover:underline">
             undangan digital
