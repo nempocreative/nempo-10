@@ -1509,7 +1509,10 @@ export function Layout({ children, hideBottomNav, minimalChrome }: { children: R
           {/* Arrow tab — visible when hidden */}
           {!csVisible && !csOpen && (
             <div
-              className="flex items-center justify-center shrink-0"
+              onClick={() => { setCsOpen(true); setCsVisible(true); }}
+              role="button"
+              aria-label="Buka Nempo Buddy"
+              className="flex items-center justify-center shrink-0 cursor-pointer"
               style={{
                 width: "20px",
                 height: "48px",
