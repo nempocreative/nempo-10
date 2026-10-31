@@ -10,6 +10,7 @@
 <!-- LOVABLE:END -->
 
 ## Architecture rules
+- Wedding inspiration options and consultation-message formatting live in browser-safe `src/data/wedding-concepts.ts`, rendered by the dedicated wedding concept studio; why: selections stay independent from package pricing and send consistent consultation details.
 - Nempo Buddy lives within the shared Layout with its original mode and chat state; its chat answers and service matching live in browser-safe `src/data/buddy-chat.ts` with routing tests; why: update chat content without replacing the restored widget or changing other modes.
 - Service-page prices, inclusions, and testimonial lists (wedding WO, wedding invitation, sosmed management, web development, design creative, talent management, business system, event organizer) live in browser-safe data modules under `src/data/` shared by the page and its rule tests; why: one source per price so pages and tests stay consistent with the Kenalan Nempo / price-list sources. Each service page has a leaf route that mounts NempoShell for its own metadata and is registered in the `Switch` in `src/nempo-app.tsx`.
 - The NEMPO site (migrated from Replit repo nempocreative/organizer, artifact nempo-garut-web) renders client-only through `src/components/nempo-shell.tsx`, mounted by `src/routes/index.tsx` and the catch-all `src/routes/$.tsx`; why: its 100+ pages rely on browser APIs and were ported as-is.

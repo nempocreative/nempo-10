@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Layout } from "@/components/layout";
 import { Button } from "@/components/ui/button";
+import { WeddingConceptStudio } from "@/components/wedding-concept-studio";
 import { Heart, Check, ArrowRight, Users, Music, Plus, Minus, Flower2, Gem, PartyPopper, HeartHandshake } from "lucide-react";
 import { NEMPO_CONSULT_URL } from "@/lib/contact";
 import { weddingPackages, weddingAdatOptions, weddingTotal, weddingRupiah, weddingVendorNote, weddingAdatNote } from "@/data/wedding-packages";
@@ -80,6 +81,8 @@ export default function WeddingOrganizerPage() {
             ))}
           </div>
         </div>
+
+        <WeddingConceptStudio />
 
         {/* ── PACKAGES ── */}
         <section id="paket" className="mx-auto max-w-5xl scroll-mt-24 px-6 py-12">

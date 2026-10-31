@@ -39,6 +39,14 @@
 .wed-wiggle { animation: wed-wiggle 3.2s ease-in-out infinite; }
 .wed-marquee { animation: wed-marquee 24s linear infinite; }
 .wed-pulse-heart { animation: wed-pulse-heart 1.6s ease-in-out infinite; }
+.wed-mood-enter { animation: wed-mood-enter 0.4s ease-out; }
+@keyframes wed-mood-enter {
+  from { opacity: 0.6; transform: scale(1.025); }
+  to { opacity: 1; transform: scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wed-mood-enter { animation: none; }
+}
 .wed-hero-bg {
   background:
     radial-gradient(42rem 26rem at 12% 8%, rgba(180, 70, 106, 0.20), transparent 60%),
@@ -83,6 +91,12 @@ body,
   --color-wed-blush: #fbeef1;
   --color-wed-gold: #c79a4a;
   --color-wed-ink: #3a1f2b;
+  --color-wed-sage: oklch(0.68 0.065 145);
+  --color-wed-ivory: oklch(0.96 0.02 90);
+  --color-wed-champagne: oklch(0.83 0.055 75);
+  --color-wed-burgundy: oklch(0.39 0.12 15);
+  --color-wed-sky: oklch(0.76 0.065 230);
+  --color-wed-pearl: oklch(0.94 0.008 230);
   --color-sos-pink: #ef5da8;
   --color-sos-blush: #fdeef2;
   --color-sos-lilac: #3eb489;
