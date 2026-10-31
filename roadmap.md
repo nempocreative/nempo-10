@@ -17,3 +17,4 @@
 - [x] Studio wedding: moodboard bisa di-download / dikirim jadi satu gambar
 - [x] Studio wedding: transisi hover, penanda dipilih, dan ringkasan yang muncul dengan animasi
 - [x] Studio wedding: mode bandingkan — empat kombinasi tone + dekor + kebaya berdampingan
+- [x] Studio wedding: foto tampil penuh sesuai aslinya, tidak terpotong

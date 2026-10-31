@@ -90,14 +90,14 @@ function ComboCard({
           : "border-border hover:border-primary/50 hover:-translate-y-0.5",
       )}
     >
-      <span className="grid grid-cols-2 gap-px overflow-hidden bg-border/60">
+      <span className="grid grid-cols-2 items-start gap-px overflow-hidden bg-border/60">
         <img
           src={decor.images[tone.key]}
           alt={`Pelaminan ${decor.name} tone ${tone.name}`}
           loading="lazy"
           width={decor.width}
           height={decor.height}
-          className="h-24 w-full object-cover transition-transform duration-500 group-hover:scale-[1.04] sm:h-36 lg:h-40"
+          className="h-auto w-full transition-transform duration-500 group-hover:scale-[1.04]"
         />
         <img
           src={kebaya.images[tone.key]}
@@ -105,7 +105,7 @@ function ComboCard({
           loading="lazy"
           width={kebaya.width}
           height={kebaya.height}
-          className="h-24 w-full object-cover transition-transform duration-500 group-hover:scale-[1.04] sm:h-36 lg:h-40"
+          className="h-auto w-full transition-transform duration-500 group-hover:scale-[1.04]"
         />
       </span>
       <span className="flex flex-1 flex-col gap-1 p-2 sm:p-3">
