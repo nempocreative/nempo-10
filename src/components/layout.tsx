@@ -1013,7 +1013,7 @@ export function Layout({ children, hideBottomNav, minimalChrome }: { children: R
                     {buddyMode === "home" && (
                       <div className="flex items-center gap-1.5 mt-0.5">
                         <span className="h-1.5 w-1.5 rounded-full bg-emerald-300 animate-pulse" />
-                        <p className="text-white/80 text-[10px]">Online · siap nemenin ulin</p>
+                        <p className="text-white/80 text-[10px]">Online · siap bantu acara & kreatif</p>
                       </div>
                     )}
                   </div>
@@ -1040,15 +1040,15 @@ export function Layout({ children, hideBottomNav, minimalChrome }: { children: R
                         <Compass className="text-white" style={{ height: 23, width: 23 }} />
                       </div>
                       <div>
-                        <p className="font-extrabold text-slate-900 text-[15px] leading-tight">Sampurasun! Rék ulin ka mana?</p>
-                        <p className="font-extrabold text-[15px] leading-tight text-[#087f8c]">Wisata, kuliner, sampai event, Buddy siap bantu.</p>
+                        <p className="font-extrabold text-slate-900 text-[15px] leading-tight">Sampurasun! Rék bikin acara atau konten?</p>
+                        <p className="font-extrabold text-[15px] leading-tight text-[#087f8c]">Wedding, event, desain, website — Buddy siap bantu.</p>
                       </div>
                     </div>
                     <div className="relative flex items-center gap-1.5 w-fit rounded-full border border-cyan-200/80 bg-white/75 px-2.5 py-1 text-[10px] font-bold text-cyan-800 shadow-sm">
                       <MapPin className="h-3 w-3 text-cyan-600" />
                       <span>Nempo {selectedCity === ALL_CITIES ? "Jawa Barat" : selectedCity}</span>
                     </div>
-                    <p className="relative mt-2 text-[11px] text-slate-500 leading-relaxed">Pilih menu di bawah buat cari destinasi, cek budget, atau tanya apa aja seputar Nempo.</p>
+                    <p className="relative mt-2 text-[11px] text-slate-500 leading-relaxed">Pilih menu di bawah buat tanya layanan, cek paket, atau cerita soal kebutuhanmu.</p>
                   </div>
 
                   {/* Feature cards */}
@@ -1069,8 +1069,8 @@ export function Layout({ children, hideBottomNav, minimalChrome }: { children: R
                         <Music className="h-4.5 w-4.5 text-white" style={{ height: 18, width: 18 }} />
                       </div>
                       <div>
-                        <p className="font-bold text-slate-800 text-xs">Teman perjalanan</p>
-                        <p className="text-orange-600/70 text-[10px] leading-tight mt-0.5">Dengerin jingle Nempo</p>
+                        <p className="font-bold text-slate-800 text-xs">Jingle Nempo</p>
+                        <p className="text-orange-600/70 text-[10px] leading-tight mt-0.5">Lagu sapaan dari Nempo</p>
                       </div>
                     </button>
                   </div>
@@ -1083,9 +1083,10 @@ export function Layout({ children, hideBottomNav, minimalChrome }: { children: R
                     </div>
                     <div className="flex flex-wrap gap-1.5">
                       {[
-                        { label: "Wisata dekat sini", query: "Wisata dekat sini" },
-                        { label: "Kuliner wajib coba", query: "Kuliner wajib coba" },
-                        { label: "Trip 1 hari", query: "Buatkan rencana perjalanan 1 hari" },
+                        { label: "Wedding Organizer", query: "Wedding Organizer" },
+                        { label: "Bikin undangan digital", query: "Bikin undangan digital" },
+                        { label: "Konten sosmed", query: "Konten sosmed" },
+                        { label: "Bikin website", query: "Bikin website" },
                       ].map((prompt) => (
                         <button
                           key={prompt.label}
@@ -1099,9 +1100,9 @@ export function Layout({ children, hideBottomNav, minimalChrome }: { children: R
                   </div>
                   <div className="mx-3 mb-3 flex items-center gap-2 rounded-2xl border border-emerald-100 bg-emerald-50/80 p-2.5">
                     <MapPin className="h-4 w-4 shrink-0 text-emerald-600" />
-                    <p className="text-[10.5px] leading-tight text-emerald-800"><span className="font-bold">Catatan kecil:</span> pilih lokasi di header supaya rekomendasi Buddy makin dekat dengan tujuanmu.</p>
+                    <p className="text-[10.5px] leading-tight text-emerald-800"><span className="font-bold">Catatan kecil:</span> ceritakan tanggal, lokasi, dan kebutuhan acaramu supaya Buddy bisa arahin ke layanan yang paling pas.</p>
                   </div>
-                  <p className="text-center text-slate-300 text-[10px] pb-3">Teman jalan online 08.00 – 21.00 WIB</p>
+                  <p className="text-center text-slate-300 text-[10px] pb-3">Buddy online 08.00 – 21.00 WIB</p>
                 </div>
               )}
 
@@ -1508,7 +1509,10 @@ export function Layout({ children, hideBottomNav, minimalChrome }: { children: R
           {/* Arrow tab — visible when hidden */}
           {!csVisible && !csOpen && (
             <div
-              className="flex items-center justify-center shrink-0"
+              onClick={() => { setCsOpen(true); setCsVisible(true); }}
+              role="button"
+              aria-label="Buka Nempo Buddy"
+              className="flex items-center justify-center shrink-0 cursor-pointer"
               style={{
                 width: "20px",
                 height: "48px",

@@ -8,6 +8,7 @@ describe("Tanya Buddy service routing", () => {
     ["Web Development", "web"], ["Design Creative", "design"],
     ["penari", "talent"], ["band", "talent"], ["MC", "talent"], ["model", "talent"],
     ["Business System", "business"],
+    ["Bikin undangan digital", "invitation"], ["Konten sosmed", "sosmed"], ["Bikin website", "web"],
   ])("routes %s to the matching website service", (input, id) => {
     expect(matchBuddyService(input)?.id).toBe(id);
   });
