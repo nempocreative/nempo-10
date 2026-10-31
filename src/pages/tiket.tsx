@@ -300,7 +300,7 @@ function TicketRow({ ticket, onRemove }: { ticket: EventTicket; onRemove?: () =>
           <p className="text-red-600 text-xs font-bold flex items-center gap-1"><XCircle className="h-3.5 w-3.5" /> Pesanan Ditolak</p>
           <p className="text-red-500 text-[11px] mt-0.5">
             <a href={NEMPO_CONSULT_URL} target="_blank" rel="noopener noreferrer" className="underline">
-              Hubungi admin via DM Instagram
+              Hubungi admin via WhatsApp
             </a>{" "}
             untuk informasi lebih lanjut.
           </p>

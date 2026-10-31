@@ -932,7 +932,7 @@ export default function DigitalServicesPage() {
                 { question: "Bisa mulai dari satu layanan?", answer: "Bisa. Pilih satu layanan, lalu tambahkan layanan lain saat dibutuhkan." },
                 { question: "Apakah harga sudah termasuk setup?", answer: "Paket menampilkan biaya setup satu kali dan biaya bulanan secara terpisah." },
                 { question: "Bisa disesuaikan dengan bisnis saya?", answer: "Bisa. Detail kebutuhan dan penyesuaian dibahas saat konsultasi." },
-                { question: "Bagaimana cara memulai?", answer: "Pilih layanan, isi form konsultasi, lalu lanjutkan pembahasan melalui Instagram Nempo." },
+                { question: "Bagaimana cara memulai?", answer: "Pilih layanan, isi form konsultasi, lalu lanjutkan pembahasan melalui WhatsApp Nempo." },
               ].map(({ question, answer }) => (
                 <details key={question} className="group rounded-2xl border border-gray-100 bg-gray-50 px-4 py-3">
                   <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-sm font-extrabold text-gray-800">

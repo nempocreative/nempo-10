@@ -278,7 +278,7 @@ export default function WebDevelopmentPage() {
             <div className="dev-grid-bg relative overflow-hidden rounded-3xl border-[3px] border-dev-ink bg-dev-ink p-8 text-center text-primary-foreground" style={{ boxShadow: "8px 8px 0 0 var(--color-dev-lime)" }}>
               <p className={`${mono} text-xs text-dev-lime`}>$ nempo --start-project</p>
               <h2 className="mt-3 text-3xl font-extrabold leading-tight">Siap bikin usahamu online?</h2>
-              <p className="mx-auto mt-2 max-w-sm text-sm text-primary-foreground/75">Konsultasi gratis lewat Instagram — ceritakan kebutuhanmu, kami bantu pilih yang paling pas.</p>
+              <p className="mx-auto mt-2 max-w-sm text-sm text-primary-foreground/75">Konsultasi gratis lewat WhatsApp — ceritakan kebutuhanmu, kami bantu pilih yang paling pas.</p>
               <a href={NEMPO_CONSULT_URL} target="_blank" rel="noopener noreferrer" className="wed-sticker mt-6 inline-flex items-center gap-2 rounded-full bg-dev-lime px-7 py-3.5 text-sm font-bold text-dev-ink">
                 Chat via Instagram <ArrowRight className="h-4 w-4" />
               </a>

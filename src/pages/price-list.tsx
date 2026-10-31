@@ -451,7 +451,7 @@ const DEFAULT_PARTNERSHIP_CONTENT: PartnershipContent = {
     titleLine1: "Punya rencana?",
     titleLine2: "Mari ngobrol dulu.",
     description: "Belum punya proposal lengkap tidak apa-apa. Ceritakan tempat atau eventmu, kami bantu menyusun langkah berikutnya.",
-    buttonLabel: "Chat via DM Instagram",
+    buttonLabel: "Chat via WhatsApp",
     emailText: "Atau email ke hello@nempo.id",
   },
 };
@@ -1139,7 +1139,7 @@ export default function PriceListPage() {
                     <a href={NEMPO_CONSULT_URL} target="_blank" rel="noopener noreferrer"
                       className="flex items-center justify-center gap-1.5 text-[11px] font-bold text-white py-2.5 rounded-xl mb-4 active:scale-95 transition-all"
                      style={{ background: "var(--pl-coral)" }}>
-                      <Instagram className="h-3 w-3" /> Hubungi via DM Instagram
+                      <Instagram className="h-3 w-3" /> Hubungi via WhatsApp
                     </a>
                     {/* Features */}
                     <div className="space-y-1.5 flex-1">
@@ -1184,7 +1184,7 @@ export default function PriceListPage() {
                     <a href={NEMPO_CONSULT_URL} target="_blank" rel="noopener noreferrer"
                       className="flex items-center justify-center gap-2 text-xs font-bold text-white py-3 rounded-xl mb-4 active:scale-95 transition-all"
                        style={{ background: "var(--pl-coral)" }}>
-                      <Instagram className="h-3.5 w-3.5" /> Hubungi via DM Instagram
+                      <Instagram className="h-3.5 w-3.5" /> Hubungi via WhatsApp
                     </a>
                     <div className="space-y-2 flex-1">
                       {pkg.features.map((f, i) => (

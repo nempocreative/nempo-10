@@ -130,7 +130,7 @@ export default function SponsorshipPage() {
             <div className="sponsor-collab-hero-note">
               <Instagram className="h-4 w-4" aria-hidden="true" />
               <span>@nempo.id</span>
-              <p>Diskusi awal melalui Instagram DM</p>
+              <p>Diskusi awal melalui WhatsApp</p>
             </div>
           </div>
 
