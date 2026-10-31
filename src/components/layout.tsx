@@ -780,8 +780,8 @@ export function Layout({ children, hideBottomNav, minimalChrome }: { children: R
                 </div>
               </div>
               <p className="text-white/55 text-sm leading-relaxed mb-5 max-w-md">
-                Tim kreatif yang mengangkat pesona Jawa Barat melalui karya, event, dan kolaborasi yang berdampak.
-                Temukan cerita, potensi, dan pengalaman terbaik di setiap sudutnya.
+                Tim kreatif yang menggarap acara, konten, dan brand lewat karya serta kolaborasi yang berdampak.
+                Ceritakan kebutuhanmu, kami bantu susun konsep, bentuk, sampai pelaksanaannya.
               </p>
               {/* Mobile: 4 icon-only buttons | Desktop: 2-col cards with text */}
               <div className="flex gap-2 md:hidden mt-1">
@@ -825,16 +825,16 @@ export function Layout({ children, hideBottomNav, minimalChrome }: { children: R
             </div>
             <div className="hidden min-h-[220px] flex-col justify-between rounded-[2rem] border border-white/15 bg-white/[0.08] p-6 shadow-[0_18px_50px_rgba(0,40,100,0.12)] md:flex">
               <div>
-                <p className="text-[10px] font-black uppercase tracking-[0.22em] text-white/45">Jelajah bersama Nempo</p>
+                <p className="text-[10px] font-black uppercase tracking-[0.22em] text-white/45">Bikin bareng Nempo</p>
                 <h3 className="mt-3 max-w-sm text-2xl font-black leading-tight tracking-[-0.04em] text-white">
-                  Temukan cerita di setiap sudut Jawa Barat.
+                  Wujudkan acara dan kontenmu bareng Nempo.
                 </h3>
                 <p className="mt-3 max-w-sm text-sm leading-relaxed text-white/60">
-                  Destinasi lokal, rasa khas, dan momen yang layak untuk dibawa pulang.
+                  Wedding, event, konten sosmed, website, dan desain — kami kerjakan dari konsep sampai hari-H.
                 </p>
               </div>
               <div className="mt-8 flex flex-wrap gap-2">
-                {["Wisata", "Kuliner", "Event"].map((label) => (
+                {["Wedding", "Event", "Konten", "Website"].map((label) => (
                   <span key={label} className="rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-[10px] font-bold text-white/75">
                     {label}
                   </span>

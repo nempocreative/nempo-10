@@ -6,3 +6,5 @@
 - [ ] Login user & admin panel, Midtrans payments, SMTP email (carried over from old roadmap)
 - [x] Tambah event portofolio: Night Out Maxi (Temu Space), Color The Beat (Biang), Riuh Rona (Maru), Opening GGS (GGS Beauty)
 - [ ] Foto acara untuk kartu portofolio — menunggu foto dari pengguna
+- [x] Mitra Kami: tambah GGS Beauty
+- [x] Footer & teks "tentang": ubah dari nada wisata ke layanan kreatif/organizer
