@@ -97,7 +97,7 @@ function ComboCard({
           loading="lazy"
           width={decor.width}
           height={decor.height}
-          className="h-36 w-full object-cover transition-transform duration-500 group-hover:scale-[1.04] sm:h-40"
+          className="h-24 w-full object-cover transition-transform duration-500 group-hover:scale-[1.04] sm:h-36 lg:h-40"
         />
         <img
           src={kebaya.images[tone.key]}
@@ -105,14 +105,14 @@ function ComboCard({
           loading="lazy"
           width={kebaya.width}
           height={kebaya.height}
-          className="h-36 w-full object-cover transition-transform duration-500 group-hover:scale-[1.04] sm:h-40"
+          className="h-24 w-full object-cover transition-transform duration-500 group-hover:scale-[1.04] sm:h-36 lg:h-40"
         />
       </span>
-      <span className="flex flex-1 flex-col gap-1 p-3">
+      <span className="flex flex-1 flex-col gap-1 p-2 sm:p-3">
         <span className="flex items-center justify-between gap-2">
           <span
             className={cn(
-              "text-sm font-bold leading-tight",
+              "text-[11px] font-bold leading-tight sm:text-sm",
               active ? "text-primary" : "text-foreground",
             )}
           >
@@ -120,10 +120,10 @@ function ComboCard({
           </span>
           <Swatch tone={tone} />
         </span>
-        <span className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+        <span className="text-[9px] font-semibold uppercase tracking-wider text-muted-foreground sm:text-[11px]">
           {decor.name} · {kebaya.name}
         </span>
-        <span className="mt-auto pt-2 text-[11px] font-bold text-primary">
+        <span className="mt-auto pt-2 text-[10px] font-bold text-primary sm:text-[11px]">
           {active ? "Dipilih ✓" : "Pilih kombinasi ini"}
         </span>
       </span>
@@ -250,7 +250,7 @@ export function WeddingConceptStudio() {
           </div>
         </div>
 
-        <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-6 grid grid-cols-2 gap-2 sm:gap-3 lg:grid-cols-4">
           {weddingTones.map((option) => (
             <ComboCard
               key={option.key}
