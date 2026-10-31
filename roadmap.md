@@ -1,5 +1,5 @@
 # Roadmap
-- [ ] Hapus unduhan moodboard dari studio wedding, tetap pertahankan konsultasi WhatsApp.
+- [x] Hapus unduhan moodboard dari studio wedding, tetap pertahankan konsultasi WhatsApp.
 - [x] Rapikan judul dan pilihan studio wedding supaya ringkas dan sejajar.
 - [x] Ganti ikon makeup dengan ikon sesuai gaya, termasuk Barbie tanpa bintang.
 - [x] Tambah foto ilustrasi contoh untuk kelima gaya makeup pengantin.
