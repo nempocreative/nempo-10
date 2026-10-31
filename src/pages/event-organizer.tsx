@@ -40,9 +40,9 @@ const stats = [
 ];
 
 const testimonials = [
-  { name: "Panitia Festival Pantai", role: "Festival, Garut", text: "Panggung, sound, sampai tiket digital semua diatur NEMPO. Ramai, aman, dan tepat waktu." },
-  { name: "HRD PT Sinar Priangan", role: "Family Gathering", text: "Tim NEMPO responsif dan kreatif. Karyawan senang, acaranya rapi dari awal sampai akhir." },
-  { name: "OSIS SMAN Garut", role: "Pentas Seni", text: "Tiket digital dan scan QR bikin antrean masuk lancar. Recommended!" },
+  { name: "Rani Nurhaliza", role: "Staff HRD", text: "Panggung, sound, sampai tiket digital semua diatur NEMPO. Ramai, aman, dan tepat waktu." },
+  { name: "Dimas Prakoso", role: "Divisi Acara", text: "Tim NEMPO responsif dan kreatif. Karyawan senang, acaranya rapi dari awal sampai akhir." },
+  { name: "Salma Aulia", role: "Humas & Pendaftaran", text: "Tiket digital dan scan QR bikin antrean masuk lancar. Recommended!" },
 ];
 
 const faqs = [
