@@ -1145,6 +1145,22 @@ export default function Home() {
       date: "22 Agustus 2026",
       badge: "Night Out",
     },
+    {
+      id: "color-the-beat-2026",
+      name: "Color The Beat",
+      image: undefined,
+      location: "Biang",
+      date: "29 Agustus 2026",
+      badge: "Musik",
+    },
+    {
+      id: "riuh-rona-2026",
+      name: "Riuh Rona",
+      image: undefined,
+      location: "Maru",
+      date: "5 September 2026",
+      badge: "Event",
+    },
   ];
   const [eventRowEl, eventRowRef] = useState<HTMLElement | null>(null);
   useEffect(() => {
