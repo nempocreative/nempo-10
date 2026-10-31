@@ -1008,12 +1008,12 @@ export function Layout({ children, hideBottomNav, minimalChrome }: { children: R
                   )}
                   <div>
                     <p className="text-white font-bold text-sm leading-none">
-                      {buddyMode === "home" ? "Teman Jalan Nempo" : buddyMode === "chat" ? "Panduan & FAQ" : buddyMode === "budget" ? "Spill Budget" : buddyMode === "jingle" ? "Jingle Nempo" : "Darurat SOS"}
+                      {buddyMode === "home" ? "Nempo Buddy" : buddyMode === "chat" ? "Panduan & FAQ" : buddyMode === "budget" ? "Spill Budget" : buddyMode === "jingle" ? "Jingle Nempo" : "Darurat SOS"}
                     </p>
                     {buddyMode === "home" && (
                       <div className="flex items-center gap-1.5 mt-0.5">
                         <span className="h-1.5 w-1.5 rounded-full bg-emerald-300 animate-pulse" />
-                        <p className="text-white/80 text-[10px]">Teman jelajah Jawa Barat</p>
+                        <p className="text-white/80 text-[10px]">Online · siap nemenin ulin</p>
                       </div>
                     )}
                   </div>
@@ -1040,15 +1040,15 @@ export function Layout({ children, hideBottomNav, minimalChrome }: { children: R
                         <Compass className="text-white" style={{ height: 23, width: 23 }} />
                       </div>
                       <div>
-                        <p className="font-extrabold text-slate-900 text-[15px] leading-tight">Mau jalan ke mana?</p>
-                        <p className="font-extrabold text-[15px] leading-tight text-[#087f8c]">Biar Buddy bantu pilihkan.</p>
+                        <p className="font-extrabold text-slate-900 text-[15px] leading-tight">Sampurasun! Rék ulin ka mana?</p>
+                        <p className="font-extrabold text-[15px] leading-tight text-[#087f8c]">Wisata, kuliner, sampai event, Buddy siap bantu.</p>
                       </div>
                     </div>
                     <div className="relative flex items-center gap-1.5 w-fit rounded-full border border-cyan-200/80 bg-white/75 px-2.5 py-1 text-[10px] font-bold text-cyan-800 shadow-sm">
                       <MapPin className="h-3 w-3 text-cyan-600" />
-                      <span>Jelajah {selectedCity === ALL_CITIES ? "Jawa Barat" : selectedCity}</span>
+                      <span>Nempo {selectedCity === ALL_CITIES ? "Jawa Barat" : selectedCity}</span>
                     </div>
-                    <p className="relative mt-2 text-[11px] text-slate-500 leading-relaxed">Cari tempat seru, makan enak, atau susun rencana akhir pekan tanpa ribet.</p>
+                    <p className="relative mt-2 text-[11px] text-slate-500 leading-relaxed">Pilih menu di bawah buat cari destinasi, cek budget, atau tanya apa aja seputar Nempo.</p>
                   </div>
 
                   {/* Feature cards */}
