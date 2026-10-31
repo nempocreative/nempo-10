@@ -1,6 +1,6 @@
 import { Layout } from "@/components/layout";
 import { SEO } from "@/components/seo";
-import { NEMPO_INSTAGRAM_DM_URL } from "@/lib/contact";
+import { NEMPO_CONSULT_URL } from "@/lib/contact";
 import "./digital-services.css";
 import digitalServicesHeroImage from "@/assets/generated_images/digital-services-hero.jpg";
 import type { LucideIcon } from "lucide-react";
@@ -495,7 +495,7 @@ export default function DigitalServicesPage() {
       // Clipboard may be unavailable in an embedded preview; Instagram still opens.
     }
     setConsultationReady(true);
-    window.open(NEMPO_INSTAGRAM_DM_URL, "_blank", "noopener,noreferrer");
+    window.open(NEMPO_CONSULT_URL, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -866,7 +866,7 @@ export default function DigitalServicesPage() {
               <div className="mb-6">
                 <p className="text-[10px] font-black uppercase tracking-[0.16em] text-cyan-600">Form kebutuhan</p>
                 <h3 className="mt-2 text-xl font-extrabold leading-tight text-gray-900">Kirim kebutuhanmu</h3>
-                <p className="mt-2 text-xs leading-5 text-gray-500">Jawab singkat. Ringkasannya akan disiapkan untuk DM Instagram.</p>
+                <p className="mt-2 text-xs leading-5 text-gray-500">Jawab singkat. Ringkasannya akan disiapkan untuk chat WhatsApp.</p>
               </div>
               <div className="grid gap-4 sm:grid-cols-2">
                 <label className="text-xs font-bold text-gray-700">
@@ -916,7 +916,7 @@ export default function DigitalServicesPage() {
                    <button type="submit" className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-cyan-600 px-4 py-3 text-sm font-bold text-white shadow-md shadow-cyan-600/20 transition-colors hover:bg-cyan-700 sm:w-auto">
                   Kirim ke Instagram <ArrowUpRight className="h-4 w-4" />
                 </button>
-                {consultationReady ? <span className="text-xs font-semibold text-emerald-600">Ringkasan sudah disiapkan untuk DM Instagram.</span> : null}
+                {consultationReady ? <span className="text-xs font-semibold text-emerald-600">Ringkasan sudah disiapkan untuk chat WhatsApp.</span> : null}
               </div>
               <p className="mt-4 text-[10px] leading-4 text-gray-400">Instagram Nempo akan terbuka di tab baru.</p>
             </form>
@@ -932,7 +932,7 @@ export default function DigitalServicesPage() {
                 { question: "Bisa mulai dari satu layanan?", answer: "Bisa. Pilih satu layanan, lalu tambahkan layanan lain saat dibutuhkan." },
                 { question: "Apakah harga sudah termasuk setup?", answer: "Paket menampilkan biaya setup satu kali dan biaya bulanan secara terpisah." },
                 { question: "Bisa disesuaikan dengan bisnis saya?", answer: "Bisa. Detail kebutuhan dan penyesuaian dibahas saat konsultasi." },
-                { question: "Bagaimana cara memulai?", answer: "Pilih layanan, isi form konsultasi, lalu lanjutkan pembahasan melalui Instagram Nempo." },
+                { question: "Bagaimana cara memulai?", answer: "Pilih layanan, isi form konsultasi, lalu lanjutkan pembahasan melalui WhatsApp Nempo." },
               ].map(({ question, answer }) => (
                 <details key={question} className="group rounded-2xl border border-gray-100 bg-gray-50 px-4 py-3">
                   <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-sm font-extrabold text-gray-800">
@@ -952,7 +952,7 @@ export default function DigitalServicesPage() {
                 <h2 className="mt-2 max-w-2xl text-2xl font-extrabold leading-tight sm:text-3xl">Ceritakan kebutuhanmu, kami bantu pilihkan alurnya.</h2>
                 <p className="mt-2 max-w-xl text-sm leading-6 text-white/75">Sebutkan jenis bisnis, kendala utama, dan layanan yang sedang kamu pertimbangkan.</p>
               </div>
-               <a href={NEMPO_INSTAGRAM_DM_URL} target="_blank" rel="noopener noreferrer" className="inline-flex w-full shrink-0 items-center justify-center gap-2 rounded-xl bg-white px-4 py-3 text-sm font-bold text-[#0f766e] transition-colors hover:bg-[#f2f8f7] sm:w-auto">
+               <a href={NEMPO_CONSULT_URL} target="_blank" rel="noopener noreferrer" className="inline-flex w-full shrink-0 items-center justify-center gap-2 rounded-xl bg-white px-4 py-3 text-sm font-bold text-[#0f766e] transition-colors hover:bg-[#f2f8f7] sm:w-auto">
                 Konsultasi sekarang <ArrowUpRight className="h-4 w-4" />
               </a>
             </div>

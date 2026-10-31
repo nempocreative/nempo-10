@@ -4,7 +4,7 @@ import { SEO } from "@/components/seo";
 import { Link } from "@/lib/wouter";
 import { ArrowLeft, HelpCircle, ChevronDown, ChevronUp, MessageCircle, Phone, Search, X } from "lucide-react";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
-import { NEMPO_INSTAGRAM_DM_URL } from "@/lib/contact";
+import { NEMPO_CONSULT_URL } from "@/lib/contact";
 
 const FAQS = [
   { q: "Bagaimana cara mendapatkan voucher?", a: "Voucher bisa didapatkan dengan mendaftar akun baru (NEWBIE10), melakukan login harian, mencapai milestone poin, atau dari program event khusus. Cek halaman Voucher Saya untuk melihat semua voucher aktif." },
@@ -101,7 +101,7 @@ export default function BantuanPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {[
                 { icon: MessageCircle, label: "Instagram", val: "@nempo.id", href: "https://instagram.com/nempo.id", color: "text-pink-500 bg-pink-50" },
-                { icon: MessageCircle, label: "DM Instagram", val: "@nempo.id", href: NEMPO_INSTAGRAM_DM_URL, color: "text-pink-500 bg-pink-50" },
+                { icon: MessageCircle, label: "DM Instagram", val: "@nempo.id", href: NEMPO_CONSULT_URL, color: "text-pink-500 bg-pink-50" },
               ].map(c => (
                 <a key={c.label} href={c.href} target="_blank" rel="noopener noreferrer"
                   className="bg-white rounded-2xl border border-gray-100 shadow-sm p-4 flex flex-col items-center gap-2 hover:border-gray-200 hover:shadow-md transition-all">

@@ -1,7 +1,7 @@
 import { Layout } from "@/components/layout";
 import { SEO } from "@/components/seo";
 import { DigitalPreviewGate } from "@/components/digital-preview-gate";
-import { NEMPO_INSTAGRAM_DM_URL } from "@/lib/contact";
+import { NEMPO_CONSULT_URL } from "@/lib/contact";
 import "./digital-demo-super-app.css";
 import {
   ArrowRight,
@@ -200,7 +200,7 @@ function YearbookWorkspace() {
           </div>
         </section>
 
-        <section className="bg-[#e6f6f3] text-[#183b43]"><div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-6 px-5 py-12 sm:flex-row sm:items-center sm:px-8 lg:px-10"><div><p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#0f766e]">For the next chapter</p><h2 className="mt-2 text-2xl font-black tracking-[-0.04em]">Buat Memories Book untuk angkatanmu.</h2></div><a href={NEMPO_INSTAGRAM_DM_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-[#123f47] px-5 py-3.5 text-sm font-black text-white transition-transform hover:-translate-y-0.5">Konsultasi dengan Nempo <ArrowUpRight className="h-4 w-4" /></a></div></section>
+        <section className="bg-[#e6f6f3] text-[#183b43]"><div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-6 px-5 py-12 sm:flex-row sm:items-center sm:px-8 lg:px-10"><div><p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#0f766e]">For the next chapter</p><h2 className="mt-2 text-2xl font-black tracking-[-0.04em]">Buat Memories Book untuk angkatanmu.</h2></div><a href={NEMPO_CONSULT_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-[#123f47] px-5 py-3.5 text-sm font-black text-white transition-transform hover:-translate-y-0.5">Konsultasi dengan Nempo <ArrowUpRight className="h-4 w-4" /></a></div></section>
 
         <footer className="bg-[#123f47] px-5 py-7 text-[#f8ffff] sm:px-8 lg:px-10"><div className="mx-auto flex max-w-7xl flex-col justify-between gap-4 text-[10px] font-bold uppercase tracking-[0.14em] text-white/45 sm:flex-row"><span>Digi Nempo / Memories Book preview</span><span>Keep the feeling.</span></div></footer>
         {selectedMemory && (

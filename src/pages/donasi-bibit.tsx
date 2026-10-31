@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Layout } from "@/components/layout";
 import { SEO } from "@/components/seo";
-import { NEMPO_INSTAGRAM_DM_URL } from "@/lib/contact";
+import { NEMPO_CONSULT_URL } from "@/lib/contact";
 import {
   Leaf, Award, TreePine, Heart, CheckCircle, ChevronRight,
   ArrowLeft, Users, MapPin, Download, Share2, Camera,
@@ -1374,7 +1374,7 @@ function FaqSection() {
         </div>
         <div className="mt-8 text-center">
           <p className="text-gray-500 text-sm mb-3">Masih ada pertanyaan?</p>
-          <a href={NEMPO_INSTAGRAM_DM_URL} target="_blank" rel="noopener noreferrer"
+          <a href={NEMPO_CONSULT_URL} target="_blank" rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-6 py-3 rounded-xl transition-colors text-sm">
             <MessageCircle className="w-4 h-4 shrink-0" strokeWidth={2} /> Hubungi Kami via DM Instagram
           </a>

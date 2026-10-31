@@ -7,7 +7,7 @@ import { Link } from "@/lib/wouter";
 import { useState, useEffect, useRef } from "react";
 import { useCityFilter } from "@/contexts/city-filter-context";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
-import { NEMPO_INSTAGRAM_DM_URL } from "@/lib/contact";
+import { NEMPO_CONSULT_URL } from "@/lib/contact";
 import {
   Search, Star, MapPin, ChevronRight, SlidersHorizontal,
   CheckCircle2, X, Hotel, Trees, Home,
@@ -465,7 +465,7 @@ export default function PenginapanPage() {
             <p className="font-extrabold text-white text-sm mb-0.5">Punya Properti di Garut?</p>
             <p className="text-white/75 text-xs">Daftarkan hotel, villa, atau homestay-mu dan jangkau ribuan wisatawan bersama Nempo Organizer.</p>
           </div>
-          <a href={NEMPO_INSTAGRAM_DM_URL} target="_blank" rel="noopener noreferrer" className="shrink-0">
+          <a href={NEMPO_CONSULT_URL} target="_blank" rel="noopener noreferrer" className="shrink-0">
             <button className="bg-white hover:bg-blue-50 text-[#0194f3] text-xs font-bold px-4 py-2.5 rounded-xl transition-colors whitespace-nowrap shadow-md shadow-black/10">
               Daftar Properti
             </button>

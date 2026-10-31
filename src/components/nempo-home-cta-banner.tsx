@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { ArrowRight, MessageCircle } from "lucide-react";
 import { Link } from "@/lib/wouter";
-import { NEMPO_INSTAGRAM_DM_URL } from "@/lib/contact";
+import { NEMPO_CONSULT_URL } from "@/lib/contact";
 import "./nempo-home-cta-banner.css";
 
 const headlines = [
@@ -80,7 +80,7 @@ export function NempoHomeCtaBanner() {
             <ArrowRight aria-hidden="true" className="h-3.5 w-3.5 shrink-0 sm:h-4 sm:w-4" />
           </Link>
           <a
-            href={NEMPO_INSTAGRAM_DM_URL}
+            href={NEMPO_CONSULT_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex min-h-9 flex-1 items-center justify-center gap-1.5 whitespace-nowrap rounded-lg border border-white/40 bg-white/10 px-2.5 py-2 text-[10px] font-extrabold text-white transition hover:-translate-y-0.5 hover:bg-white/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:flex-none sm:gap-2 sm:px-3 sm:text-xs"

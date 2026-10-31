@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Layout } from "@/components/layout";
 import { Link } from "@/lib/wouter";
-import { NEMPO_INSTAGRAM_DM_URL } from "@/lib/contact";
+import { NEMPO_CONSULT_URL } from "@/lib/contact";
 import { ArrowRight, Check, ChevronDown, Globe2, Link2, Ticket, MousePointer2 } from "lucide-react";
 import { WEB_PLANS, WEB_PROJECTS, firstMonthTotal, monthlySaving, webRupiah } from "@/data/web-development";
 import { BIZ_MODULES } from "@/data/business-system";
@@ -129,7 +129,7 @@ export default function WebDevelopmentPage() {
               </p>
               <div className="mt-7 flex flex-wrap gap-3">
                 <a href="#layanan" className="wed-sticker rounded-full bg-dev-sky px-7 py-3.5 text-sm font-bold text-primary-foreground">Lihat Harga</a>
-                <a href={NEMPO_INSTAGRAM_DM_URL} target="_blank" rel="noopener noreferrer" className="rounded-full border border-primary-foreground/30 bg-primary-foreground/10 px-7 py-3.5 text-sm font-bold">
+                <a href={NEMPO_CONSULT_URL} target="_blank" rel="noopener noreferrer" className="rounded-full border border-primary-foreground/30 bg-primary-foreground/10 px-7 py-3.5 text-sm font-bold">
                   Konsultasi Gratis
                 </a>
               </div>
@@ -182,7 +182,7 @@ export default function WebDevelopmentPage() {
                       ))}
                     </ul>
                     <a
-                      href={NEMPO_INSTAGRAM_DM_URL}
+                      href={NEMPO_CONSULT_URL}
                       target="_blank"
                       rel="noopener noreferrer"
                       className={`mt-5 block rounded-full border-2 border-dev-ink py-2.5 text-center text-sm font-bold ${featured ? "bg-dev-lime text-dev-ink" : "bg-dev-ink text-primary-foreground"}`}
@@ -278,9 +278,9 @@ export default function WebDevelopmentPage() {
             <div className="dev-grid-bg relative overflow-hidden rounded-3xl border-[3px] border-dev-ink bg-dev-ink p-8 text-center text-primary-foreground" style={{ boxShadow: "8px 8px 0 0 var(--color-dev-lime)" }}>
               <p className={`${mono} text-xs text-dev-lime`}>$ nempo --start-project</p>
               <h2 className="mt-3 text-3xl font-extrabold leading-tight">Siap bikin usahamu online?</h2>
-              <p className="mx-auto mt-2 max-w-sm text-sm text-primary-foreground/75">Konsultasi gratis lewat Instagram — ceritakan kebutuhanmu, kami bantu pilih yang paling pas.</p>
-              <a href={NEMPO_INSTAGRAM_DM_URL} target="_blank" rel="noopener noreferrer" className="wed-sticker mt-6 inline-flex items-center gap-2 rounded-full bg-dev-lime px-7 py-3.5 text-sm font-bold text-dev-ink">
-                Chat via Instagram <ArrowRight className="h-4 w-4" />
+              <p className="mx-auto mt-2 max-w-sm text-sm text-primary-foreground/75">Konsultasi gratis lewat WhatsApp — ceritakan kebutuhanmu, kami bantu pilih yang paling pas.</p>
+              <a href={NEMPO_CONSULT_URL} target="_blank" rel="noopener noreferrer" className="wed-sticker mt-6 inline-flex items-center gap-2 rounded-full bg-dev-lime px-7 py-3.5 text-sm font-bold text-dev-ink">
+                Chat via WhatsApp <ArrowRight className="h-4 w-4" />
               </a>
             </div>
           </section>

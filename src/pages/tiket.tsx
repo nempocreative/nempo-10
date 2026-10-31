@@ -8,7 +8,7 @@ import {
   Download, CalendarDays, MapPin, User, Loader2, ChevronRight,
   AlertTriangle, X,
 } from "lucide-react";
-import { NEMPO_INSTAGRAM_DM_URL } from "@/lib/contact";
+import { NEMPO_CONSULT_URL } from "@/lib/contact";
 import html2canvas from "html2canvas";
 
 const API = import.meta.env.BASE_URL.replace(/\/$/, "") + "/../api";
@@ -299,8 +299,8 @@ function TicketRow({ ticket, onRemove }: { ticket: EventTicket; onRemove?: () =>
         <div className="bg-red-50 border border-red-100 rounded-2xl px-4 py-3">
           <p className="text-red-600 text-xs font-bold flex items-center gap-1"><XCircle className="h-3.5 w-3.5" /> Pesanan Ditolak</p>
           <p className="text-red-500 text-[11px] mt-0.5">
-            <a href={NEMPO_INSTAGRAM_DM_URL} target="_blank" rel="noopener noreferrer" className="underline">
-              Hubungi admin via DM Instagram
+            <a href={NEMPO_CONSULT_URL} target="_blank" rel="noopener noreferrer" className="underline">
+              Hubungi admin via WhatsApp
             </a>{" "}
             untuk informasi lebih lanjut.
           </p>

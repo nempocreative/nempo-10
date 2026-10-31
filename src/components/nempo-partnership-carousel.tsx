@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { ArrowUpRight, CalendarDays, Coffee, Heart, MessageCircle } from "lucide-react";
 import cafePartnershipBannerImage from "@/assets/generated_images/cafe-partnership-banner.jpg";
 import collaborationHeroImage from "@/assets/076ae51bf23030e0b8cfb7975b94609a_1789408708055.jpg";
-import { NEMPO_INSTAGRAM_DM_URL } from "@/lib/contact";
+import { NEMPO_CONSULT_URL } from "@/lib/contact";
 import "./nempo-partnership-carousel.css";
 
 const slides = [
@@ -119,7 +119,7 @@ export function NempoPartnershipCarousel() {
 
         <div className="flex items-center justify-between gap-3 pl-[52px] sm:shrink-0 sm:flex-col sm:items-end sm:gap-3 sm:pl-0">
           <a
-            href={NEMPO_INSTAGRAM_DM_URL}
+            href={NEMPO_CONSULT_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex min-h-9 items-center justify-center gap-1.5 rounded-full border border-white/70 bg-white px-3 py-2 text-[10px] font-extrabold text-[#075ba7] shadow-md shadow-slate-950/15 transition hover:-translate-y-0.5 hover:bg-cyan-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:gap-2 sm:px-4 sm:text-xs"

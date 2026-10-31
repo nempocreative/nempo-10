@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import QRCode from "react-qr-code";
 import { useLocation } from "@/lib/wouter";
-import { NEMPO_INSTAGRAM_DM_URL } from "@/lib/contact";
+import { NEMPO_CONSULT_URL } from "@/lib/contact";
 import {
   Store, Loader2, AlertCircle, CheckCircle, Pencil, MapPin, Clock, Wallet,
   Ticket, Plus, Trash2, Power, X, TrendingUp, ShoppingBag, BadgePercent,
@@ -298,8 +298,8 @@ function ListingSection({ mitraToken }: { mitraToken: string }) {
       {!loading && !detailLoading && allListings.length === 0 && !error && (
         <div className="mx-5 mb-5 flex items-start gap-2 bg-amber-50 border border-amber-200 text-amber-700 text-xs rounded-xl px-3 py-2.5">
           <AlertCircle className="h-3.5 w-3.5 shrink-0 mt-0.5" /> <span>Usaha belum ditautkan oleh admin.{" "}
-            <a href={NEMPO_INSTAGRAM_DM_URL} target="_blank" rel="noopener noreferrer" className="font-bold underline">
-              Hubungi admin Nempo Organizer via DM Instagram
+            <a href={NEMPO_CONSULT_URL} target="_blank" rel="noopener noreferrer" className="font-bold underline">
+              Hubungi admin Nempo Organizer via WhatsApp
             </a>.
           </span>
         </div>

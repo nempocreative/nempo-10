@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Layout } from "@/components/layout";
 import { Link } from "@/lib/wouter";
-import { NEMPO_INSTAGRAM_DM_URL } from "@/lib/contact";
+import { NEMPO_CONSULT_URL } from "@/lib/contact";
 import { ArrowRight, Check, ChevronDown, PenTool, LayoutGrid, Camera, CalendarRange, Shirt, Megaphone } from "lucide-react";
 import { DESIGN_RELATED, DESIGN_SERVICES, designRupiah } from "@/data/design-creative";
 
@@ -93,7 +93,7 @@ export default function DesignCreativePage() {
                 Design Creative Nempo — branding, konten visual, foto & video, desain event, sampai merchandise. Materi visual yang selaras dengan karakter dan tujuan brand.
               </p>
               <div className="mt-7 flex flex-wrap gap-3">
-                <a href={NEMPO_INSTAGRAM_DM_URL} target="_blank" rel="noopener noreferrer" className="wed-sticker inline-flex items-center gap-2 rounded-full border-2 border-art-ink bg-art-ink px-7 py-3.5 text-sm font-bold text-art-cream">
+                <a href={NEMPO_CONSULT_URL} target="_blank" rel="noopener noreferrer" className="wed-sticker inline-flex items-center gap-2 rounded-full border-2 border-art-ink bg-art-ink px-7 py-3.5 text-sm font-bold text-art-cream">
                   Konsultasi Gratis <ArrowRight className="h-4 w-4" />
                 </a>
                 <a href="#layanan" className="rounded-full border-2 border-art-ink bg-card px-7 py-3.5 text-sm font-bold">Lihat Layanan</a>
@@ -171,7 +171,7 @@ export default function DesignCreativePage() {
                 <p className={`${hand} text-xl text-art-amber`}>gimana hitungannya?</p>
                 <h3 className="text-xl font-extrabold">Penawaran dibuat per kebutuhan</h3>
                 <p className="mt-2 text-sm leading-relaxed text-art-cream/75">Setiap desain beda kebutuhan — jenis materi, jumlah, dan kerumitannya. Kirim brief-mu, tim Nempo akan mengirim penawaran yang jelas sebelum mulai.</p>
-                <a href={NEMPO_INSTAGRAM_DM_URL} target="_blank" rel="noopener noreferrer" className="wed-sticker mt-5 inline-flex items-center gap-2 rounded-full bg-art-amber px-6 py-3 text-sm font-bold text-art-ink">
+                <a href={NEMPO_CONSULT_URL} target="_blank" rel="noopener noreferrer" className="wed-sticker mt-5 inline-flex items-center gap-2 rounded-full bg-art-amber px-6 py-3 text-sm font-bold text-art-ink">
                   Kirim Brief <ArrowRight className="h-4 w-4" />
                 </a>
               </div>
@@ -218,7 +218,7 @@ export default function DesignCreativePage() {
               <p className={`${hand} relative text-2xl`}>ide udah ada, tinggal dieksekusi</p>
               <h2 className={`${serif} relative mt-1 text-3xl font-bold`}>Yuk, bikin visual yang nempel di kepala</h2>
               <p className="relative mx-auto mt-2 max-w-sm text-sm text-art-cream/85">Chat tim Nempo lewat Instagram dan ceritakan kebutuhan desainmu.</p>
-              <a href={NEMPO_INSTAGRAM_DM_URL} target="_blank" rel="noopener noreferrer" className="wed-sticker relative mt-6 inline-flex items-center gap-2 rounded-full bg-art-ink px-7 py-3.5 text-sm font-bold">
+              <a href={NEMPO_CONSULT_URL} target="_blank" rel="noopener noreferrer" className="wed-sticker relative mt-6 inline-flex items-center gap-2 rounded-full bg-art-ink px-7 py-3.5 text-sm font-bold">
                 Chat via Instagram <ArrowRight className="h-4 w-4" />
               </a>
             </div>

@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { SedangDipersiapkan } from "@/components/sedang-dipersiapkan";
-import { NEMPO_INSTAGRAM_DM_URL } from "@/lib/contact";
+import { NEMPO_CONSULT_URL } from "@/lib/contact";
 
 /* ─────────────────────────────────────────────────────────────── */
 /* CSS                                                             */
@@ -106,7 +106,7 @@ const FLOATS = [
   { label:"8+ Kategori",       icon:"✨", top:"33%", right:"20%" },
 ];
 
-const TALENT_CONTACT_URL = NEMPO_INSTAGRAM_DM_URL;
+const TALENT_CONTACT_URL = NEMPO_CONSULT_URL;
 const TALENT_IS_PREPARING = true;
 
 /* ─────────────────────────────────────────────────────────────── */
@@ -676,7 +676,7 @@ export default function TalentPage() {
                   <button
                     className="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-3 rounded-xl font-extrabold text-sm text-white hover:brightness-110 active:scale-95 transition-all"
                     style={{ background:"linear-gradient(135deg,#c026d3,#7c3aed)", boxShadow:"0 4px 18px rgba(192,38,211,.5)" }}>
-                    Daftar via DM Instagram <ArrowRight className="h-4 w-4" />
+                    Daftar via WhatsApp <ArrowRight className="h-4 w-4" />
                   </button>
                 </a>
               </div>

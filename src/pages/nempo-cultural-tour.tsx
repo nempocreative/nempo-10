@@ -1,6 +1,6 @@
 import { Layout } from "@/components/layout";
 import { SEO } from "@/components/seo";
-import { NEMPO_INSTAGRAM_DM_URL } from "@/lib/contact";
+import { NEMPO_CONSULT_URL } from "@/lib/contact";
 import { useEffect, useState, type FormEvent, type TouchEvent } from "react";
 import {
   ArrowDown,
@@ -448,7 +448,7 @@ export default function NempoCulturalTourPage() {
                     {copyStatus === "copied" ? <Check size={16} aria-hidden="true" /> : <Copy size={16} aria-hidden="true" />}
                     {copyStatus === "copied" ? "Pesan tersalin" : "Salin pesan"}
                   </button>
-                  <a className="nct-button nct-button-dark" href={NEMPO_INSTAGRAM_DM_URL} target="_blank" rel="noopener noreferrer">
+                  <a className="nct-button nct-button-dark" href={NEMPO_CONSULT_URL} target="_blank" rel="noopener noreferrer">
                     Buka Instagram DM <Instagram size={16} aria-hidden="true" />
                   </a>
                 </div>
@@ -464,7 +464,7 @@ export default function NempoCulturalTourPage() {
             <h2 id="nct-talent-heading">Punya cerita untuk<br /><em>dibawa ke panggung?</em></h2>
             <p>Kenalkan diri dan ceritakan bentuk penampilan atau aktivitas komunitas yang ingin kamu bagikan. Hubungi tim Nempo melalui Instagram DM.</p>
           </div>
-          <a className="nct-talent-link" href={NEMPO_INSTAGRAM_DM_URL} target="_blank" rel="noopener noreferrer">
+          <a className="nct-talent-link" href={NEMPO_CONSULT_URL} target="_blank" rel="noopener noreferrer">
             <span><Instagram size={19} aria-hidden="true" /> Ngobrol dengan tim Nempo</span>
             <ArrowUpRight size={22} aria-hidden="true" />
           </a>
@@ -474,7 +474,7 @@ export default function NempoCulturalTourPage() {
           <a href="#cerita" className="nct-footer-logo" aria-label="Nempo Cultural Tour">NEMPO<span>®</span></a>
           <p>Ruang temu untuk cerita lokal.</p>
           <span>GARUT · JAWA BARAT</span>
-          <a href={NEMPO_INSTAGRAM_DM_URL} target="_blank" rel="noopener noreferrer" aria-label="Hubungi Nempo melalui Instagram DM">
+          <a href={NEMPO_CONSULT_URL} target="_blank" rel="noopener noreferrer" aria-label="Hubungi Nempo melalui Instagram DM">
             <Instagram size={17} />
           </a>
         </footer>

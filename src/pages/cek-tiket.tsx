@@ -3,7 +3,7 @@ import { useEffect, useState, useCallback } from "react";
 import { SEO } from "@/components/seo";
 import { Ticket, Search, CheckCircle2, XCircle, Clock, RefreshCw, CalendarDays, X, ChevronRight, Mail, CreditCard, Trash2 } from "lucide-react";
 import { Link } from "@/lib/wouter";
-import { NEMPO_INSTAGRAM_DM_URL } from "@/lib/contact";
+import { NEMPO_CONSULT_URL } from "@/lib/contact";
 
 interface OrderStatus {
   order_code: string;
@@ -366,7 +366,7 @@ export default function CekTiketPage() {
                         <p className="text-amber-600 text-[11px] mt-0.5 leading-relaxed mb-3">Selesaikan pembayaran di aplikasi bank/dompet digitalmu lalu kirim konfirmasi ke admin.</p>
                         <div className="flex gap-2">
                           <a
-                             href={NEMPO_INSTAGRAM_DM_URL}
+                             href={NEMPO_CONSULT_URL}
                             target="_blank" rel="noopener noreferrer"
                             className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl font-bold text-xs text-white transition-colors"
                              style={{ background: "linear-gradient(135deg, #ec4899, #7c3aed)" }}
@@ -401,7 +401,7 @@ export default function CekTiketPage() {
                           <XCircle className="h-3.5 w-3.5" /> Pesanan Ditolak
                         </p>
                         <p className="text-red-500 text-[11px] mt-0.5">
-                          <a href={NEMPO_INSTAGRAM_DM_URL} target="_blank" rel="noopener noreferrer" className="underline">
+                          <a href={NEMPO_CONSULT_URL} target="_blank" rel="noopener noreferrer" className="underline">
                             Hubungi admin via DM Instagram
                           </a>{" "}
                           untuk info lebih lanjut.

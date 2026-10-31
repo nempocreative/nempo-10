@@ -7,7 +7,7 @@ import { Link } from "@/lib/wouter";
 import { useState, useEffect } from "react";
 import { useCityFilter } from "@/contexts/city-filter-context";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
-import { NEMPO_INSTAGRAM_DM_URL } from "@/lib/contact";
+import { NEMPO_CONSULT_URL } from "@/lib/contact";
 import {
   Search, Star, MapPin, Clock, X, Coffee, ChevronRight, Eye,
 } from "lucide-react";
@@ -407,7 +407,7 @@ export default function CafePage() {
             <p className="font-extrabold text-white text-sm mb-0.5">Punya Cafe di Jawa Barat?</p>
             <p className="text-white/75 text-xs">Daftarkan cafemu dan jangkau lebih banyak pengunjung bersama Nempo Organizer.</p>
           </div>
-          <a href={NEMPO_INSTAGRAM_DM_URL} target="_blank" rel="noopener noreferrer" className="shrink-0">
+          <a href={NEMPO_CONSULT_URL} target="_blank" rel="noopener noreferrer" className="shrink-0">
             <button className="bg-white hover:bg-purple-50 text-[#7c3aed] text-xs font-bold px-4 py-2.5 rounded-xl transition-colors whitespace-nowrap shadow-md shadow-black/10">
               Daftar Mitra
             </button>

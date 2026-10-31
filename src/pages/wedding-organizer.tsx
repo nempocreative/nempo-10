@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Layout } from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import { Heart, Check, ArrowRight, Users, Music, Plus, Minus, Flower2, Gem, PartyPopper, HeartHandshake } from "lucide-react";
-import { NEMPO_INSTAGRAM_DM_URL } from "@/lib/contact";
+import { NEMPO_CONSULT_URL } from "@/lib/contact";
 import { weddingPackages, weddingAdatOptions, weddingTotal, weddingRupiah, weddingVendorNote, weddingAdatNote } from "@/data/wedding-packages";
 
 const serif = "font-[family-name:var(--font-wed-serif)]";
@@ -50,7 +50,7 @@ export default function WeddingOrganizerPage() {
                 <a href="#paket">Lihat Paket WO <ArrowRight /></a>
               </Button>
               <Button asChild size="lg" variant="outline" className="rounded-full border-wed-rose/40 bg-card/70 px-7 text-wed-rose hover:bg-card">
-                <a href={NEMPO_INSTAGRAM_DM_URL} target="_blank" rel="noopener noreferrer">Konsultasi Dulu</a>
+                <a href={NEMPO_CONSULT_URL} target="_blank" rel="noopener noreferrer">Konsultasi Dulu</a>
               </Button>
             </div>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-2">
@@ -139,7 +139,7 @@ export default function WeddingOrganizerPage() {
               {selected.digitalInvitationAndSawer ? "Termasuk undangan digital dan alat sawer gratis." : "Undangan digital dan alat sawer tidak termasuk."}
             </p>
             <Button asChild size="lg" className="wed-sticker mt-6 rounded-full bg-wed-ink px-7 text-primary-foreground hover:bg-wed-ink/90">
-              <a href={NEMPO_INSTAGRAM_DM_URL} target="_blank" rel="noopener noreferrer">Konsultasi {selected.name} <ArrowRight /></a>
+              <a href={NEMPO_CONSULT_URL} target="_blank" rel="noopener noreferrer">Konsultasi {selected.name} <ArrowRight /></a>
             </Button>
           </article>
           <p className="mt-5 text-xs leading-relaxed text-wed-ink/70">{weddingVendorNote}</p>
@@ -246,7 +246,7 @@ export default function WeddingOrganizerPage() {
           <h2 className={`${serif} mt-1 text-3xl font-bold sm:text-4xl`}>Hari Istimewa Kalian</h2>
           <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-primary-foreground/90">Bahas kebutuhan acara dan pilihan paket bersama Nempo. Konsultasi santai, tanpa komitmen.</p>
           <Button asChild size="lg" variant="secondary" className="wed-sticker mt-7 rounded-full bg-card px-8 text-wed-rose hover:bg-card/90">
-            <a href={NEMPO_INSTAGRAM_DM_URL} target="_blank" rel="noopener noreferrer">Mulai Konsultasi <ArrowRight /></a>
+            <a href={NEMPO_CONSULT_URL} target="_blank" rel="noopener noreferrer">Mulai Konsultasi <ArrowRight /></a>
           </Button>
         </section>
       </div>
