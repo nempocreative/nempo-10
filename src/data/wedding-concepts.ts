@@ -16,18 +16,18 @@ import greenhouseBurgundy from "@/assets/graded/wedding-decor-greenhouse--burgun
 import greenhouseRose from "@/assets/graded/wedding-decor-greenhouse--rose.jpg";
 import greenhouseSage from "@/assets/graded/wedding-decor-greenhouse--sage.jpg";
 import greenhouseSky from "@/assets/graded/wedding-decor-greenhouse--sky.jpg";
-import kebayaGoldBurgundy from "@/assets/graded/wedding-kebaya-gold--burgundy.jpg";
-import kebayaGoldRose from "@/assets/graded/wedding-kebaya-gold--rose.jpg";
-import kebayaGoldSage from "@/assets/graded/wedding-kebaya-gold--sage.jpg";
-import kebayaGoldSky from "@/assets/graded/wedding-kebaya-gold--sky.jpg";
-import kebayaIvoryBurgundy from "@/assets/graded/wedding-kebaya-ivory--burgundy.jpg";
-import kebayaIvoryRose from "@/assets/graded/wedding-kebaya-ivory--rose.jpg";
-import kebayaIvorySage from "@/assets/graded/wedding-kebaya-ivory--sage.jpg";
-import kebayaIvorySky from "@/assets/graded/wedding-kebaya-ivory--sky.jpg";
-import kebayaRoseBurgundy from "@/assets/graded/wedding-kebaya-rose--burgundy.jpg";
-import kebayaRoseRose from "@/assets/graded/wedding-kebaya-rose--rose.jpg";
-import kebayaRoseSage from "@/assets/graded/wedding-kebaya-rose--sage.jpg";
-import kebayaRoseSky from "@/assets/graded/wedding-kebaya-rose--sky.jpg";
+import kebayaGoldBurgundy from "@/assets/graded/wedding-mannequins-gold--burgundy.jpg";
+import kebayaGoldRose from "@/assets/graded/wedding-mannequins-gold--rose.jpg";
+import kebayaGoldSage from "@/assets/graded/wedding-mannequins-gold--sage.jpg";
+import kebayaGoldSky from "@/assets/graded/wedding-mannequins-gold--sky.jpg";
+import kebayaIvoryBurgundy from "@/assets/graded/wedding-mannequins-ivory--burgundy.jpg";
+import kebayaIvoryRose from "@/assets/graded/wedding-mannequins-ivory--rose.jpg";
+import kebayaIvorySage from "@/assets/graded/wedding-mannequins-ivory--sage.jpg";
+import kebayaIvorySky from "@/assets/graded/wedding-mannequins-ivory--sky.jpg";
+import kebayaRoseBurgundy from "@/assets/graded/wedding-mannequins-rose--burgundy.jpg";
+import kebayaRoseRose from "@/assets/graded/wedding-mannequins-rose--rose.jpg";
+import kebayaRoseSage from "@/assets/graded/wedding-mannequins-rose--sage.jpg";
+import kebayaRoseSky from "@/assets/graded/wedding-mannequins-rose--sky.jpg";
 
 export type ToneKey = "sage" | "rose" | "burgundy" | "sky";
 
@@ -119,12 +119,15 @@ export const weddingDecor: WeddingOption[] = [
   },
 ];
 
-export const weddingKebaya: WeddingOption[] = [
+export type WeddingOutfit = WeddingOption & { groomName: string };
+
+export const weddingKebaya: WeddingOutfit[] = [
   {
     key: "ivory",
     name: "Ivory Lace",
+    groomName: "Beskap Lace",
     note: "Bordir lembut, warna ivory, dan kain batik klasik.",
-    width: 800,
+    width: 1200,
     height: 1104,
     images: {
       sage: kebayaIvorySage,
@@ -136,8 +139,9 @@ export const weddingKebaya: WeddingOption[] = [
   {
     key: "rose",
     name: "Dusty Rose",
+    groomName: "Beskap Floral",
     note: "Kebaya bernuansa rose dengan detail floral yang romantis.",
-    width: 800,
+    width: 1200,
     height: 1104,
     images: {
       sage: kebayaRoseSage,
@@ -149,9 +153,10 @@ export const weddingKebaya: WeddingOption[] = [
   {
     key: "gold",
     name: "Sona Emas",
+    groomName: "Beskap Sona Emas",
     note: "Kebaya bersulam benang emas dengan batik klasik.",
-    width: 800,
-    height: 1120,
+    width: 1200,
+    height: 1104,
     images: {
       sage: kebayaGoldSage,
       rose: kebayaGoldRose,
@@ -164,7 +169,7 @@ export const weddingKebaya: WeddingOption[] = [
 export type WeddingMood = {
   tone: WeddingTone;
   decor: WeddingOption;
-  kebaya: WeddingOption;
+  kebaya: WeddingOutfit;
 };
 
 export function weddingMoodConsultUrl(mood: WeddingMood): string {
@@ -173,6 +178,7 @@ export function weddingMoodConsultUrl(mood: WeddingMood): string {
     `• Tone warna: ${mood.tone.name}`,
     `• Pelaminan/dekor: ${mood.decor.name}`,
     `• Kebaya: ${mood.kebaya.name}`,
+    `• Busana pria: ${mood.kebaya.groomName} — ${mood.tone.name}`,
     "Boleh dibantu pengecekan ketersediaan dan estimasinya?",
   ].join("\n");
   return `${NEMPO_WA_URL}?text=${encodeURIComponent(text)}`;

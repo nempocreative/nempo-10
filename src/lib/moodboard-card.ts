@@ -43,14 +43,10 @@ function roundRect(ctx: CanvasRenderingContext2D, x: number, y: number, w: numbe
 }
 
 function drawCover(ctx: CanvasRenderingContext2D, img: HTMLImageElement, x: number, y: number, w: number, h: number) {
-  const scale = Math.max(w / img.width, h / img.height);
-  const sw = w / scale;
-  const sh = h / scale;
-  ctx.save();
-  roundRect(ctx, x, y, w, h, 26);
-  ctx.clip();
-  ctx.drawImage(img, (img.width - sw) / 2, (img.height - sh) / 2, sw, sh, x, y, w, h);
-  ctx.restore();
+  const scale = Math.min(w / img.width, h / img.height);
+  const dw = img.width * scale;
+  const dh = img.height * scale;
+  ctx.drawImage(img, x + (w - dw) / 2, y + (h - dh) / 2, dw, dh);
 }
 
 function wrap(ctx: CanvasRenderingContext2D, text: string, x: number, y: number, maxWidth: number, lineHeight: number) {
@@ -115,8 +111,8 @@ export async function renderMoodboardCard(data: MoodboardCardData): Promise<Blob
   ctx.fillStyle = deep;
   ctx.fillText("detail kecil, cerita besar", 66, 218);
 
-  drawCover(ctx, decor, 64, 258, 612, 812);
-  drawCover(ctx, kebaya, 700, 258, 316, 812);
+  drawCover(ctx, decor, 64, 258, 464, 728);
+  drawCover(ctx, kebaya, 552, 258, 464, 728);
 
   ctx.fillStyle = "#ffffff";
   roundRect(ctx, 88, 1006, 250, 42, 21);
@@ -125,10 +121,10 @@ export async function renderMoodboardCard(data: MoodboardCardData): Promise<Blob
   ctx.font = `600 22px ${SANS}`;
   ctx.fillText(data.decorName, 108, 1034);
   ctx.fillStyle = "#ffffff";
-  roundRect(ctx, 724, 1006, 268, 42, 21);
+  roundRect(ctx, 552, 1006, 464, 64, 8);
   ctx.fill();
   ctx.fillStyle = "#2b2118";
-  ctx.fillText(data.kebayaName, 744, 1034);
+  wrap(ctx, data.kebayaName, 568, 1032, 432, 26);
 
   ctx.fillStyle = "#2b2118";
   ctx.font = `700 34px ${SERIF}`;
