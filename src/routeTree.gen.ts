@@ -10,33 +10,310 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as SplatRouteImport } from './routes/$'
+import { Route as BackupRouteImport } from './routes/backup'
+import { Route as BusinessSystemRouteImport } from './routes/business-system'
+import { Route as DesignCreativeRouteImport } from './routes/design-creative'
+import { Route as SosmedManagementRouteImport } from './routes/sosmed-management'
+import { Route as TalentRouteImport } from './routes/talent'
+import { Route as WebDevelopmentRouteImport } from './routes/web-development'
+import { Route as WeddingInvitationRouteImport } from './routes/wedding-invitation'
+import { Route as WeddingOrganizerRouteImport } from './routes/wedding-organizer'
+import { Route as AdminPanelIndexRouteImport } from './routes/admin-panel.index'
+import { Route as AdminPanelSplatRouteImport } from './routes/admin-panel.$'
+import { Route as ApiSplatRouteImport } from './routes/api/$'
+import { Route as ApiBackupRouteImport } from './routes/api/backup'
+import { Route as CmsIndexRouteImport } from './routes/cms.index'
+import { Route as CmsSplatRouteImport } from './routes/cms.$'
+import { Route as NempoFeedIndexRouteImport } from './routes/nempo-feed.index'
+import { Route as NempoFeedSplatRouteImport } from './routes/nempo-feed.$'
+import { Route as NempoMouIndexRouteImport } from './routes/nempo-mou.index'
+import { Route as NempoMouSplatRouteImport } from './routes/nempo-mou.$'
+import { Route as TionFeedIndexRouteImport } from './routes/tion-feed.index'
+import { Route as TionFeedSplatRouteImport } from './routes/tion-feed.$'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SplatRoute = SplatRouteImport.update({
+  id: '/$',
+  path: '/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BackupRoute = BackupRouteImport.update({
+  id: '/backup',
+  path: '/backup',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BusinessSystemRoute = BusinessSystemRouteImport.update({
+  id: '/business-system',
+  path: '/business-system',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DesignCreativeRoute = DesignCreativeRouteImport.update({
+  id: '/design-creative',
+  path: '/design-creative',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SosmedManagementRoute = SosmedManagementRouteImport.update({
+  id: '/sosmed-management',
+  path: '/sosmed-management',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TalentRoute = TalentRouteImport.update({
+  id: '/talent',
+  path: '/talent',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WebDevelopmentRoute = WebDevelopmentRouteImport.update({
+  id: '/web-development',
+  path: '/web-development',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WeddingInvitationRoute = WeddingInvitationRouteImport.update({
+  id: '/wedding-invitation',
+  path: '/wedding-invitation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WeddingOrganizerRoute = WeddingOrganizerRouteImport.update({
+  id: '/wedding-organizer',
+  path: '/wedding-organizer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminPanelIndexRoute = AdminPanelIndexRouteImport.update({
+  id: '/admin-panel/',
+  path: '/admin-panel/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminPanelSplatRoute = AdminPanelSplatRouteImport.update({
+  id: '/admin-panel/$',
+  path: '/admin-panel/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiSplatRoute = ApiSplatRouteImport.update({
+  id: '/api/$',
+  path: '/api/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiBackupRoute = ApiBackupRouteImport.update({
+  id: '/api/backup',
+  path: '/api/backup',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CmsIndexRoute = CmsIndexRouteImport.update({
+  id: '/cms/',
+  path: '/cms/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CmsSplatRoute = CmsSplatRouteImport.update({
+  id: '/cms/$',
+  path: '/cms/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NempoFeedIndexRoute = NempoFeedIndexRouteImport.update({
+  id: '/nempo-feed/',
+  path: '/nempo-feed/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NempoFeedSplatRoute = NempoFeedSplatRouteImport.update({
+  id: '/nempo-feed/$',
+  path: '/nempo-feed/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NempoMouIndexRoute = NempoMouIndexRouteImport.update({
+  id: '/nempo-mou/',
+  path: '/nempo-mou/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NempoMouSplatRoute = NempoMouSplatRouteImport.update({
+  id: '/nempo-mou/$',
+  path: '/nempo-mou/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TionFeedIndexRoute = TionFeedIndexRouteImport.update({
+  id: '/tion-feed/',
+  path: '/tion-feed/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TionFeedSplatRoute = TionFeedSplatRouteImport.update({
+  id: '/tion-feed/$',
+  path: '/tion-feed/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/$': typeof SplatRoute
+  '/backup': typeof BackupRoute
+  '/business-system': typeof BusinessSystemRoute
+  '/design-creative': typeof DesignCreativeRoute
+  '/sosmed-management': typeof SosmedManagementRoute
+  '/talent': typeof TalentRoute
+  '/web-development': typeof WebDevelopmentRoute
+  '/wedding-invitation': typeof WeddingInvitationRoute
+  '/wedding-organizer': typeof WeddingOrganizerRoute
+  '/admin-panel/$': typeof AdminPanelSplatRoute
+  '/api/$': typeof ApiSplatRoute
+  '/api/backup': typeof ApiBackupRoute
+  '/cms/$': typeof CmsSplatRoute
+  '/nempo-feed/$': typeof NempoFeedSplatRoute
+  '/nempo-mou/$': typeof NempoMouSplatRoute
+  '/tion-feed/$': typeof TionFeedSplatRoute
+  '/admin-panel/': typeof AdminPanelIndexRoute
+  '/cms/': typeof CmsIndexRoute
+  '/nempo-feed/': typeof NempoFeedIndexRoute
+  '/nempo-mou/': typeof NempoMouIndexRoute
+  '/tion-feed/': typeof TionFeedIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/$': typeof SplatRoute
+  '/backup': typeof BackupRoute
+  '/business-system': typeof BusinessSystemRoute
+  '/design-creative': typeof DesignCreativeRoute
+  '/sosmed-management': typeof SosmedManagementRoute
+  '/talent': typeof TalentRoute
+  '/web-development': typeof WebDevelopmentRoute
+  '/wedding-invitation': typeof WeddingInvitationRoute
+  '/wedding-organizer': typeof WeddingOrganizerRoute
+  '/admin-panel/$': typeof AdminPanelSplatRoute
+  '/api/$': typeof ApiSplatRoute
+  '/api/backup': typeof ApiBackupRoute
+  '/cms/$': typeof CmsSplatRoute
+  '/nempo-feed/$': typeof NempoFeedSplatRoute
+  '/nempo-mou/$': typeof NempoMouSplatRoute
+  '/tion-feed/$': typeof TionFeedSplatRoute
+  '/admin-panel': typeof AdminPanelIndexRoute
+  '/cms': typeof CmsIndexRoute
+  '/nempo-feed': typeof NempoFeedIndexRoute
+  '/nempo-mou': typeof NempoMouIndexRoute
+  '/tion-feed': typeof TionFeedIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/$': typeof SplatRoute
+  '/backup': typeof BackupRoute
+  '/business-system': typeof BusinessSystemRoute
+  '/design-creative': typeof DesignCreativeRoute
+  '/sosmed-management': typeof SosmedManagementRoute
+  '/talent': typeof TalentRoute
+  '/web-development': typeof WebDevelopmentRoute
+  '/wedding-invitation': typeof WeddingInvitationRoute
+  '/wedding-organizer': typeof WeddingOrganizerRoute
+  '/admin-panel/$': typeof AdminPanelSplatRoute
+  '/api/$': typeof ApiSplatRoute
+  '/api/backup': typeof ApiBackupRoute
+  '/cms/$': typeof CmsSplatRoute
+  '/nempo-feed/$': typeof NempoFeedSplatRoute
+  '/nempo-mou/$': typeof NempoMouSplatRoute
+  '/tion-feed/$': typeof TionFeedSplatRoute
+  '/admin-panel/': typeof AdminPanelIndexRoute
+  '/cms/': typeof CmsIndexRoute
+  '/nempo-feed/': typeof NempoFeedIndexRoute
+  '/nempo-mou/': typeof NempoMouIndexRoute
+  '/tion-feed/': typeof TionFeedIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/$'
+    | '/backup'
+    | '/business-system'
+    | '/design-creative'
+    | '/sosmed-management'
+    | '/talent'
+    | '/web-development'
+    | '/wedding-invitation'
+    | '/wedding-organizer'
+    | '/admin-panel/$'
+    | '/api/$'
+    | '/api/backup'
+    | '/cms/$'
+    | '/nempo-feed/$'
+    | '/nempo-mou/$'
+    | '/tion-feed/$'
+    | '/admin-panel/'
+    | '/cms/'
+    | '/nempo-feed/'
+    | '/nempo-mou/'
+    | '/tion-feed/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/$'
+    | '/backup'
+    | '/business-system'
+    | '/design-creative'
+    | '/sosmed-management'
+    | '/talent'
+    | '/web-development'
+    | '/wedding-invitation'
+    | '/wedding-organizer'
+    | '/admin-panel/$'
+    | '/api/$'
+    | '/api/backup'
+    | '/cms/$'
+    | '/nempo-feed/$'
+    | '/nempo-mou/$'
+    | '/tion-feed/$'
+    | '/admin-panel'
+    | '/cms'
+    | '/nempo-feed'
+    | '/nempo-mou'
+    | '/tion-feed'
+  id:
+    | '__root__'
+    | '/'
+    | '/$'
+    | '/backup'
+    | '/business-system'
+    | '/design-creative'
+    | '/sosmed-management'
+    | '/talent'
+    | '/web-development'
+    | '/wedding-invitation'
+    | '/wedding-organizer'
+    | '/admin-panel/$'
+    | '/api/$'
+    | '/api/backup'
+    | '/cms/$'
+    | '/nempo-feed/$'
+    | '/nempo-mou/$'
+    | '/tion-feed/$'
+    | '/admin-panel/'
+    | '/cms/'
+    | '/nempo-feed/'
+    | '/nempo-mou/'
+    | '/tion-feed/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  SplatRoute: typeof SplatRoute
+  BackupRoute: typeof BackupRoute
+  BusinessSystemRoute: typeof BusinessSystemRoute
+  DesignCreativeRoute: typeof DesignCreativeRoute
+  SosmedManagementRoute: typeof SosmedManagementRoute
+  TalentRoute: typeof TalentRoute
+  WebDevelopmentRoute: typeof WebDevelopmentRoute
+  WeddingInvitationRoute: typeof WeddingInvitationRoute
+  WeddingOrganizerRoute: typeof WeddingOrganizerRoute
+  AdminPanelSplatRoute: typeof AdminPanelSplatRoute
+  ApiSplatRoute: typeof ApiSplatRoute
+  ApiBackupRoute: typeof ApiBackupRoute
+  CmsSplatRoute: typeof CmsSplatRoute
+  NempoFeedSplatRoute: typeof NempoFeedSplatRoute
+  NempoMouSplatRoute: typeof NempoMouSplatRoute
+  TionFeedSplatRoute: typeof TionFeedSplatRoute
+  AdminPanelIndexRoute: typeof AdminPanelIndexRoute
+  CmsIndexRoute: typeof CmsIndexRoute
+  NempoFeedIndexRoute: typeof NempoFeedIndexRoute
+  NempoMouIndexRoute: typeof NempoMouIndexRoute
+  TionFeedIndexRoute: typeof TionFeedIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +325,179 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/$': {
+      id: '/$'
+      path: '/$'
+      fullPath: '/$'
+      preLoaderRoute: typeof SplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/backup': {
+      id: '/backup'
+      path: '/backup'
+      fullPath: '/backup'
+      preLoaderRoute: typeof BackupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/business-system': {
+      id: '/business-system'
+      path: '/business-system'
+      fullPath: '/business-system'
+      preLoaderRoute: typeof BusinessSystemRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/design-creative': {
+      id: '/design-creative'
+      path: '/design-creative'
+      fullPath: '/design-creative'
+      preLoaderRoute: typeof DesignCreativeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sosmed-management': {
+      id: '/sosmed-management'
+      path: '/sosmed-management'
+      fullPath: '/sosmed-management'
+      preLoaderRoute: typeof SosmedManagementRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/talent': {
+      id: '/talent'
+      path: '/talent'
+      fullPath: '/talent'
+      preLoaderRoute: typeof TalentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/web-development': {
+      id: '/web-development'
+      path: '/web-development'
+      fullPath: '/web-development'
+      preLoaderRoute: typeof WebDevelopmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/wedding-invitation': {
+      id: '/wedding-invitation'
+      path: '/wedding-invitation'
+      fullPath: '/wedding-invitation'
+      preLoaderRoute: typeof WeddingInvitationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/wedding-organizer': {
+      id: '/wedding-organizer'
+      path: '/wedding-organizer'
+      fullPath: '/wedding-organizer'
+      preLoaderRoute: typeof WeddingOrganizerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin-panel/': {
+      id: '/admin-panel/'
+      path: '/admin-panel'
+      fullPath: '/admin-panel/'
+      preLoaderRoute: typeof AdminPanelIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin-panel/$': {
+      id: '/admin-panel/$'
+      path: '/admin-panel/$'
+      fullPath: '/admin-panel/$'
+      preLoaderRoute: typeof AdminPanelSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/$': {
+      id: '/api/$'
+      path: '/api/$'
+      fullPath: '/api/$'
+      preLoaderRoute: typeof ApiSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/backup': {
+      id: '/api/backup'
+      path: '/api/backup'
+      fullPath: '/api/backup'
+      preLoaderRoute: typeof ApiBackupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cms/': {
+      id: '/cms/'
+      path: '/cms'
+      fullPath: '/cms/'
+      preLoaderRoute: typeof CmsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cms/$': {
+      id: '/cms/$'
+      path: '/cms/$'
+      fullPath: '/cms/$'
+      preLoaderRoute: typeof CmsSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/nempo-feed/': {
+      id: '/nempo-feed/'
+      path: '/nempo-feed'
+      fullPath: '/nempo-feed/'
+      preLoaderRoute: typeof NempoFeedIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/nempo-feed/$': {
+      id: '/nempo-feed/$'
+      path: '/nempo-feed/$'
+      fullPath: '/nempo-feed/$'
+      preLoaderRoute: typeof NempoFeedSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/nempo-mou/': {
+      id: '/nempo-mou/'
+      path: '/nempo-mou'
+      fullPath: '/nempo-mou/'
+      preLoaderRoute: typeof NempoMouIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/nempo-mou/$': {
+      id: '/nempo-mou/$'
+      path: '/nempo-mou/$'
+      fullPath: '/nempo-mou/$'
+      preLoaderRoute: typeof NempoMouSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tion-feed/': {
+      id: '/tion-feed/'
+      path: '/tion-feed'
+      fullPath: '/tion-feed/'
+      preLoaderRoute: typeof TionFeedIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tion-feed/$': {
+      id: '/tion-feed/$'
+      path: '/tion-feed/$'
+      fullPath: '/tion-feed/$'
+      preLoaderRoute: typeof TionFeedSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  SplatRoute: SplatRoute,
+  BackupRoute: BackupRoute,
+  BusinessSystemRoute: BusinessSystemRoute,
+  DesignCreativeRoute: DesignCreativeRoute,
+  SosmedManagementRoute: SosmedManagementRoute,
+  TalentRoute: TalentRoute,
+  WebDevelopmentRoute: WebDevelopmentRoute,
+  WeddingInvitationRoute: WeddingInvitationRoute,
+  WeddingOrganizerRoute: WeddingOrganizerRoute,
+  AdminPanelSplatRoute: AdminPanelSplatRoute,
+  ApiSplatRoute: ApiSplatRoute,
+  ApiBackupRoute: ApiBackupRoute,
+  CmsSplatRoute: CmsSplatRoute,
+  NempoFeedSplatRoute: NempoFeedSplatRoute,
+  NempoMouSplatRoute: NempoMouSplatRoute,
+  TionFeedSplatRoute: TionFeedSplatRoute,
+  AdminPanelIndexRoute: AdminPanelIndexRoute,
+  CmsIndexRoute: CmsIndexRoute,
+  NempoFeedIndexRoute: NempoFeedIndexRoute,
+  NempoMouIndexRoute: NempoMouIndexRoute,
+  TionFeedIndexRoute: TionFeedIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
