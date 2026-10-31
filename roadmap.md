@@ -1,4 +1,7 @@
 # Roadmap
+- [ ] Studio wedding: setiap kebaya didampingi busana pria senada di semua tone, termasuk moodboard.
+- [ ] Foto pasangan busana tanpa wajah/orang, hanya pajangan baju lengkap.
+- [ ] Ujung leher dan lengan pajangan busana tertutup, tidak berlubang.
 - [x] Tambah pilihan inspirasi dekor pelaminan, kebaya, tone warna, dan konsep acara di Wedding Organizer, dengan rangkuman konsultasi WhatsApp.
 - [x] Migrate nempo-5 code into this project
 - [x] Recreate 18 database tables in Lovable Cloud
