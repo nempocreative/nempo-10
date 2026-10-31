@@ -1161,6 +1161,14 @@ export default function Home() {
       date: "5 September 2026",
       badge: "Event",
     },
+    {
+      id: "opening-ggs-2026",
+      name: "Opening GGS",
+      image: undefined,
+      location: "GGS Beauty",
+      date: "18 Oktober 2026",
+      badge: "Opening",
+    },
   ];
   const [eventRowEl, eventRowRef] = useState<HTMLElement | null>(null);
   useEffect(() => {
