@@ -1,4 +1,5 @@
 # Roadmap
+- [ ] Tambah jenis makeup Barbie, Bold, Natural, Soft Glam, Korean beserta pilihan konsultasi dan moodboard.
 - [x] Tambah pilihan khusus gaun dengan jas senada dalam empat tone, manekin tanpa wajah, konsultasi dan moodboard.
 - [x] Studio wedding: setiap kebaya didampingi busana pria senada di semua tone, termasuk moodboard.
 - [x] Foto pasangan busana tanpa wajah/orang, hanya pajangan baju lengkap.

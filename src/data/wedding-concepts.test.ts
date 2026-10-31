@@ -1,7 +1,18 @@
 import { describe, expect, it } from "vitest";
-import { weddingDecor, weddingGowns, weddingKebaya, weddingMoodConsultUrl, weddingTones } from "./wedding-concepts";
+import { weddingDecor, weddingGowns, weddingKebaya, weddingMakeup, weddingMoodConsultUrl, weddingTones } from "./wedding-concepts";
 
 describe("wedding concept studio", () => {
+  it("offers Barbie and Bold makeup and includes the selected style in consultation", () => {
+    expect(weddingMakeup.map((option) => option.name)).toEqual(expect.arrayContaining(["Barbie", "Bold"]));
+    const tone = weddingTones[0];
+    const decor = weddingDecor[0];
+    const kebaya = weddingKebaya[0];
+    if (!tone || !decor || !kebaya) throw new Error("Missing options");
+    for (const makeup of weddingMakeup) {
+      const text = new URL(weddingMoodConsultUrl({ tone, decor, kebaya, makeup })).searchParams.get("text");
+      expect(text).toContain(`Makeup: ${makeup.name}`);
+    }
+  });
   it("shows four tones, each with swatch colors", () => {
     expect(weddingTones).toHaveLength(4);
     for (const tone of weddingTones) {
