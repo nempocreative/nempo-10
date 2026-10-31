@@ -310,14 +310,18 @@ export function WeddingConceptStudio() {
                   variant="ghost"
                   aria-pressed={selected}
                   onClick={() => setMakeupKey(option.key)}
-                  className={cn("h-auto min-h-32 flex-col items-stretch justify-start whitespace-normal rounded-lg border p-3 text-left", selected ? "border-primary bg-primary/5" : "border-border bg-background/70")}
+                  className={cn("h-auto flex-col gap-0 items-stretch justify-start overflow-hidden whitespace-normal rounded-lg border p-0 text-left", selected ? "border-primary bg-primary/5" : "border-border bg-background/70")}
                 >
+                  <img src={option.image} alt={`Contoh makeup pengantin ${option.name}`} loading="lazy" width={800} height={1008} className="h-auto w-full" />
+                  <span className="flex flex-1 flex-col gap-2 p-3">
                   <span className="flex items-center gap-2 text-primary"><Icon className="size-4" /><span className="text-sm font-bold">{option.name}</span>{selected ? <Check className="ml-auto size-4" /> : null}</span>
                   <span className="text-xs font-normal leading-relaxed text-muted-foreground">{option.note}</span>
+                  </span>
                 </Button>
               );
             })}
           </div>
+          <p className="mt-2 text-[11px] text-muted-foreground">Foto ilustrasi inspirasi makeup, bukan dokumentasi hasil MUA.</p>
         </div>
 
         <div

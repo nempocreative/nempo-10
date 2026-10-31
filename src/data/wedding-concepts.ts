@@ -1,4 +1,9 @@
 import { NEMPO_WA_URL } from "@/lib/contact";
+import makeupBarbie from "@/assets/wedding-makeup-barbie.jpg";
+import makeupBold from "@/assets/wedding-makeup-bold.jpg";
+import makeupNatural from "@/assets/wedding-makeup-natural.jpg";
+import makeupSoftGlam from "@/assets/wedding-makeup-soft-glam.jpg";
+import makeupKorean from "@/assets/wedding-makeup-korean.jpg";
 
 import ballroomBurgundy from "@/assets/graded/wedding-decor-ballroom--burgundy.jpg";
 import ballroomRose from "@/assets/graded/wedding-decor-ballroom--rose.jpg";
@@ -189,14 +194,15 @@ export type WeddingMakeup = {
   key: string;
   name: string;
   note: string;
+  image: string;
 };
 
 export const weddingMakeup: WeddingMakeup[] = [
-  { key: "barbie", name: "Barbie", note: "Mata doll-eye, bulu mata lentik, blush pink, dan bibir rosy." },
-  { key: "bold", name: "Bold", note: "Mata tegas, eyeliner dramatis, contour terdefinisi, dan lipstik statement." },
-  { key: "natural", name: "Natural", note: "Complexion ringan, alis lembut, dan warna nude yang segar." },
-  { key: "soft-glam", name: "Soft Glam", note: "Eyeshadow champagne, kulit satin, dan bibir nude peach." },
-  { key: "korean", name: "Korean", note: "Kulit dewy, blush lembut, shimmer halus, dan bibir gradasi." },
+  { key: "barbie", name: "Barbie", image: makeupBarbie, note: "Mata doll-eye, bulu mata lentik, blush pink, dan bibir rosy." },
+  { key: "bold", name: "Bold", image: makeupBold, note: "Mata tegas, eyeliner dramatis, contour terdefinisi, dan lipstik statement." },
+  { key: "natural", name: "Natural", image: makeupNatural, note: "Complexion ringan, alis lembut, dan warna nude yang segar." },
+  { key: "soft-glam", name: "Soft Glam", image: makeupSoftGlam, note: "Eyeshadow champagne, kulit satin, dan bibir nude peach." },
+  { key: "korean", name: "Korean", image: makeupKorean, note: "Kulit dewy, blush lembut, shimmer halus, dan bibir gradasi." },
 ];
 
 export type WeddingMood = {
