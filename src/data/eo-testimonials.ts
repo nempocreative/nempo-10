@@ -10,4 +10,10 @@ export const eoTestimonials: EoTestimonial[] = [
   { name: "Fajar Nugraha", role: "Sekretaris Panitia", text: "Rundown-nya detail, komunikasi cepat, dan semua janji ditepati. Panitianya jadi tenang." },
   { name: "Tias Puspita", role: "Divisi Kebutuhan Peserta", text: "Transport, konsumsi, dan peserta rombongan diurus sampai detail kecil. Nggak ada yang kelewat." },
   { name: "Rizky Ardiansyah", role: "Bendahara", text: "Penawaran transparan dari awal, jadi budget gampang dilaporkan. Tidak ada biaya kaget di belakang." },
+  { name: "Winda Safitri", role: "Divisi Undangan & Registrasi", text: "Undangan digital dan daftar hadirnya rapi. Tamu tinggal scan, nggak ada antrean panjang di pintu." },
+  { name: "Asep Firmansyah", role: "Koordinator Lapangan", text: "Crew-nya paham tugas masing-masing. Dari setup sampai bongkar, semua jalan tanpa harus disuruh-suruh." },
+  { name: "Gita Ayu Lestari", role: "Staff Branding", text: "Visual acaranya nyambung sama karakter brand kami. Backdrop, konten, sampai merchandise satu rasa." },
+  { name: "Reza Alfarizi", role: "Divisi Ticketing", text: "Jual tiket online sampai rekap jumlah penonton otomatis. Nggak perlu hitung manual lagi." },
+  { name: "Muthia Rahmawati", role: "Ketua Panitia", text: "Kami cuma sekali rapat panjang, sisanya NEMPO yang jalanin. Acaranya kelar tanpa drama." },
+  { name: "Ilham Gibran", role: "Divisi Dokumentasi", text: "Foto dan video highlight-nya cepat jadi. Besoknya udah bisa dipakai buat konten promosi." },
 ];
