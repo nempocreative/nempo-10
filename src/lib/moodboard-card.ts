@@ -2,16 +2,13 @@
 import { NEMPO_INSTAGRAM_HANDLE, NEMPO_WA_NUMBER } from "@/lib/contact";
 
 export type MoodboardCardData = {
+  toneName: string;
+  toneHexes: string[];
+  toneNote: string;
   decorName: string;
   decorImage: string;
   kebayaName: string;
   kebayaImage: string;
-  toneName: string;
-  toneHexes: string[];
-  toneDeep: string;
-  toneLight: string;
-  conceptName: string;
-  conceptNote: string;
 };
 
 const W = 1080;
@@ -90,6 +87,8 @@ async function ensureFonts() {
 
 export async function renderMoodboardCard(data: MoodboardCardData): Promise<Blob> {
   await ensureFonts();
+  const deep = data.toneHexes[0] ?? "#4f6a4a";
+  const light = data.toneHexes[1] ?? "#f7f2e7";
   const [decor, kebaya] = await Promise.all([loadImage(data.decorImage), loadImage(data.kebayaImage)]);
   const canvas = document.createElement("canvas");
   canvas.width = W;
@@ -97,13 +96,13 @@ export async function renderMoodboardCard(data: MoodboardCardData): Promise<Blob
   const ctx = canvas.getContext("2d");
   if (!ctx) throw new Error("Canvas tidak tersedia");
 
-  ctx.fillStyle = data.toneLight;
+  ctx.fillStyle = light;
   ctx.fillRect(0, 0, W, H);
-  ctx.fillStyle = data.toneDeep;
+  ctx.fillStyle = deep;
   ctx.fillRect(0, 0, W, 12);
 
   ctx.textBaseline = "alphabetic";
-  ctx.fillStyle = data.toneDeep;
+  ctx.fillStyle = deep;
   ctx.font = `600 26px ${SANS}`;
   ctx.letterSpacing = "6px";
   ctx.fillText("NEMPO GARUT ORGANIZER", 64, 100);
@@ -113,7 +112,7 @@ export async function renderMoodboardCard(data: MoodboardCardData): Promise<Blob
   ctx.fillStyle = "#2b2118";
   ctx.fillText("Moodboard Pernikahan", 64, 172);
   ctx.font = `400 40px ${HAND}`;
-  ctx.fillStyle = data.toneDeep;
+  ctx.fillStyle = deep;
   ctx.fillText("detail kecil, cerita besar", 66, 218);
 
   drawCover(ctx, decor, 64, 258, 612, 812);
@@ -144,14 +143,11 @@ export async function renderMoodboardCard(data: MoodboardCardData): Promise<Blob
     ctx.stroke();
   });
 
-  ctx.fillStyle = "rgba(43,33,24,0.75)";
-  ctx.font = `600 26px ${SANS}`;
-  ctx.fillText(data.conceptName, 380, 1132);
-  ctx.font = `400 24px ${SANS}`;
-  ctx.fillStyle = "rgba(43,33,24,0.6)";
-  wrap(ctx, data.conceptNote, 380, 1166, 636, 32);
+  ctx.font = `400 26px ${SANS}`;
+  ctx.fillStyle = "rgba(43,33,24,0.65)";
+  wrap(ctx, data.toneNote, 380, 1140, 636, 34);
 
-  ctx.fillStyle = data.toneDeep;
+  ctx.fillStyle = deep;
   roundRect(ctx, 64, 1246, W - 128, 66, 33);
   ctx.fill();
   ctx.fillStyle = "#ffffff";
