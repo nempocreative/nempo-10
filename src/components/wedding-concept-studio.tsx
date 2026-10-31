@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type CSSProperties } from "react";
 import { ArrowRight, Check, Flower2, Gem, Heart, Palette, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { weddingDecor, weddingKebaya, weddingTones, weddingConcepts, weddingMoodConsultUrl } from "@/data/wedding-concepts";
