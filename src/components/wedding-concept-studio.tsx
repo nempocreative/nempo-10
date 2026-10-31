@@ -1,109 +1,330 @@
-import { useState, type CSSProperties } from "react";
-import { ArrowRight, Check, Flower2, Gem, Heart, Palette, Sparkles } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { weddingDecor, weddingKebaya, weddingTones, weddingConcepts, weddingMoodConsultUrl } from "@/data/wedding-concepts";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { Link } from "wouter";
+import {
+  weddingDecor,
+  weddingKebaya,
+  weddingMoodConsultUrl,
+  weddingTones,
+  type ToneKey,
+  type WeddingOption,
+  type WeddingTone,
+} from "@/data/wedding-concepts";
+import { NEMPO_INSTAGRAM_HANDLE, NEMPO_WA_NUMBER } from "@/lib/contact";
+import { deliverFile } from "@/lib/download";
+import { moodboardFilename, renderMoodboardCard } from "@/lib/moodboard-card";
+import { cn } from "@/lib/utils";
 
-const categories = [
-  { name: "Pelaminan", icon: Flower2 },
-  { name: "Kebaya", icon: Gem },
-  { name: "Tone warna", icon: Palette },
-  { name: "Konsep acara", icon: Heart },
-];
+function Swatch({ tone, size = "sm" }: { tone: WeddingTone; size?: "sm" | "md" }) {
+  return (
+    <span className="flex items-center gap-1" aria-hidden="true">
+      {tone.hexes.map((hex) => (
+        <span
+          key={hex}
+          className={cn(
+            "rounded-full border border-foreground/10",
+            size === "sm" ? "h-3 w-3" : "h-4 w-4",
+          )}
+          style={{ backgroundColor: hex }}
+        />
+      ))}
+    </span>
+  );
+}
+
+function OptionChip({
+  option,
+  tone,
+  active,
+  onSelect,
+}: {
+  option: WeddingOption;
+  tone: ToneKey;
+  active: boolean;
+  onSelect: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onSelect}
+      aria-pressed={active}
+      className={cn(
+        "flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-semibold transition-colors",
+        active
+          ? "border-primary bg-primary text-primary-foreground"
+          : "border-border bg-background/70 text-foreground/80 hover:border-primary/50 hover:text-primary",
+      )}
+    >
+      <img
+        src={option.images[tone]}
+        alt=""
+        loading="lazy"
+        className="h-5 w-5 rounded-full object-cover"
+      />
+      {option.name}
+    </button>
+  );
+}
+
+function ComboCard({
+  tone,
+  decor,
+  kebaya,
+  active,
+  onSelect,
+}: {
+  tone: WeddingTone;
+  decor: WeddingOption;
+  kebaya: WeddingOption;
+  active: boolean;
+  onSelect: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onSelect}
+      aria-pressed={active}
+      className={cn(
+        "group flex flex-col overflow-hidden rounded-xl border bg-background/70 text-left transition-all duration-300",
+        active
+          ? "border-primary shadow-[0_14px_34px_-18px_var(--shadow-soft)]"
+          : "border-border hover:border-primary/50 hover:-translate-y-0.5",
+      )}
+    >
+      <span className="grid grid-cols-2 gap-px overflow-hidden bg-border/60">
+        <img
+          src={decor.images[tone.key]}
+          alt={`Pelaminan ${decor.name} tone ${tone.name}`}
+          loading="lazy"
+          width={decor.width}
+          height={decor.height}
+          className="h-36 w-full object-cover transition-transform duration-500 group-hover:scale-[1.04] sm:h-40"
+        />
+        <img
+          src={kebaya.images[tone.key]}
+          alt={`Kebaya ${kebaya.name} tone ${tone.name}`}
+          loading="lazy"
+          width={kebaya.width}
+          height={kebaya.height}
+          className="h-36 w-full object-cover transition-transform duration-500 group-hover:scale-[1.04] sm:h-40"
+        />
+      </span>
+      <span className="flex flex-1 flex-col gap-1 p-3">
+        <span className="flex items-center justify-between gap-2">
+          <span
+            className={cn(
+              "text-sm font-bold leading-tight",
+              active ? "text-primary" : "text-foreground",
+            )}
+          >
+            {tone.name}
+          </span>
+          <Swatch tone={tone} />
+        </span>
+        <span className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+          {decor.name} · {kebaya.name}
+        </span>
+        <span className="mt-auto pt-2 text-[11px] font-bold text-primary">
+          {active ? "Dipilih ✓" : "Pilih kombinasi ini"}
+        </span>
+      </span>
+    </button>
+  );
+}
 
 export function WeddingConceptStudio() {
-  const [tab, setTab] = useState(0);
-  const [decorIndex, setDecor] = useState(0);
-  const [kebayaIndex, setKebaya] = useState(0);
-  const [toneIndex, setTone] = useState(0);
-  const [conceptIndex, setConcept] = useState(0);
-  const decor = weddingDecor[decorIndex];
-  const kebaya = weddingKebaya[kebayaIndex];
-  const tone = weddingTones[toneIndex];
-  const concept = weddingConcepts[conceptIndex];
-  if (!decor || !kebaya || !tone || !concept) return null;
-  const choices = tab === 0 ? weddingDecor : weddingKebaya;
-  const imageIndex = tab === 0 ? decorIndex : kebayaIndex;
-  const toneStyle = { "--tone-deep": tone.deep, "--tone-light": tone.light } as CSSProperties;
+  const [tone, setTone] = useState<ToneKey>("sage");
+  const [decorKey, setDecorKey] = useState(weddingDecor[0]?.key ?? "garden");
+  const [kebayaKey, setKebayaKey] = useState(weddingKebaya[0]?.key ?? "ivory");
+  const [downloading, setDownloading] = useState(false);
+  const [downloaded, setDownloaded] = useState(false);
+  const [error, setError] = useState("");
+  const [hint, setHint] = useState(false);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const activeTone = useMemo(() => weddingTones.find((t) => t.key === tone) ?? weddingTones[0]!, [tone]);
+  const decor = useMemo(
+    () => weddingDecor.find((d) => d.key === decorKey) ?? weddingDecor[0]!,
+    [decorKey],
+  );
+  const kebaya = useMemo(
+    () => weddingKebaya.find((k) => k.key === kebayaKey) ?? weddingKebaya[0]!,
+    [kebayaKey],
+  );
+
+  useEffect(() => {
+    if (!downloaded) return;
+    const t = window.setTimeout(() => setDownloaded(false), 4000);
+    return () => window.clearTimeout(t);
+  }, [downloaded]);
+
+  const consultUrl = useMemo(() => weddingMoodConsultUrl({ tone: activeTone, decor, kebaya }), [
+    activeTone,
+    decor,
+    kebaya,
+  ]);
+
+  async function downloadMoodboard() {
+    setDownloading(true);
+    setError("");
+    try {
+      const blob = await renderMoodboardCard({
+        tone: activeTone,
+        decor,
+        kebaya,
+        decorImage: decor.images[tone],
+        kebayaImage: kebaya.images[tone],
+      });
+      await deliverFile(blob, moodboardFilename(activeTone.name));
+      setDownloaded(true);
+    } catch {
+      setError(
+        `Belum bisa dibuat di perangkat ini. Screenshot bagian ini, atau kirim pilihan kamu ke WhatsApp ${NEMPO_WA_NUMBER}.`,
+      );
+    } finally {
+      setDownloading(false);
+    }
+  }
+
+  function scrollIntoViewOnMobile() {
+    if (window.matchMedia("(max-width: 640px)").matches) {
+      scrollRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }
 
   return (
-    <section id="konsep-wedding" aria-label="Pilihan konsep wedding" className="scroll-mt-24 bg-card px-4 py-14 text-wed-ink sm:px-6 sm:py-20">
-      <div className="mx-auto max-w-5xl">
-        <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
-          <div>
-            <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-wed-rose"><Sparkles className="h-4 w-4" /> Wedding moodboard</p>
-            <h2 className="mt-3 font-[family-name:var(--font-wed-serif)] text-3xl font-bold leading-tight sm:text-4xl">Hari bahagia, <span className="text-wed-rose">gaya kalian.</span></h2>
-          </div>
-          <p className="font-[family-name:var(--font-wed-hand)] text-2xl text-wed-rose">detail kecil, cerita besar</p>
+    <section id="konsep" className="relative bg-background py-16 md:py-20">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_12%,var(--wed-pearl),transparent_42%),radial-gradient(circle_at_82%_78%,var(--wed-champagne),transparent_40%)]"
+      />
+      <div ref={scrollRef} className="relative mx-auto max-w-6xl px-4">
+        <div className="flex flex-col gap-2">
+          <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-primary">
+            Studio Konsep
+          </span>
+          <h2 className="font-display text-3xl leading-tight text-foreground md:text-4xl">
+            Bandingkan dulu, baru pilih
+          </h2>
+          <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">
+            Empat tone warna berdampingan dengan pelaminan dan kebaya yang sama. Klik salah satu
+            untuk memilih, lalu kirim hasilnya ke tim kami.
+          </p>
         </div>
 
-        <div className="grid gap-8 lg:grid-cols-[1.15fr_1fr]">
-          <div>
-            <div className="grid grid-cols-[1.6fr_1fr] gap-2 overflow-hidden rounded-lg">
-              <figure className="relative min-w-0 overflow-hidden bg-wed-blush">
-                <div className="wed-tone-frame aspect-[4/5] w-full" style={toneStyle}>
-                  <img key={decor.image} src={decor.image} alt={`Inspirasi pelaminan ${decor.name} dengan tone ${tone.name}`} loading="lazy" width={1200} height={800} className="wed-mood-enter wed-tone-img h-full w-full object-cover" />
-                </div>
-                <figcaption className="absolute bottom-3 left-3 right-3 rounded-md bg-card/95 px-3 py-2 text-xs font-semibold">{decor.name}</figcaption>
-              </figure>
-              <figure className="relative min-w-0 overflow-hidden bg-wed-blush">
-                <div className="wed-tone-frame wed-tone-frame--soft h-full w-full" style={toneStyle}>
-                  <img key={kebaya.image} src={kebaya.image} alt={`Inspirasi kebaya ${kebaya.name} dengan tone ${tone.name}`} loading="lazy" width={800} height={1104} className="wed-mood-enter wed-tone-img h-full w-full object-cover" />
-                </div>
-                <figcaption className="absolute bottom-3 left-2 right-2 rounded-md bg-card/95 px-2 py-2 text-xs font-semibold">{kebaya.name}</figcaption>
-              </figure>
-            </div>
-            <div className="mt-4 flex flex-wrap items-center justify-between gap-3 border-b border-wed-ink/15 pb-4">
-              <div className="flex gap-1.5" aria-label={`Palet ${tone.name}`}>
-                {tone.swatches.map(swatch => <span key={swatch} className={`h-7 w-7 rounded-full border border-wed-ink/10 ${swatch}`} />)}
-              </div>
-              <p className="text-sm font-medium">{tone.name}</p>
-            </div>
-            <h3 className="mt-4 font-[family-name:var(--font-wed-serif)] text-xl font-bold">{concept.name}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-wed-ink/70">{concept.note}</p>
+        <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
+              Pelaminan
+            </span>
+            {weddingDecor.map((option) => (
+              <OptionChip
+                key={option.key}
+                option={option}
+                tone={tone}
+                active={option.key === decor.key}
+                onSelect={() => {
+                  setDecorKey(option.key);
+                  scrollIntoViewOnMobile();
+                }}
+              />
+            ))}
           </div>
-
-          <div className="min-w-0">
-            <div role="tablist" aria-label="Detail wedding" className="grid grid-cols-4 border-b border-wed-ink/15">
-              {categories.map((category, i) => (
-                <Button key={category.name} id={`mood-tab-${i}`} role="tab" aria-selected={tab === i} aria-controls="mood-options" variant="ghost" onClick={() => setTab(i)} className={`h-auto flex-col gap-2 whitespace-normal rounded-none border-b-2 px-1 py-3 text-[11px] sm:text-xs ${tab === i ? 'border-b-wed-rose bg-wed-blush text-wed-rose' : 'border-b-transparent text-wed-ink/65'}`}>
-                  <category.icon className="h-4 w-4" />{category.name}
-                </Button>
-              ))}
-            </div>
-
-            <div id="mood-options" role="tabpanel" aria-labelledby={`mood-tab-${tab}`} className="mt-5 min-h-60">
-              {tab < 2 && <div className="grid grid-cols-2 gap-3">{choices.map((item, i) => (
-                <Button key={item.name} variant="ghost" aria-pressed={imageIndex === i} onClick={() => tab === 0 ? setDecor(i) : setKebaya(i)} className={`relative h-auto min-w-0 flex-col items-start gap-0 overflow-hidden whitespace-normal rounded-lg border p-0 text-left ${imageIndex === i ? 'border-wed-rose ring-1 ring-wed-rose' : 'border-wed-ink/15'}`}>
-                  <img src={item.image} alt={item.name} loading="lazy" width={240} height={180} className="aspect-[4/3] w-full object-cover" />
-                  {imageIndex === i && <span className="absolute right-2 top-2 rounded-full bg-wed-rose p-1 text-primary-foreground"><Check className="h-3 w-3" /></span>}
-                  <span className="p-3"><span className="block text-sm font-semibold">{item.name}</span><span className="mt-1 block text-xs font-normal leading-relaxed text-wed-ink/70">{item.note}</span></span>
-                </Button>
-              ))}</div>}
-              {tab === 2 && <div className="grid grid-cols-2 gap-3">{weddingTones.map((item, i) => (
-                <Button key={item.name} variant="ghost" aria-pressed={toneIndex === i} onClick={() => setTone(i)} className={`h-auto flex-col items-start whitespace-normal rounded-lg border p-4 text-left ${toneIndex === i ? 'border-wed-rose bg-wed-blush' : 'border-wed-ink/15'}`}>
-                  <span className="flex gap-1">{item.swatches.map(s => <span key={s} className={`h-7 w-7 rounded-full border border-wed-ink/10 ${s}`} />)}</span>
-                  <span className="mt-2 text-xs">{item.name}</span>
-                  {toneIndex === i && <Check className="h-3 w-3 text-wed-rose" />}
-                </Button>
-              ))}</div>}
-              {tab === 3 && <div className="space-y-2">{weddingConcepts.map((item, i) => (
-                <Button key={item.name} variant="ghost" aria-pressed={conceptIndex === i} onClick={() => setConcept(i)} className={`h-auto w-full justify-between whitespace-normal rounded-lg border px-4 py-3 text-left ${conceptIndex === i ? 'border-wed-rose bg-wed-blush' : 'border-wed-ink/15'}`}>
-                  <span><span className="block text-sm font-semibold">{item.name}</span><span className="mt-1 block text-xs font-normal leading-relaxed text-wed-ink/70">{item.note}</span></span>
-                  {conceptIndex === i && <Check className="shrink-0 text-wed-rose" />}
-                </Button>
-              ))}</div>}
-            </div>
-
-            <div className="mt-6 border-t border-wed-ink/15 pt-5" aria-live="polite">
-              <p className="text-xs font-semibold uppercase tracking-widest text-wed-rose">Pilihan kalian</p>
-              <p className="mt-2 text-sm leading-relaxed">{decor.name} · {kebaya.name}<br />{tone.name} · {concept.name}</p>
-              <Button asChild className="mt-4 h-auto w-full whitespace-normal bg-wed-rose py-3 text-primary-foreground hover:bg-wed-rose/90">
-                <a href={weddingMoodConsultUrl({ decor: decor.name, kebaya: kebaya.name, tone: tone.name, concept: concept.name })} target="_blank" rel="noopener noreferrer">Konsultasikan pilihan ini <ArrowRight /></a>
-              </Button>
-              <p className="mt-3 text-xs leading-relaxed text-wed-ink/65">Gambar ilustrasi inspirasi, bukan katalog vendor atau hasil acara Nempo. Dekor dan busana di luar paket WO; ketersediaan serta biaya dikonfirmasi saat konsultasi.</p>
-            </div>
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
+              Kebaya
+            </span>
+            {weddingKebaya.map((option) => (
+              <OptionChip
+                key={option.key}
+                option={option}
+                tone={tone}
+                active={option.key === kebaya.key}
+                onSelect={() => {
+                  setKebayaKey(option.key);
+                  scrollIntoViewOnMobile();
+                }}
+              />
+            ))}
           </div>
         </div>
+
+        <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {weddingTones.map((option) => (
+            <ComboCard
+              key={option.key}
+              tone={option}
+              decor={decor}
+              kebaya={kebaya}
+              active={option.key === tone}
+              onSelect={() => {
+                setTone(option.key);
+                setHint(true);
+                scrollIntoViewOnMobile();
+              }}
+            />
+          ))}
+        </div>
+
+        <div className="mt-5 flex flex-col gap-3 rounded-xl border border-border bg-background/70 p-4 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-wrap items-center gap-3">
+            <Swatch tone={activeTone} size="md" />
+            <span className="text-sm font-bold text-foreground">{activeTone.name}</span>
+            <span className="text-xs text-muted-foreground">
+              {decor.name} · {kebaya.name}
+            </span>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            <button
+              type="button"
+              onClick={downloadMoodboard}
+              disabled={downloading}
+              className={cn(
+                "rounded-md border px-4 py-2.5 text-xs font-bold transition-colors",
+                downloading
+                  ? "border-border bg-muted text-muted-foreground"
+                  : "border-border bg-background text-foreground hover:border-primary/60 hover:text-primary",
+              )}
+            >
+              {downloading
+                ? "Membuat moodboard…"
+                : downloaded
+                  ? "Moodboard tersimpan ✓"
+                  : "Download moodboard"}
+            </button>
+            <a
+              href={consultUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => {
+                if (!downloaded) setHint(true);
+              }}
+              className="rounded-md bg-primary px-4 py-2.5 text-center text-xs font-bold text-primary-foreground transition-transform hover:-translate-y-0.5"
+            >
+              Konsultasikan pilihan ini
+            </a>
+          </div>
+        </div>
+
+        {hint ? (
+          <p className="mt-3 text-xs text-muted-foreground">
+            Suka hasilnya? Download moodboard-nya, atau langsung kirim ke WhatsApp {NEMPO_WA_NUMBER}.
+            Ikuti {NEMPO_INSTAGRAM_HANDLE} untuk update portofolio.
+          </p>
+        ) : null}
+
+        {error ? (
+          <p role="alert" className="mt-3 rounded-md border border-border bg-muted/40 p-3 text-xs text-muted-foreground">
+            {error}
+          </p>
+        ) : null}
+
+        <p className="mt-3 text-[11px] text-muted-foreground">
+          Foto adalah ilustrasi konsep; realisasi dekor, bunga, dan kebaya bisa disesuaikan budget
+          dan venue. Detail:{" "}
+          <Link href="/wedding-invitation" className="font-semibold text-primary underline-offset-4 hover:underline">
+            undangan digital
+          </Link>
+        </p>
       </div>
     </section>
   );
