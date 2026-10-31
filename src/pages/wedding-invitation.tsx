@@ -11,6 +11,7 @@ import {
   INVITATION_BILLING, INVITATION_CONSULT_EXTRAS, INVITATION_FEATURES, INVITATION_INCLUDED,
   INVITATION_PRICE, invitationRupiah, woPackagesWithFreeInvitation,
 } from "@/data/wedding-invitation";
+import { invitationThemes } from "@/data/invitation-themes";
 
 const serif = "font-[family-name:var(--font-wed-serif)]";
 const hand = "font-[family-name:var(--font-wed-hand)]";
@@ -185,6 +186,30 @@ export default function WeddingInvitationPage() {
                   <img src={img.src} alt={`Contoh halaman ${img.label} undangan`} className="aspect-[3/4] w-full object-cover" loading="lazy" />
                   <figcaption className={`${hand} absolute bottom-2 left-3 rounded-full bg-card/90 px-2.5 text-base text-wed-rose`}>{img.label}</figcaption>
                 </figure>
+              ))}
+            </div>
+          </section>
+
+          {/* Themes */}
+          <section id="tema" className="scroll-mt-20 pt-14">
+            <SectionHead eyebrow="Tema" title="Pilih tema, buka contohnya" note="klik untuk lihat undangan" />
+            <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+              {invitationThemes.map((t, i) => (
+                <Link key={t.slug} href={`/wedding-invitation/tema/${t.slug}`} className="wed-card-pop group overflow-hidden rounded-3xl bg-card shadow-md transition hover:-translate-y-1 hover:shadow-xl">
+                  <div className="relative flex aspect-square items-center justify-center pt-6" style={{ background: t.colors.bg }}>
+                    <span className="absolute top-3 text-[10px] font-bold tracking-widest" style={{ color: t.colors.surface }}>SPESIAL {String(i + 1).padStart(2, "0")}</span>
+                    <div className="flex h-[66%] w-[45%] flex-col items-center justify-center rounded-2xl border-4 p-2 text-center shadow-xl transition group-hover:rotate-2" style={{ background: t.colors.surface, borderColor: t.colors.ink, color: t.colors.ink }}>
+                      <span className="text-[8px] uppercase tracking-widest">The Wedding of</span>
+                      <span className={`${hand} text-lg leading-tight`} style={{ color: t.colors.accent }}>Habib &amp; Adiba</span>
+                      <span className="mt-1 rounded-full px-2 py-0.5 text-[7px]" style={{ background: t.colors.accent, color: t.colors.surface }}>Buka Undangan</span>
+                    </div>
+                  </div>
+                  <div className="p-4">
+                    <p className="font-bold text-primary">{t.name}</p>
+                    <p className="text-xs text-muted-foreground">{t.mood}</p>
+                    <span className="mt-3 inline-flex items-center gap-1 rounded-full bg-primary px-4 py-1.5 text-xs font-semibold text-primary-foreground">Lihat Contoh <ArrowRight className="h-3 w-3" /></span>
+                  </div>
+                </Link>
               ))}
             </div>
           </section>

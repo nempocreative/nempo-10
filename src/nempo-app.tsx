@@ -83,6 +83,7 @@ const SponsorshipEventPage = lazyWithRetry(() => import("@/pages/sponsorship-eve
 const HalloweenProposalPage = lazyWithRetry(() => import("@/pages/sponsorship-proposal"));
 const EventOrganizerPage = lazyWithRetry(() => import("@/pages/event-organizer"));
 const WeddingOrganizerPage = lazyWithRetry(() => import("@/pages/wedding-organizer"));
+const InvitationDemoPage = lazyWithRetry(() => import("@/pages/invitation-demo"));
 const WeddingInvitationPage = lazyWithRetry(() => import("@/pages/wedding-invitation"));
 const BusinessSystemPage = lazyWithRetry(() => import("@/pages/business-system"));
 const DesignCreativePage = lazyWithRetry(() => import("@/pages/design-creative"));
@@ -245,6 +246,7 @@ function Router() {
       <Route path="/sponsorship" component={SponsorshipPage} />
       <Route path="/event-organizer" component={EventOrganizerPage} />
       <Route path="/wedding-organizer" component={WeddingOrganizerPage} />
+      <Route path="/wedding-invitation/tema/:slug" component={InvitationDemoPage} />
       <Route path="/wedding-invitation" component={WeddingInvitationPage} />
       <Route path="/business-system" component={BusinessSystemPage} />
       <Route path="/design-creative" component={DesignCreativePage} />
