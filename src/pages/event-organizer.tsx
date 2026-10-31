@@ -7,6 +7,7 @@ import {
   MessageCircle, ClipboardList, Palette, Wrench, FileCheck,
   Check, ChevronDown, MapPin, ArrowRight,
 } from "lucide-react";
+import { eoTestimonials as testimonials } from "@/data/eo-testimonials";
 
 const hand = "font-[family-name:var(--font-wed-hand)]";
 
