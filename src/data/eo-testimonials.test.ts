@@ -4,8 +4,8 @@ import { eoTestimonials } from "./eo-testimonials";
 const COMPANY_TOKENS = ["PT", "CV", "Tbk", "OSIS", "SMAN", "SMA", "Universitas", "Perusahaan"];
 
 describe("Testimoni halaman EO", () => {
-  it("shows more than six testimonials", () => {
-    expect(eoTestimonials.length).toBeGreaterThan(6);
+  it("shows more than twelve testimonials", () => {
+    expect(eoTestimonials.length).toBeGreaterThan(12);
   });
 
   it("names a person and their part, never a company", () => {

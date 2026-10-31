@@ -8,5 +8,5 @@
 - [ ] Foto acara untuk kartu portofolio — menunggu foto dari pengguna
 - [x] Mitra Kami: tambah GGS Beauty
 - [x] Footer & teks "tentang": ubah dari nada wisata ke layanan kreatif/organizer
-- [x] Testimoni EO: 8 orang, nama + bagian saja, tanpa nama perusahaan
+- [x] Testimoni EO: 14 orang, nama + bagian saja, tanpa nama perusahaan
 - [x] Bersihkan migration Drizzle yang tersalin dari remix, set migration kosong baru (tabel di database tetap ada)
