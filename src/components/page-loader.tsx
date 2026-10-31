@@ -84,6 +84,23 @@ export function PageLoader({ text = "Memuat data…" }: PageLoaderProps) {
           </div>
         </div>
 
+        {/* Brand name */}
+        <div style={{ textAlign: "center", marginBottom: 10, animation: "plFadeIn 0.45s ease both" }}>
+          <p style={{
+            fontSize: 20, fontWeight: 900, color: "#111827",
+            margin: 0, letterSpacing: "-0.02em", lineHeight: 1.15,
+          }}>
+            Nempo <span style={{ color: "#0194f3" }}>Garut</span>
+          </p>
+          <p style={{
+            fontSize: 10, fontWeight: 800, color: "#0194f3",
+            textTransform: "uppercase", letterSpacing: "0.28em",
+            margin: "2px 0 0",
+          }}>
+            Organizer
+          </p>
+        </div>
+
         {/* Loading text */}
         <p style={{
           fontSize: 15, fontWeight: 800, color: "#111827",
