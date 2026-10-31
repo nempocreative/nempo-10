@@ -28,6 +28,10 @@ import kebayaRoseBurgundy from "@/assets/graded/wedding-mannequins-rose--burgund
 import kebayaRoseRose from "@/assets/graded/wedding-mannequins-rose--rose.jpg";
 import kebayaRoseSage from "@/assets/graded/wedding-mannequins-rose--sage.jpg";
 import kebayaRoseSky from "@/assets/graded/wedding-mannequins-rose--sky.jpg";
+import gownSage from "@/assets/graded/wedding-mannequins-gown--sage.jpg";
+import gownRose from "@/assets/graded/wedding-mannequins-gown--rose.jpg";
+import gownBurgundy from "@/assets/graded/wedding-mannequins-gown--burgundy.jpg";
+import gownSky from "@/assets/graded/wedding-mannequins-gown--sky.jpg";
 
 export type ToneKey = "sage" | "rose" | "burgundy" | "sky";
 
@@ -119,7 +123,7 @@ export const weddingDecor: WeddingOption[] = [
   },
 ];
 
-export type WeddingOutfit = WeddingOption & { groomName: string };
+export type WeddingOutfit = WeddingOption & { groomName: string; category?: "gown" };
 
 export const weddingKebaya: WeddingOutfit[] = [
   {
@@ -166,6 +170,21 @@ export const weddingKebaya: WeddingOutfit[] = [
   },
 ];
 
+export const weddingGowns: WeddingOutfit[] = [
+  {
+    key: "gown",
+    name: "Floral Fairytale",
+    groomName: "Jas Fairytale",
+    category: "gown",
+    note: "Gaun tulle mengembang dengan bunga tiga dimensi dan pita lembut.",
+    width: 1200,
+    height: 1104,
+    images: { sage: gownSage, rose: gownRose, burgundy: gownBurgundy, sky: gownSky },
+  },
+];
+
+export const weddingOutfits = [...weddingKebaya, ...weddingGowns];
+
 export type WeddingMood = {
   tone: WeddingTone;
   decor: WeddingOption;
@@ -177,7 +196,7 @@ export function weddingMoodConsultUrl(mood: WeddingMood): string {
     "Halo Nempo Garut Organizer! Saya mau konsultasi konsep pernikahan:",
     `• Tone warna: ${mood.tone.name}`,
     `• Pelaminan/dekor: ${mood.decor.name}`,
-    `• Kebaya: ${mood.kebaya.name}`,
+    `• ${mood.kebaya.category === "gown" ? "Gaun" : "Kebaya"}: ${mood.kebaya.name}`,
     `• Busana pria: ${mood.kebaya.groomName} — ${mood.tone.name}`,
     "Boleh dibantu pengecekan ketersediaan dan estimasinya?",
   ].join("\n");
