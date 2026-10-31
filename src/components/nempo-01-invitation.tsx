@@ -7,7 +7,7 @@ import { Nempo01Guestbook } from "./nempo-01-guestbook";
 import couplePhoto from "@/assets/nempo-01-ai-couple.jpg";
 import walkPhoto from "@/assets/nempo-01-ai-walk.jpg";
 import detailPhoto from "@/assets/nempo-01-ai-detail.jpg";
-import musicAsset from "@/assets/nempo-01-blue-bloom.mp3.asset.json";
+import musicAsset from "@/assets/nempo-01-beautiful-in-white.mp3.asset.json";
 import { Nempo01Gifts } from "./nempo-01-gifts";
 import "./nempo-01-invitation.css";
 
@@ -86,7 +86,7 @@ export function Nempo01Invitation() {
       <Nempo01Guestbook guest={guest}/>
       <Nempo01Gifts/>
       <section className="n01-soft relative px-6 py-14 text-center"><Botanical/><Heart className="n01-blue mx-auto size-6" strokeWidth={1}/><h2 className="mt-4 text-3xl">Doa restu Anda</h2><p className="n01-body mx-auto mt-4 max-w-md text-xs leading-7">Merupakan kebahagiaan bagi kami apabila Anda berkenan hadir dan memberikan doa restu.</p><p className="n01-blue mt-7 text-3xl italic">Habib & Adiba</p></section>
-      <footer className="px-6 pb-24 pt-10 text-center"><p className="n01-label n01-blue">NEMPO 01 · Biru Bunga</p><Button asChild className="n01-body mt-4 rounded-md text-xs"><a href={consult} target="_blank" rel="noopener noreferrer"><Send/> Pesan tema ini</a></Button><p className="n01-body mt-5 text-[10px] leading-5 opacity-70">Foto merupakan ilustrasi AI; nama, tanggal, dan lokasi merupakan contoh.<br/>Nempo Garut Organizer</p></footer>
+      <footer className="px-6 pb-24 pt-10 text-center"><p className="n01-label n01-blue">NEMPO 01 · Biru Bunga</p><Button asChild className="n01-body mt-4 rounded-md text-xs"><a href={consult} target="_blank" rel="noopener noreferrer"><Send/> Pesan tema ini</a></Button><p className="n01-body mt-5 text-[10px] leading-5 opacity-70">Foto merupakan ilustrasi AI; nama, tanggal, dan lokasi merupakan contoh.<br/>Musik: Beautiful In White (Saxophone Cover) · Dori Wirawan<br/>Nempo Garut Organizer</p></footer>
       <nav aria-label="Bagian undangan" className="n01-nav n01-line n01-body fixed inset-x-0 bottom-0 z-30 flex justify-center gap-6 border-t px-4 py-4 sm:gap-10">{[{href:"#mempelai",label:"Mempelai",Icon:Heart},{href:"#acara",label:"Acara",Icon:CalendarHeart},{href:"#galeri",label:"Galeri",Icon:Images},{href:"#rsvp",label:"RSVP",Icon:MessageCircle}].map(({href,label,Icon})=><a key={href} href={href} className="n01-blue flex flex-col items-center gap-1 text-[10px] sm:flex-row sm:gap-2"><Icon className="size-4"/>{label}</a>)}</nav>
     </main>}
     {photo && <div role="dialog" aria-modal="true" aria-label="Foto undangan" className="n01-lightbox fixed inset-0 z-50 flex items-center justify-center p-5" onClick={()=>setPhoto(null)}><Button autoFocus variant="ghost" size="icon" aria-label="Tutup foto" onClick={()=>setPhoto(null)} className="n01-light absolute right-4 top-4"><X/></Button><img src={photo} alt="Foto pernikahan diperbesar" className="max-h-[85svh] max-w-full object-contain"/></div>}
