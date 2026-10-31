@@ -196,9 +196,9 @@ export default function WeddingInvitationPage() {
             <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
               {invitationThemes.map((t, i) => (
                 <Link key={t.slug} href={`/wedding-invitation/tema/${t.slug}`} className="wed-card-pop group overflow-hidden rounded-3xl bg-card shadow-md transition hover:-translate-y-1 hover:shadow-xl">
-                  <div className="relative flex aspect-square items-center justify-center" style={{ background: t.colors.bg }}>
+                  <div className="relative flex aspect-square items-center justify-center pt-6" style={{ background: t.colors.bg }}>
                     <span className="absolute top-3 text-[10px] font-bold tracking-widest" style={{ color: t.colors.surface }}>SPESIAL {String(i + 1).padStart(2, "0")}</span>
-                    <div className="flex h-[70%] w-[45%] flex-col items-center justify-center rounded-2xl border-4 p-2 text-center shadow-xl transition group-hover:rotate-2" style={{ background: t.colors.surface, borderColor: t.colors.ink, color: t.colors.ink }}>
+                    <div className="flex h-[66%] w-[45%] flex-col items-center justify-center rounded-2xl border-4 p-2 text-center shadow-xl transition group-hover:rotate-2" style={{ background: t.colors.surface, borderColor: t.colors.ink, color: t.colors.ink }}>
                       <span className="text-[8px] uppercase tracking-widest">The Wedding of</span>
                       <span className={`${hand} text-lg leading-tight`} style={{ color: t.colors.accent }}>Habib &amp; Adiba</span>
                       <span className="mt-1 rounded-full px-2 py-0.5 text-[7px]" style={{ background: t.colors.accent, color: t.colors.surface }}>Buka Undangan</span>
