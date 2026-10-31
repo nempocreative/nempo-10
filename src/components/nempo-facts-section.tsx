@@ -68,7 +68,7 @@ export function NempoFactsSection({ factIdx, onFactChange }: NempoFactsSectionPr
               Fakta Menarik
             </p>
             <h2 className="text-xl font-extrabold leading-tight text-gray-900">
-              Nempo{" "}
+              Nempo Garut{" "}
               <span className="nempo-org-word">
                 Organizer
                 <svg className="nempo-org-underline" viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden>
@@ -134,7 +134,7 @@ export function NempoFactsSection({ factIdx, onFactChange }: NempoFactsSectionPr
             Fakta Menarik
           </p>
           <h2 className="self-start text-2xl font-extrabold leading-tight text-gray-900 lg:text-3xl">
-            Nempo{" "}
+            Nempo Garut{" "}
             <span className="nempo-org-word">
               Organizer
               <svg className="nempo-org-underline" viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden>
