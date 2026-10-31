@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 
 const TIPS = [
-  "Kawah Papandayan — kawah paling dramatis di Garut 🌋",
-  "Dodol Garut sudah eksis sejak tahun 1880-an 🍬",
-  "Garut dijuluki Swiss van Java karena keindahannya 🏔️",
-  "Cipanas Garut punya sumber air panas alami yang menyehatkan ♨️",
-  "Situ Bagendit — legenda danau yang penuh misteri 🌊",
-  "Cimanganten dikenal sebagai wisata petik strawberry terpopuler 🍓",
-  "Pantai Santolo jadi surga tersembunyi di selatan Garut 🏖️",
-  "Domba Garut menang kontes kecantikan nasional tiap tahun 🐑",
+  "Nempo Garut Organizer — tim kreatif di balik acara seru di Garut 🎉",
+  "Dari konsep sampai hari-H, semua kami yang urus 🎪",
+  "Wedding, gathering, sampai launching produk — kami siap 💍",
+  "Konten sosmedmu juga bisa kami garap biar makin rame 📱",
+  "Undangan digital kekinian? Tinggal pesan, beres ✉️",
+  "Website buat brand-mu? Kami bikinkan dari nol 💻",
+  "Desain kreatif yang bikin brand-mu beda dari yang lain 🎨",
+  "Ceritakan acara impianmu, kami wujudkan bareng-bareng ✨",
 ];
 
 interface PageLoaderProps {
