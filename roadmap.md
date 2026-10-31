@@ -11,3 +11,4 @@
 - [x] Footer & teks "tentang": ubah dari nada wisata ke layanan kreatif/organizer
 - [x] Testimoni EO: 14 orang, nama + bagian saja, tanpa nama perusahaan
 - [x] Bersihkan migration Drizzle yang tersalin dari remix, set migration kosong baru (tabel di database tetap ada)
+- [x] Studio wedding: pilih tone warna langsung mengubah warna foto dekor pelaminan dan kebaya
