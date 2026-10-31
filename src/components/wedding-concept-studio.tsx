@@ -120,10 +120,10 @@ function ComboCard({
           </span>
           <Swatch tone={tone} />
         </span>
-        <span className="text-[9px] font-semibold uppercase tracking-wider text-muted-foreground sm:text-[11px]">
+        <span className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground sm:text-[11px]">
           {decor.name} · {kebaya.name}
         </span>
-        <span className="mt-auto pt-2 text-[10px] font-bold text-primary sm:text-[11px]">
+        <span className="mt-auto pt-2 text-[11px] font-bold text-primary">
           {active ? "Dipilih ✓" : "Pilih kombinasi ini"}
         </span>
       </span>
