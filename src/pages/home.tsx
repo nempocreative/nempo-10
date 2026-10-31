@@ -2510,6 +2510,7 @@ export default function Home() {
             { name: "Domusa",       color: "#7b61ff" },
             { name: "Biang Coffee", color: "#a0522d" },
             { name: "Nazumi Cafe",  color: "#2a9d8f" },
+            { name: "GGS Beauty",   color: "#d6336c" },
           ];
           const items = [...brands, ...brands];
           return (
