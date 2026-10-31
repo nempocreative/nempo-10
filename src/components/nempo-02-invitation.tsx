@@ -124,7 +124,7 @@ export function Nempo02Invitation() {
         <div className="mt-8 grid gap-4 sm:grid-cols-3">{[{ Icon: Clock, t: "Hadir tepat waktu" }, { Icon: Users, t: "Ikuti arahan penerima tamu" }, { Icon: Gift, t: "Doa restu adalah hadiah terbaik" }].map(({ Icon, t }) => <div key={t} className="n02-paper n01-line rounded-lg border p-5"><Icon className="n02-gold mx-auto size-5"/><p className="n01-body mt-3 text-xs">{t}</p></div>)}</div>
       </section>
 
-      <div id="rsvp" className="n01-soft scroll-mt-20"><Nempo01Guestbook/></div>
+      <Nempo01Guestbook guest={guest}/>
       <Nempo01Gifts/>
 
       <section className="n01-soft px-6 py-14 text-center">
