@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { ArrowLeft, ArrowDown, CalendarHeart, Flower2, Leaf, MailOpen, MapPin, Heart, Send } from "lucide-react";
+import { ArrowLeft, ArrowDown, CalendarHeart, Flower2, Leaf, MailOpen, MapPin, Heart, Send, CalendarPlus, X, Images, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/lib/wouter";
 import { NEMPO_WA_URL } from "@/lib/contact";
+import { Nempo01Guestbook } from "./nempo-01-guestbook";
 import "./nempo-01-invitation.css";
 
 function Botanical() {
@@ -13,6 +14,21 @@ export function Nempo01Invitation() {
   const [opened, setOpened] = useState(false);
   const [now, setNow] = useState(() => Date.now());
   const [guest, setGuest] = useState("Bapak/Ibu/Saudara/i");
+  const [photo, setPhoto] = useState<string | null>(null);
+  useEffect(() => {
+    if (!opened) return;
+    const observer = new IntersectionObserver((entries) => entries.forEach((entry) => {
+      if (entry.isIntersecting) { entry.target.classList.add("n01-visible"); observer.unobserve(entry.target); }
+    }), { threshold: .12 });
+    document.querySelectorAll(".nempo-one main section").forEach((element) => { element.classList.add("n01-reveal"); observer.observe(element); });
+    return () => observer.disconnect();
+  }, [opened]);
+  useEffect(() => {
+    if (!photo) return;
+    const onKey = (event: KeyboardEvent) => { if (event.key === "Escape") setPhoto(null); };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [photo]);
   useEffect(() => {
     const name = new URLSearchParams(window.location.search).get("to");
     if (name?.trim()) setGuest(name.trim());
@@ -22,7 +38,9 @@ export function Nempo01Invitation() {
   const remaining = Math.max(0, new Date("2026-12-20T08:00:00+07:00").getTime() - now);
   const countdown = [Math.floor(remaining / 86400000), Math.floor(remaining / 3600000) % 24, Math.floor(remaining / 60000) % 60, Math.floor(remaining / 1000) % 60];
   const consult = `${NEMPO_WA_URL}?text=${encodeURIComponent("Halo Nempo, saya tertarik undangan NEMPO 01 — Biru Bunga (Spesial Foto).")}`;
+  const calendar = "data:text/calendar;charset=utf-8," + encodeURIComponent("BEGIN:VCALENDAR\r\nVERSION:2.0\r\nBEGIN:VEVENT\r\nUID:nempo01-demo@nempo\r\nDTSTAMP:20261031T000000Z\r\nDTSTART:20261220T010000Z\r\nDTEND:20261220T070000Z\r\nSUMMARY:Pernikahan Habib dan Adiba (Contoh)\r\nLOCATION:Garut - lokasi contoh\r\nEND:VEVENT\r\nEND:VCALENDAR");
   return <div className="nempo-one relative min-h-screen overflow-x-hidden">
+    <div className="n01-petals" aria-hidden="true">{Array.from({length:8},(_,index)=><span key={index} className={`n01-petal n01-petal-${index}`}><Flower2 strokeWidth={1}/></span>)}</div>
     <section className={`n01-enter relative flex flex-col items-center justify-end overflow-hidden px-6 pb-12 pt-16 text-center ${opened ? "min-h-[85svh] max-h-[800px]" : "min-h-svh"}`}>
       <img src="/images/invitation-hero.jpg" alt="Pasangan pengantin bersama buket bunga" className="absolute inset-0 h-full w-full object-cover"/>
       <div className="n01-shade absolute inset-0"/>
@@ -46,10 +64,14 @@ export function Nempo01Invitation() {
         <div className="mx-auto mt-10 grid max-w-3xl gap-8 sm:grid-cols-2">{[{name:"Akad Nikah",time:"08.00 – 10.00 WIB"},{name:"Resepsi",time:"11.00 – 14.00 WIB"}].map(event=><div key={event.name} className="n01-line border-t pt-6"><CalendarHeart className="n01-blue mx-auto size-6" strokeWidth={1}/><h3 className="mt-3 text-2xl">{event.name}</h3><p className="n01-body mt-3 text-xs leading-7">Minggu, 20 Desember 2026<br/>{event.time}<br/>Gedung Serbaguna, Garut</p></div>)}</div>
         <Button asChild variant="outline" className="n01-body mt-8 rounded-md text-xs"><a href="https://www.google.com/maps/search/?api=1&query=Garut+Jawa+Barat" target="_blank" rel="noopener noreferrer"><MapPin/> Lihat area lokasi</a></Button>
       </section>
-      <section id="galeri" className="mx-auto max-w-4xl scroll-mt-20 px-5 py-16 text-center"><p className="n01-label n01-blue">Our little moments</p><h2 className="mt-3 text-3xl">Mekar bersama</h2><div className="mt-8 grid grid-cols-2 items-start gap-3 sm:gap-5"><img src="/images/invitation-story.jpg" alt="Momen romantis pasangan" loading="lazy" className="h-auto w-full rounded-t-full"/><img src="/images/invitation-detail.jpg" alt="Detail pernikahan" loading="lazy" className="mt-10 h-auto w-full rounded-t-full"/><img src="/images/invitation-hero.jpg" alt="Pasangan bersama buket" loading="lazy" className="col-span-2 h-auto w-full"/></div></section>
+      <div className="n01-soft pb-12 text-center"><Button asChild variant="outline" className="n01-body text-xs"><a href={calendar} download="NEMPO-01-kalender-contoh.ics"><CalendarPlus/> Simpan tanggal</a></Button></div>
+      <section id="cerita" className="relative mx-auto max-w-3xl px-6 py-16"><Botanical/><div className="text-center"><p className="n01-label n01-blue">Every love has a story</p><h2 className="mt-3 text-3xl">Cerita yang bersemi</h2><p className="n01-body mt-3 text-[11px] opacity-70">Ilustrasi cerita pasangan</p></div><ol className="n01-line mx-auto mt-10 max-w-lg space-y-8 border-l pl-7">{[{year:"2022",title:"Pertemuan pertama",text:"Dari sebuah pertemuan sederhana, percakapan kecil tumbuh menjadi rasa nyaman yang tak terduga."},{year:"2024",title:"Memilih untuk bersama",text:"Melewati hari-hari dengan saling mendukung, kami belajar bahwa rumah bisa berarti seseorang."},{year:"2026",title:"Janji untuk selamanya",text:"Dengan restu keluarga, kami melangkah menuju babak baru: merawat cinta dalam satu ikatan."}].map((item)=><li key={item.year} className="relative"><span className="n01-timeline-dot absolute -left-9 top-1 size-4 rounded-full"/><p className="n01-label n01-blue">{item.year}</p><h3 className="mt-2 text-2xl">{item.title}</h3><p className="n01-body mt-3 text-xs leading-7">{item.text}</p></li>)}</ol></section>
+      <section id="galeri" className="mx-auto max-w-4xl scroll-mt-20 px-5 py-16 text-center"><p className="n01-label n01-blue">Our little moments</p><h2 className="mt-3 text-3xl">Mekar bersama</h2><div className="mt-8 grid grid-cols-2 items-start gap-3 sm:gap-5">{[{src:"/images/invitation-story.jpg",alt:"Momen romantis pasangan"},{src:"/images/invitation-detail.jpg",alt:"Detail pernikahan"},{src:"/images/invitation-hero.jpg",alt:"Pasangan bersama buket"}].map((image,index)=><Button key={image.src} variant="ghost" aria-label={`Perbesar ${image.alt}`} onClick={()=>setPhoto(image.src)} className={`n01-gallery h-auto min-h-0 overflow-hidden p-0 ${index===2?"col-span-2":index===1?"mt-10 rounded-t-full":"rounded-t-full"}`}><img src={image.src} alt={image.alt} loading="lazy" className="h-auto w-full"/></Button>)}</div></section>
+      <Nempo01Guestbook guest={guest}/>
       <section className="n01-soft relative px-6 py-14 text-center"><Botanical/><Heart className="n01-blue mx-auto size-6" strokeWidth={1}/><h2 className="mt-4 text-3xl">Doa restu Anda</h2><p className="n01-body mx-auto mt-4 max-w-md text-xs leading-7">Merupakan kebahagiaan bagi kami apabila Anda berkenan hadir dan memberikan doa restu.</p><p className="n01-blue mt-7 text-3xl italic">Habib & Adiba</p></section>
       <footer className="px-6 pb-24 pt-10 text-center"><p className="n01-label n01-blue">NEMPO 01 · Biru Bunga</p><Button asChild className="n01-body mt-4 rounded-md text-xs"><a href={consult} target="_blank" rel="noopener noreferrer"><Send/> Pesan tema ini</a></Button><p className="n01-body mt-5 text-[10px] leading-5 opacity-70">Nama, foto, tanggal, dan lokasi merupakan contoh.<br/>Nempo Garut Organizer</p></footer>
-      <nav aria-label="Bagian undangan" className="n01-nav n01-line n01-body fixed inset-x-0 bottom-0 z-30 flex justify-center gap-6 border-t px-4 py-4 sm:gap-10">{[{href:"#mempelai",label:"Mempelai",Icon:Heart},{href:"#acara",label:"Acara",Icon:CalendarHeart},{href:"#galeri",label:"Galeri",Icon:Flower2}].map(({href,label,Icon})=><a key={href} href={href} className="n01-blue flex items-center gap-2 text-[11px]"><Icon className="size-4"/>{label}</a>)}</nav>
+      <nav aria-label="Bagian undangan" className="n01-nav n01-line n01-body fixed inset-x-0 bottom-0 z-30 flex justify-center gap-6 border-t px-4 py-4 sm:gap-10">{[{href:"#mempelai",label:"Mempelai",Icon:Heart},{href:"#acara",label:"Acara",Icon:CalendarHeart},{href:"#galeri",label:"Galeri",Icon:Images},{href:"#rsvp",label:"RSVP",Icon:MessageCircle}].map(({href,label,Icon})=><a key={href} href={href} className="n01-blue flex flex-col items-center gap-1 text-[10px] sm:flex-row sm:gap-2"><Icon className="size-4"/>{label}</a>)}</nav>
     </main>}
+    {photo && <div role="dialog" aria-modal="true" aria-label="Foto undangan" className="n01-lightbox fixed inset-0 z-50 flex items-center justify-center p-5" onClick={()=>setPhoto(null)}><Button autoFocus variant="ghost" size="icon" aria-label="Tutup foto" onClick={()=>setPhoto(null)} className="n01-light absolute right-4 top-4"><X/></Button><img src={photo} alt="Foto pernikahan diperbesar" className="max-h-[85svh] max-w-full object-contain"/></div>}
   </div>;
 }
