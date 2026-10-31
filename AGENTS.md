@@ -10,6 +10,7 @@
 <!-- LOVABLE:END -->
 
 ## Architecture rules
+- Invitation theme categories, stable sequential codes, and photo/no-photo variants live in browser-safe `src/data/invitation-themes.ts`; why: the category filters and opened invitations must use the same theme identity and photo behavior.
 - Wedding concept options (tone, decor, paired bridal/groom outfits including separate kebaya and gown collections, makeup styles), the per-tone photo matrix, and consultation-message formatting live in browser-safe `src/data/wedding-concepts.ts`, rendered by the wedding concept studio; why: one source drives the side-by-side compare grid and WhatsApp summary, and each tone shows complete paired mannequin outfit photos instead of CSS filters.
 - Nempo Buddy lives within the shared Layout with its original mode and chat state; its chat answers and service matching live in browser-safe `src/data/buddy-chat.ts` with routing tests; why: update chat content without replacing the restored widget or changing other modes.
 - Service-page prices, inclusions, and testimonial lists (wedding WO, wedding invitation, sosmed management, web development, design creative, talent management, business system, event organizer) live in browser-safe data modules under `src/data/` shared by the page and its rule tests; why: one source per price so pages and tests stay consistent with the Kenalan Nempo / price-list sources. Each service page has a leaf route that mounts NempoShell for its own metadata and is registered in the `Switch` in `src/nempo-app.tsx`.
