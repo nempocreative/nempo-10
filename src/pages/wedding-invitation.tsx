@@ -12,6 +12,7 @@ import {
   INVITATION_PRICE, invitationRupiah, woPackagesWithFreeInvitation,
 } from "@/data/wedding-invitation";
 import { invitationCategories, filterInvitationThemes, type InvitationCategoryKey } from "@/data/invitation-themes";
+import nempo01Photo from "@/assets/nempo-01-ai-couple.jpg";
 
 const serif = "font-[family-name:var(--font-wed-serif)]";
 const hand = "font-[family-name:var(--font-wed-hand)]";
@@ -213,7 +214,7 @@ export default function WeddingInvitationPage() {
                     <span className="absolute top-3 text-[10px] font-bold tracking-widest" style={{ color: t.colors.ink }}>{t.code}</span>
                     <div className="flex h-[66%] w-[45%] flex-col items-center justify-center rounded-2xl border-4 p-2 text-center shadow-xl transition group-hover:rotate-2" style={{ background: t.colors.surface, borderColor: t.colors.ink, color: t.colors.ink }}>
                       <span className="text-[8px] uppercase tracking-widest">The Wedding of</span>
-                      {t.withPhoto ? <img src="/images/invitation-hero.jpg" alt="" loading="lazy" className="my-1 h-10 w-8 rounded-t-full object-cover sm:h-14 sm:w-10" /> : <Heart aria-hidden className="my-2 h-6 w-6" />}
+                      {t.withPhoto ? <img src={t.code === "NEMPO 01" ? nempo01Photo : "/images/invitation-hero.jpg"} alt="" loading="lazy" className="my-1 h-10 w-8 rounded-t-full object-cover object-top sm:h-14 sm:w-10" /> : <Heart aria-hidden className="my-2 h-6 w-6" />}
                       <span className={`${hand} text-lg leading-tight`} style={{ color: t.colors.accent }}>Habib &amp; Adiba</span>
                       <span className="mt-1 rounded-full px-2 py-0.5 text-[7px]" style={{ background: t.colors.accent, color: t.colors.surface }}>Buka Undangan</span>
                     </div>
