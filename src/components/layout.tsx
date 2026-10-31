@@ -501,10 +501,10 @@ export function Layout({ children, hideBottomNav, minimalChrome }: { children: R
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
            <div className={`flex items-center justify-between ${isAppFrame ? "h-12 sm:h-16" : "h-16"}`}>
             {/* Logo */}
-            <Link href="/" aria-label="Nempo Organizer" className="flex items-center gap-2.5 shrink-0 group">
+            <Link href="/" aria-label="Nempo Garut" className="flex items-center gap-2.5 shrink-0 group">
               <img
                 src={`${import.meta.env.BASE_URL}Assets/Logo/nempo-new.webp`}
-                alt="Nempo Organizer"
+                alt="Nempo Garut"
                 style={{ height: isAppFrame ? 28 : 36, width: isAppFrame ? 28 : 36, objectFit: "contain", filter: "brightness(0) invert(1)", flexShrink: 0 }}
               />
               <div className="flex" style={{ flexDirection: "column", lineHeight: 1 }}>
@@ -527,7 +527,7 @@ export function Layout({ children, hideBottomNav, minimalChrome }: { children: R
                   marginTop: 1,
                   whiteSpace: "nowrap",
                 }}>
-                  ORGANIZER
+                  GARUT
                 </span>
               </div>
             </Link>
