@@ -1,4 +1,7 @@
 # Roadmap
+- [x] Hapus unduhan moodboard dari studio wedding, tetap pertahankan konsultasi WhatsApp.
+- [x] Rapikan judul dan pilihan studio wedding supaya ringkas dan sejajar.
+- [x] Ganti ikon makeup dengan ikon sesuai gaya, termasuk Barbie tanpa bintang.
 - [x] Tambah foto ilustrasi contoh untuk kelima gaya makeup pengantin.
 - [x] Tambah jenis makeup Barbie, Bold, Natural, Soft Glam, Korean beserta pilihan konsultasi dan moodboard.
 - [x] Tambah pilihan khusus gaun dengan jas senada dalam empat tone, manekin tanpa wajah, konsultasi dan moodboard.
@@ -20,7 +23,6 @@
 - [x] Studio wedding: pilih tone warna langsung mengubah warna foto dekor pelaminan dan kebaya
 - [x] Studio wedding: foto dekor & kebaya versi asli per tone (4 tone × 4 dekor × 3 kebaya, tanpa tint CSS)
 - [x] Studio wedding: tambah pilihan tone warna, dekor, dan kebaya
-- [x] Studio wedding: moodboard bisa di-download / dikirim jadi satu gambar
 - [x] Studio wedding: transisi hover, penanda dipilih, dan ringkasan yang muncul dengan animasi
 - [x] Studio wedding: mode bandingkan — empat kombinasi tone + dekor + kebaya berdampingan
 - [x] Studio wedding: foto tampil penuh sesuai aslinya, tidak terpotong
