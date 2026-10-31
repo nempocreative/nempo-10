@@ -1,5 +1,5 @@
 import type React from "react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Layout } from "@/components/layout";
 import { Link } from "@/lib/wouter";
 import {
@@ -40,7 +40,6 @@ const stats = [
   { value: "Jabar", label: "Area layanan" },
 ];
 
-
 const faqs = [
   { q: "Berapa lama sebelum acara sebaiknya booking?", a: "Idealnya 1–3 bulan untuk acara besar dan 2–4 minggu untuk acara kecil. Jadwal mendadak tetap bisa kami bantu bila tersedia." },
   { q: "Apakah bisa menyesuaikan budget?", a: "Bisa. Semua paket fleksibel; kami bantu menyusun prioritas sesuai anggaran kamu." },
@@ -61,8 +60,93 @@ const eoIconCss = `
 .eo-glow { position: absolute; inset: -2px; border-radius: 20px; z-index: -1; pointer-events: none; background: radial-gradient(circle, var(--ring-color) 0%, transparent 70%); filter: blur(4px); animation: eo-ring-glow 3.2s ease-in-out infinite; animation-delay: var(--ring-delay); }
 .eo-shine { position: absolute; inset: 0; width: 45%; pointer-events: none; background: linear-gradient(90deg, transparent, rgba(255,255,255,.45), transparent); animation: eo-tile-shine 4.8s ease-in-out infinite; animation-delay: var(--ring-delay); }
 .wed-card-pop:hover .eo-ring::before { animation-duration: 1.4s; }
-@media (prefers-reduced-motion: reduce) { .eo-ring::before, .eo-glow, .eo-shine { animation: none; } .eo-shine { display: none; } }
+
+@keyframes eo-hero-in { from { opacity: 0; transform: translateY(26px) scale(.98); } to { opacity: 1; transform: none; } }
+.eo-hero { animation: eo-hero-in .7s cubic-bezier(.22,1,.36,1) both; }
+
+.eo-reveal { opacity: 0; transform: translateY(24px) scale(.985); will-change: opacity, transform; }
+.eo-reveal.eo-in { opacity: 1; transform: none; transition: opacity .65s cubic-bezier(.22,1,.36,1), transform .65s cubic-bezier(.22,1,.36,1); }
+
+@keyframes eo-glow-pulse { 0%,100% { box-shadow: 0 18px 42px -20px rgba(6,95,125,.5); } 50% { box-shadow: 0 26px 60px -16px rgba(6,95,125,.75); } }
+.eo-glow-pulse { animation: eo-glow-pulse 2.8s ease-in-out infinite; }
+
+@keyframes eo-shine-sweep { 0% { transform: translateX(-170%) skewX(-18deg); } 100% { transform: translateX(330%) skewX(-18deg); } }
+.eo-btn-shine { position: relative; overflow: hidden; }
+.eo-btn-shine::after { content: ""; position: absolute; top: 0; bottom: 0; left: 0; width: 40%; background: linear-gradient(90deg, transparent, rgba(255,255,255,.4), transparent); transform: translateX(-170%) skewX(-18deg); pointer-events: none; }
+.eo-btn-shine:hover::after { animation: eo-shine-sweep .8s ease; }
+
+.wed-marquee:hover { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  .eo-ring::before, .eo-glow, .eo-shine, .eo-glow-pulse { animation: none; }
+  .eo-shine { display: none; }
+  .eo-hero, .eo-reveal { opacity: 1 !important; transform: none !important; animation: none !important; transition: none !important; }
+}
 `;
+
+function Reveal({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      el.classList.add("eo-in");
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          el.classList.add("eo-in");
+          io.disconnect();
+        }
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+  return (
+    <div ref={ref} className={`eo-reveal ${className}`} style={{ transitionDelay: `${delay}ms` }}>
+      {children}
+    </div>
+  );
+}
+
+/* Angka stats berjalan naik saat masuk layar — teks non-angka ditampilkan apa adanya */
+function CountUp({ value, className }: { value: string; className?: string }) {
+  const ref = useRef<HTMLParagraphElement>(null);
+  const m = value.match(/^(\d[\d.,]*)(.*)$/);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || !m) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const target = parseFloat(m[1].replace(",", "."));
+    if (!Number.isFinite(target)) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (!entries.some((e) => e.isIntersecting)) return;
+        io.disconnect();
+        const dur = 1200;
+        const t0 = performance.now();
+        const tick = (t: number) => {
+          const p = Math.min(1, (t - t0) / dur);
+          const eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = `${Math.round(target * eased)}${m[2]}`;
+          if (p < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      },
+      { threshold: 0.4 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [value]);
+  return (
+    <p ref={ref} className={className}>
+      {value}
+    </p>
+  );
+}
 
 function StickerIcon({ icon: Icon, color, size = "md", className = "", delay = 0 }: { icon: React.ElementType; color: string; size?: "sm" | "md"; className?: string; delay?: number }) {
   const box = size === "sm" ? "h-11 w-11 rounded-[14px]" : "h-[54px] w-[54px] rounded-[17px]";
@@ -120,6 +204,7 @@ export default function EventOrganizerPage() {
   return (
     <Layout>
       <div className="bg-background pb-12">
+        <style>{eoIconCss}</style>
         {/* Hero */}
         <section className="relative overflow-hidden bg-brand px-5 pb-20 pt-12 text-primary-foreground">
           <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-brand/40 blur-3xl" />
@@ -129,23 +214,23 @@ export default function EventOrganizerPage() {
           <Ring className="wed-float-slow pointer-events-none absolute right-[24%] bottom-24 h-6 w-6 text-primary-foreground/60" />
           <Burst className="wed-float-slow pointer-events-none absolute right-[8%] bottom-40 h-6 w-6 text-primary-foreground/30" />
 
-          <p className={`${hand} relative text-2xl text-brand-sky sm:text-3xl`}>punya rencana acara?</p>
-          <h1 className="relative mt-3 text-[32px] font-extrabold leading-[1.12] tracking-tight sm:text-5xl">
+          <p className={`${hand} eo-hero relative text-2xl text-brand-sky sm:text-3xl`}>punya rencana acara?</p>
+          <h1 className="eo-hero relative mt-3 text-[32px] font-extrabold leading-[1.12] tracking-tight sm:text-5xl" style={{ animationDelay: "80ms" }}>
             Acara impianmu,<br />
             <span className="text-brand-sky">kami yang urus</span> dari awal sampai akhir.
           </h1>
-          <p className="relative mt-4 max-w-md text-sm leading-relaxed text-primary-foreground/80">
+          <p className="eo-hero relative mt-4 max-w-md text-sm leading-relaxed text-primary-foreground/80" style={{ animationDelay: "160ms" }}>
             Event organizer asal Garut — konsep kreatif, vendor terpercaya, dan tim lapangan berpengalaman di seluruh Jawa Barat.
           </p>
-          <div className="relative mt-7 flex flex-wrap gap-3">
-            <a href="#paket" className="wed-sticker flex-1 rounded-full bg-card px-5 py-3.5 text-center text-sm font-bold text-brand shadow-lg shadow-brand-navy/20 transition-transform active:scale-[0.98] sm:flex-none sm:px-8">
+          <div className="eo-hero relative mt-7 flex flex-wrap gap-3" style={{ animationDelay: "240ms" }}>
+            <a href="#paket" className="wed-sticker eo-btn-shine flex-1 rounded-full bg-card px-5 py-3.5 text-center text-sm font-bold text-brand shadow-lg shadow-brand-navy/20 transition-transform active:scale-[0.98] sm:flex-none sm:px-8">
               Lihat Paket
             </a>
             <Link href="/price-list" className="flex-1 rounded-full border border-primary-foreground/30 bg-primary-foreground/10 px-5 py-3.5 text-center text-sm font-bold backdrop-blur transition-transform active:scale-[0.98] sm:flex-none sm:px-8">
               Daftar Harga
             </Link>
           </div>
-          <div className="relative mt-6 flex flex-wrap gap-2">
+          <div className="eo-hero relative mt-6 flex flex-wrap gap-2" style={{ animationDelay: "320ms" }}>
             {["150+ event", "50rb+ peserta", "Melayani seluruh Jabar"].map((chip) => (
               <span key={chip} className="inline-flex items-center gap-1.5 rounded-full border border-primary-foreground/20 bg-primary-foreground/10 px-3.5 py-1.5 text-[11px] font-semibold backdrop-blur">
                 <Burst className="h-3 w-3 text-brand-sky" />
@@ -174,34 +259,37 @@ export default function EventOrganizerPage() {
 
         {/* Stats */}
         <section className="relative -mt-0 px-4 pt-8">
-          <div className="grid grid-cols-4 divide-x divide-border rounded-3xl border-2 border-dashed border-brand/25 bg-card py-5 shadow-xl shadow-brand-navy/10">
-            {stats.map((s) => (
-              <div key={s.label} className="px-1 text-center">
-                <p className="text-lg font-extrabold text-brand">{s.value}</p>
-                <p className="mt-0.5 text-[10px] font-medium leading-tight text-muted-foreground">{s.label}</p>
-              </div>
-            ))}
-          </div>
+          <Reveal>
+            <div className="grid grid-cols-3 divide-x divide-border rounded-3xl border-2 border-dashed border-brand/25 bg-card py-5 shadow-xl shadow-brand-navy/10">
+              {stats.map((s) => (
+                <div key={s.label} className="px-1 text-center">
+                  <CountUp value={s.value} className="text-lg font-extrabold text-brand" />
+                  <p className="mt-0.5 text-[10px] font-medium leading-tight text-muted-foreground">{s.label}</p>
+                </div>
+              ))}
+            </div>
+          </Reveal>
         </section>
 
         {/* Services */}
         <section className="px-4 pt-12">
-          <style>{eoIconCss}</style>
-          <SectionHead eyebrow="Layanan" title="Satu tim untuk semua jenis acara" note="apapun acaranya, gas!" />
+          <Reveal><SectionHead eyebrow="Layanan" title="Satu tim untuk semua jenis acara" note="apapun acaranya, gas!" /></Reveal>
           <div className="grid grid-cols-2 gap-3">
             {services.map((s, i) => (
-              <div key={s.title} className="wed-card-pop rounded-3xl border-2 border-dashed border-border bg-card p-4 hover:border-brand/40">
-                <StickerIcon icon={s.icon} color={s.color} delay={i} className="mb-4" />
-                <h3 className="text-[13px] font-bold leading-snug text-foreground">{s.title}</h3>
-                <p className="mt-1.5 text-[11px] leading-relaxed text-muted-foreground">{s.desc}</p>
-              </div>
+              <Reveal key={s.title} delay={i * 70}>
+                <div className="wed-card-pop h-full rounded-3xl border-2 border-dashed border-border bg-card p-4 hover:border-brand/40">
+                  <StickerIcon icon={s.icon} color={s.color} delay={i} className="mb-4" />
+                  <h3 className="text-[13px] font-bold leading-snug text-foreground">{s.title}</h3>
+                  <p className="mt-1.5 text-[11px] leading-relaxed text-muted-foreground">{s.desc}</p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </section>
 
         {/* Process */}
         <section className="mt-12 bg-brand-sky px-4 py-12">
-          <SectionHead eyebrow="Cara Kerja" title="5 langkah, tanpa ribet" note="kamu santai, kami yang gerak" />
+          <Reveal><SectionHead eyebrow="Cara Kerja" title="5 langkah, tanpa ribet" note="kamu santai, kami yang gerak" /></Reveal>
           <ol className="space-y-3">
             {steps.map((s, i) => (
               <li key={s.title} className="wed-card-pop flex gap-4 rounded-3xl border-2 border-transparent bg-card p-4 shadow-sm hover:border-brand/30">
@@ -219,53 +307,56 @@ export default function EventOrganizerPage() {
 
         {/* Packages */}
         <section id="paket" className="scroll-mt-20 px-4 pt-12">
-          <SectionHead eyebrow="Paket" title="Pilih sesuai kebutuhanmu" sub="Harga indikatif, bisa disesuaikan dengan budget." note="ada yang pas buat semua" />
+          <Reveal><SectionHead eyebrow="Paket" title="Pilih sesuai kebutuhanmu" sub="Harga indikatif, bisa disesuaikan dengan budget." note="ada yang pas buat semua" /></Reveal>
           <div className="space-y-5">
-            {packages.map((p) => (
-              <div
-                key={p.name}
-                className={`wed-card-pop relative overflow-hidden rounded-3xl p-6 ${
-                  p.popular
-                    ? "bg-brand text-primary-foreground shadow-xl shadow-brand/25"
-                    : "border-2 border-dashed border-border bg-card text-foreground"
-                }`}
-              >
-                {p.popular && (
-                  <span className="wed-sticker wed-wiggle absolute -right-1 top-5 rotate-3 rounded-full bg-card px-3.5 py-1.5 text-[10px] font-bold tracking-wide text-brand">
-                    PALING DIMINATI
-                  </span>
-                )}
-                <p className={`${hand} text-xl ${p.popular ? "text-brand-sky" : "text-brand"}`}>paket</p>
-                <h3 className="-mt-1 text-xl font-extrabold">{p.name}</h3>
-                <p className={`text-xs ${p.popular ? "text-primary-foreground/75" : "text-muted-foreground"}`}>{p.note}</p>
-                <p className={`mt-3 text-2xl font-extrabold ${p.popular ? "" : "text-brand"}`}>{p.price}</p>
-                <div className={`my-4 border-t-2 border-dashed ${p.popular ? "border-primary-foreground/20" : "border-border"}`} />
-                <ul className="space-y-2">
-                  {p.items.map((it) => (
-                    <li key={it} className="flex items-start gap-2.5 text-[13px]">
-                      <span className={`mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full ${p.popular ? "bg-card" : "bg-brand-sky"}`}>
-                        <Check className={`h-2.5 w-2.5 ${p.popular ? "text-brand" : "text-brand"}`} strokeWidth={3} />
-                      </span>
-                      {it}
-                    </li>
-                  ))}
-                </ul>
-                <Link
-                  href="/price-list"
-                  className={`wed-sticker mt-5 block rounded-full py-3 text-center text-sm font-bold ${
-                    p.popular ? "bg-primary-foreground text-brand-navy" : "bg-brand text-primary-foreground"
+            {packages.map((p, i) => (
+              <Reveal key={p.name} delay={i * 90}>
+                <div
+                  className={`wed-card-pop relative overflow-hidden rounded-3xl p-6 ${
+                    p.popular
+                      ? "eo-glow-pulse bg-brand text-primary-foreground"
+                      : "border-2 border-dashed border-border bg-card text-foreground"
                   }`}
                 >
-                  Pilih {p.name}
-                </Link>
-              </div>
+                  {p.popular && (
+                    <span className="wed-sticker wed-wiggle absolute -right-1 top-5 rotate-3 rounded-full bg-card px-3.5 py-1.5 text-[10px] font-bold tracking-wide text-brand">
+                      PALING DIMINATI
+                    </span>
+                  )}
+                  <p className={`${hand} text-xl ${p.popular ? "text-brand-sky" : "text-brand"}`}>paket</p>
+                  <h3 className="-mt-1 text-xl font-extrabold">{p.name}</h3>
+                  <p className={`text-xs ${p.popular ? "text-primary-foreground/75" : "text-muted-foreground"}`}>{p.note}</p>
+                  <p className={`mt-3 text-2xl font-extrabold ${p.popular ? "" : "text-brand"}`}>{p.price}</p>
+                  <div className={`my-4 border-t-2 border-dashed ${p.popular ? "border-primary-foreground/20" : "border-border"}`} />
+                  <ul className="space-y-2">
+                    {p.items.map((it) => (
+                      <li key={it} className="flex items-start gap-2.5 text-[13px]">
+                        <span className={`mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full ${p.popular ? "bg-card" : "bg-brand-sky"}`}>
+                          <Check className="h-2.5 w-2.5 text-brand" strokeWidth={3} />
+                        </span>
+                        {it}
+                      </li>
+                    ))}
+                  </ul>
+                  <Link
+                    href="/price-list"
+                    className={`wed-sticker eo-btn-shine mt-5 block rounded-full py-3 text-center text-sm font-bold ${
+                      p.popular ? "bg-primary-foreground text-brand-navy" : "bg-brand text-primary-foreground"
+                    }`}
+                  >
+                    Pilih {p.name}
+                  </Link>
+                </div>
+              </Reveal>
             ))}
           </div>
         </section>
 
         {/* Testimonials */}
         <section className="pt-12">
-          <div className="px-4"><SectionHead eyebrow="Testimoni" title="Kata klien kami" note="mereka puas, kamu kapan?" /></div>
+          <Reveal>
+            <div className="px-4"><SectionHead eyebrow="Testimoni" title="Kata klien kami" note="mereka puas, kamu kapan?" /></div>
+          </Reveal>
           <div className="flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {testimonials.map((t) => (
               <div key={t.name} className="wed-card-pop flex w-[86%] shrink-0 snap-center scroll-ml-4 flex-col rounded-3xl border-2 border-dashed border-border bg-card p-5 sm:w-[46%] sm:snap-start">
@@ -287,7 +378,7 @@ export default function EventOrganizerPage() {
 
         {/* FAQ */}
         <section className="px-4 pt-12">
-          <SectionHead eyebrow="FAQ" title="Pertanyaan umum" note="biar gak penasaran" />
+          <Reveal><SectionHead eyebrow="FAQ" title="Pertanyaan umum" note="biar gak penasaran" /></Reveal>
           <div className="space-y-3">
             {faqs.map((f, i) => (
               <div key={f.q} className={`rounded-2xl border-2 bg-card transition-colors ${open === i ? "border-brand/40" : "border-dashed border-border"}`}>
@@ -305,18 +396,20 @@ export default function EventOrganizerPage() {
 
         {/* CTA */}
         <section className="px-4 pt-12">
-          <div className="relative overflow-hidden rounded-3xl bg-brand p-7 text-center text-primary-foreground">
-            <div className="pointer-events-none absolute -right-10 -top-10 h-36 w-36 rounded-full bg-primary-foreground/30 blur-2xl" />
-            <Burst className="wed-float pointer-events-none absolute left-[10%] top-8 h-7 w-7 text-primary-foreground/60" />
-            <Squiggle className="wed-wiggle pointer-events-none absolute right-[12%] bottom-10 h-5 w-12 text-primary-foreground/30" />
-            <Burst className="wed-pulse-heart relative mx-auto h-10 w-10 text-brand-sky" />
-            <p className={`${hand} relative mt-3 text-2xl text-brand-sky`}>jangan cuma jadi wacana</p>
-            <h2 className="relative mt-1 text-2xl font-extrabold leading-snug">Siap bikin acara yang berkesan?</h2>
-            <p className="relative mx-auto mt-2 max-w-sm text-sm text-primary-foreground/80">Konsultasi gratis — ceritakan rencana acaramu, kami bantu wujudkan.</p>
-            <Link href="/price-list" className="wed-sticker relative mt-6 inline-flex items-center gap-2 rounded-full bg-card px-7 py-3.5 text-sm font-bold text-brand shadow-lg shadow-brand-navy/20">
-              Mulai Konsultasi <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
+          <Reveal>
+            <div className="relative overflow-hidden rounded-3xl bg-brand p-7 text-center text-primary-foreground">
+              <div className="pointer-events-none absolute -right-10 -top-10 h-36 w-36 rounded-full bg-primary-foreground/30 blur-2xl" />
+              <Burst className="wed-float pointer-events-none absolute left-[10%] top-8 h-7 w-7 text-primary-foreground/60" />
+              <Squiggle className="wed-wiggle pointer-events-none absolute right-[12%] bottom-10 h-5 w-12 text-primary-foreground/30" />
+              <Burst className="wed-pulse-heart relative mx-auto h-10 w-10 text-brand-sky" />
+              <p className={`${hand} relative mt-3 text-2xl text-brand-sky`}>jangan cuma jadi wacana</p>
+              <h2 className="relative mt-1 text-2xl font-extrabold leading-snug">Siap bikin acara yang berkesan?</h2>
+              <p className="relative mx-auto mt-2 max-w-sm text-sm text-primary-foreground/80">Konsultasi gratis — ceritakan rencana acaramu, kami bantu wujudkan.</p>
+              <Link href="/price-list" className="wed-sticker eo-btn-shine relative mt-6 inline-flex items-center gap-2 rounded-full bg-card px-7 py-3.5 text-sm font-bold text-brand shadow-lg shadow-brand-navy/20">
+                Mulai Konsultasi <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </Reveal>
         </section>
       </div>
     </Layout>
