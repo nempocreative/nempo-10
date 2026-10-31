@@ -12,11 +12,12 @@ export const weddingKebaya = [
   { name: "Ivory Lace", note: "Bordir lembut, warna ivory, dan kain batik klasik.", image: ivory },
   { name: "Dusty Rose", note: "Kebaya bernuansa rose dengan detail floral romantis.", image: rose },
 ];
-export const weddingTones = [
-  { name: "Sage & Ivory", swatches: ["bg-wed-sage", "bg-wed-ivory", "bg-wed-gold"] },
-  { name: "Rose & Champagne", swatches: ["bg-wed-dust", "bg-wed-champagne", "bg-wed-ivory"] },
-  { name: "Burgundy & Gold", swatches: ["bg-wed-burgundy", "bg-wed-gold", "bg-wed-ivory"] },
-  { name: "Sky & Pearl", swatches: ["bg-wed-sky", "bg-wed-pearl", "bg-wed-sage"] },
+export type WeddingTone = { name: string; swatches: string[]; deep: string; light: string };
+export const weddingTones: WeddingTone[] = [
+  { name: "Sage & Ivory", swatches: ["bg-wed-sage", "bg-wed-ivory", "bg-wed-gold"], deep: "#4f6a4a", light: "#f7f2e7" },
+  { name: "Rose & Champagne", swatches: ["bg-wed-dust", "bg-wed-champagne", "bg-wed-ivory"], deep: "#a7627a", light: "#f6e6d6" },
+  { name: "Burgundy & Gold", swatches: ["bg-wed-burgundy", "bg-wed-gold", "bg-wed-ivory"], deep: "#6d1f2c", light: "#f0dcae" },
+  { name: "Sky & Pearl", swatches: ["bg-wed-sky", "bg-wed-pearl", "bg-wed-sage"], deep: "#46688a", light: "#f2ede4" },
 ];
 export const weddingConcepts = [
   { name: "Intimate Garden", note: "Suasana hangat di taman, bunga natural, dan momen dekat bersama orang tersayang." },
