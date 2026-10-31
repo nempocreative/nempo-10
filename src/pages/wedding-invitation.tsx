@@ -207,10 +207,10 @@ export default function WeddingInvitationPage() {
               <Button variant="ghost" size="sm" onClick={() => setCategory("all")} aria-pressed={category === "all"} className="text-primary">Semua Tema</Button>
             </div>
             <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-              {visibleThemes.map((t, i) => (
+              {visibleThemes.map((t) => (
                 <Link key={t.slug} href={`/wedding-invitation/tema/${t.slug}`} className="wed-card-pop group overflow-hidden rounded-3xl bg-card shadow-md transition hover:-translate-y-1 hover:shadow-xl">
                   <div className="relative flex aspect-square items-center justify-center pt-6" style={{ background: t.colors.bg }}>
-                    <span className="absolute top-3 text-[10px] font-bold tracking-widest" style={{ color: t.colors.surface }}>SPESIAL {String(i + 1).padStart(2, "0")}</span>
+                    <span className="absolute top-3 text-[10px] font-bold tracking-widest" style={{ color: t.colors.ink }}>{t.code}</span>
                     <div className="flex h-[66%] w-[45%] flex-col items-center justify-center rounded-2xl border-4 p-2 text-center shadow-xl transition group-hover:rotate-2" style={{ background: t.colors.surface, borderColor: t.colors.ink, color: t.colors.ink }}>
                       <span className="text-[8px] uppercase tracking-widest">The Wedding of</span>
                       {t.withPhoto ? <img src="/images/invitation-hero.jpg" alt="" loading="lazy" className="my-1 h-10 w-8 rounded-t-full object-cover sm:h-14 sm:w-10" /> : <Heart aria-hidden className="my-2 h-6 w-6" />}

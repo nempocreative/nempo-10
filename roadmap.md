@@ -1,4 +1,5 @@
 # Roadmap
+- [ ] Beri setiap tema undangan kode berurutan NEMPO 01 dan seterusnya, tetap sama saat difilter.
 - [ ] Tambah kategori tema undangan sesuai referensi, dengan pilihan foto dan tanpa foto yang bisa dibuka.
 - [x] Hapus unduhan moodboard dari studio wedding, tetap pertahankan konsultasi WhatsApp.
 - [x] Rapikan judul dan pilihan studio wedding supaya ringkas dan sejajar.

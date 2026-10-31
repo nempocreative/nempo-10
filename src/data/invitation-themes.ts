@@ -12,6 +12,7 @@ export const invitationCategories = [
 export type InvitationCategoryKey = typeof invitationCategories[number]["key"];
 
 export type InvitationTheme = {
+  code: string;
   slug: string;
   name: string;
   mood: string;
@@ -22,7 +23,7 @@ export type InvitationTheme = {
   withPhoto: boolean;
 };
 
-const baseThemes: Omit<InvitationTheme, "category" | "withPhoto">[] = [
+const baseThemes: Omit<InvitationTheme, "category" | "withPhoto" | "code">[] = [
   { slug: "biru-bunga", name: "Biru Bunga", mood: "Bunga biru, lembut & segar", colors: { bg: "#5f8aa3", surface: "#f4f8fb", ink: "#1f3b5a", accent: "#2f5e8a" }, ornament: "floral" },
   { slug: "peach-klasik", name: "Peach Klasik", mood: "Krem hangat ala vintage", colors: { bg: "#c9a58f", surface: "#fbf4ee", ink: "#5a3e30", accent: "#a5714f" }, ornament: "floral" },
   { slug: "navy-elegan", name: "Navy Elegan", mood: "Navy tegas, huruf monogram", colors: { bg: "#3e5277", surface: "#eef1f7", ink: "#1b2742", accent: "#c9a84c" }, ornament: "minimal" },
@@ -46,7 +47,7 @@ export const invitationThemes: InvitationTheme[] = baseThemes.flatMap((theme) =>
     { ...theme, category: `${family}-photo` as InvitationCategoryKey, withPhoto: true },
     { ...theme, slug: `${theme.slug}-tanpa-foto`, name: `${theme.name} Tanpa Foto`, category: `${family}-no-photo` as InvitationCategoryKey, withPhoto: false },
   ];
-});
+}).map((theme, index) => ({ ...theme, code: `NEMPO ${String(index + 1).padStart(2, "0")}` }));
 
 export function filterInvitationThemes(category: InvitationCategoryKey | "all") {
   return category === "all" ? invitationThemes : invitationThemes.filter((theme) => theme.category === category);

@@ -51,6 +51,7 @@ export default function InvitationDemoPage() {
         {theme.withPhoto ? <img src="/images/invitation-hero.jpg" alt="" className="absolute inset-0 h-full w-full object-cover opacity-30" /> : <div className="absolute inset-x-0 top-12 text-center"><Ornament kind={theme.ornament} color={c.accent} /></div>}
         <div className="relative rounded-[2rem] px-8 py-10 shadow-2xl backdrop-blur" style={{ background: `${c.surface}e6` }}>
           <p className="text-xs uppercase tracking-[0.3em]">The Wedding of</p>
+          <p className="mt-2 text-[10px] font-semibold">{theme.code}</p>
           <h1 className={`${hand} my-3 text-5xl`} style={{ color: c.accent }}>Habib &amp; Adiba</h1>
           <p className="text-sm opacity-80">Kepada Yth. Bapak/Ibu/Saudara/i</p>
           <p className={`${serif} mt-1 text-xl font-semibold`}>Nama Tamu</p>
@@ -141,7 +142,7 @@ export default function InvitationDemoPage() {
           </section>
 
           <section className="mt-14 rounded-3xl p-6 text-center shadow-lg" style={{ background: c.accent, color: c.surface }}>
-            <p className="text-sm">Suka tema <b>{theme.name}</b>?</p>
+            <p className="text-sm">Suka tema <b>{theme.code} · {theme.name}</b>?</p>
             <a href={NEMPO_CONSULT_URL} target="_blank" rel="noreferrer" className="mt-3 inline-block rounded-full px-5 py-2.5 text-sm font-semibold" style={{ background: c.surface, color: c.accent }}>
               Pesan via WhatsApp
             </a>
