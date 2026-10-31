@@ -9,6 +9,7 @@ export type MoodboardCardData = {
   decorImage: string;
   kebayaName: string;
   kebayaImage: string;
+  makeupName?: string;
 };
 
 const W = 1080;
@@ -125,6 +126,11 @@ export async function renderMoodboardCard(data: MoodboardCardData): Promise<Blob
   ctx.fill();
   ctx.fillStyle = "#2b2118";
   wrap(ctx, data.kebayaName, 568, 1032, 432, 26);
+  if (data.makeupName) {
+    ctx.fillStyle = deep;
+    ctx.font = `600 24px ${SANS}`;
+    ctx.fillText(`Makeup · ${data.makeupName}`, 64, 1090);
+  }
 
   ctx.fillStyle = "#2b2118";
   ctx.font = `700 34px ${SERIF}`;

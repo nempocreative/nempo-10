@@ -185,10 +185,25 @@ export const weddingGowns: WeddingOutfit[] = [
 
 export const weddingOutfits = [...weddingKebaya, ...weddingGowns];
 
+export type WeddingMakeup = {
+  key: string;
+  name: string;
+  note: string;
+};
+
+export const weddingMakeup: WeddingMakeup[] = [
+  { key: "barbie", name: "Barbie", note: "Mata doll-eye, bulu mata lentik, blush pink, dan bibir rosy." },
+  { key: "bold", name: "Bold", note: "Mata tegas, eyeliner dramatis, contour terdefinisi, dan lipstik statement." },
+  { key: "natural", name: "Natural", note: "Complexion ringan, alis lembut, dan warna nude yang segar." },
+  { key: "soft-glam", name: "Soft Glam", note: "Eyeshadow champagne, kulit satin, dan bibir nude peach." },
+  { key: "korean", name: "Korean", note: "Kulit dewy, blush lembut, shimmer halus, dan bibir gradasi." },
+];
+
 export type WeddingMood = {
   tone: WeddingTone;
   decor: WeddingOption;
   kebaya: WeddingOutfit;
+  makeup?: WeddingMakeup;
 };
 
 export function weddingMoodConsultUrl(mood: WeddingMood): string {
@@ -198,6 +213,7 @@ export function weddingMoodConsultUrl(mood: WeddingMood): string {
     `• Pelaminan/dekor: ${mood.decor.name}`,
     `• ${mood.kebaya.category === "gown" ? "Gaun" : "Kebaya"}: ${mood.kebaya.name}`,
     `• Busana pria: ${mood.kebaya.groomName} — ${mood.tone.name}`,
+    ...(mood.makeup ? [`• Makeup: ${mood.makeup.name}`] : []),
     "Boleh dibantu pengecekan ketersediaan dan estimasinya?",
   ].join("\n");
   return `${NEMPO_WA_URL}?text=${encodeURIComponent(text)}`;

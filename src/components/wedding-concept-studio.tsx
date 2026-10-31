@@ -1,10 +1,12 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import { Sparkles, Eye, Leaf, Diamond, Flower2, Check } from "lucide-react";
 import { Link } from "@/lib/wouter";
 import {
   weddingDecor,
   weddingKebaya,
   weddingGowns,
   weddingOutfits,
+  weddingMakeup,
   weddingMoodConsultUrl,
   weddingTones,
   type ToneKey,
@@ -141,6 +143,7 @@ export function WeddingConceptStudio() {
   const [tone, setTone] = useState<ToneKey>("sage");
   const [decorKey, setDecorKey] = useState(weddingDecor[0]?.key ?? "garden");
   const [kebayaKey, setKebayaKey] = useState(weddingKebaya[0]?.key ?? "ivory");
+  const [makeupKey, setMakeupKey] = useState("natural");
   const [downloading, setDownloading] = useState(false);
   const [downloaded, setDownloaded] = useState(false);
   const [error, setError] = useState("");
@@ -156,6 +159,7 @@ export function WeddingConceptStudio() {
     () => weddingOutfits.find((k) => k.key === kebayaKey) ?? weddingKebaya[0],
     [kebayaKey],
   );
+  const makeup = weddingMakeup.find((option) => option.key === makeupKey);
 
   useEffect(() => {
     if (!downloaded) return;
@@ -163,10 +167,11 @@ export function WeddingConceptStudio() {
     return () => window.clearTimeout(t);
   }, [downloaded]);
 
-  const consultUrl = useMemo(() => activeTone && decor && kebaya ? weddingMoodConsultUrl({ tone: activeTone, decor, kebaya }) : "", [
+  const consultUrl = useMemo(() => activeTone && decor && kebaya ? weddingMoodConsultUrl({ tone: activeTone, decor, kebaya, makeup }) : "", [
     activeTone,
     decor,
     kebaya,
+    makeup,
   ]);
 
   if (!activeTone || !decor || !kebaya) return null;
@@ -184,6 +189,7 @@ export function WeddingConceptStudio() {
         decorImage: decor.images[tone],
         kebayaName: `${kebaya.name} + ${kebaya.groomName}`,
         kebayaImage: kebaya.images[tone],
+        makeupName: makeup?.name,
       });
       await deliverFile(blob, moodboardFilename(activeTone.name));
       setDownloaded(true);
@@ -217,7 +223,7 @@ export function WeddingConceptStudio() {
             Bandingkan dulu, baru pilih
           </h2>
           <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">
-            Pelaminan · Kebaya & Gaun · Busana pria senada
+            Pelaminan · Kebaya & Gaun · Busana pria · Makeup
           </p>
         </div>
 
@@ -292,15 +298,37 @@ export function WeddingConceptStudio() {
           ))}
         </div>
 
+        <div className="mt-8">
+          <h3 className="text-[11px] font-bold uppercase tracking-[0.18em] text-muted-foreground">Makeup Pengantin</h3>
+          <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-5">
+            {weddingMakeup.map((option, index) => {
+              const Icon = [Sparkles, Eye, Leaf, Diamond, Flower2][index] ?? Sparkles;
+              const selected = makeupKey === option.key;
+              return (
+                <Button
+                  key={option.key}
+                  variant="ghost"
+                  aria-pressed={selected}
+                  onClick={() => setMakeupKey(option.key)}
+                  className={cn("h-auto min-h-32 flex-col items-stretch justify-start whitespace-normal rounded-lg border p-3 text-left", selected ? "border-primary bg-primary/5" : "border-border bg-background/70")}
+                >
+                  <span className="flex items-center gap-2 text-primary"><Icon className="size-4" /><span className="text-sm font-bold">{option.name}</span>{selected ? <Check className="ml-auto size-4" /> : null}</span>
+                  <span className="text-xs font-normal leading-relaxed text-muted-foreground">{option.note}</span>
+                </Button>
+              );
+            })}
+          </div>
+        </div>
+
         <div
-          key={activeTone.key + "-" + decor.key + "-" + kebaya.key}
+          key={activeTone.key + "-" + decor.key + "-" + kebaya.key + "-" + makeupKey}
           className="wed-mood-enter mt-5 flex flex-col gap-3 rounded-xl border border-border bg-background/70 p-4 sm:flex-row sm:items-center sm:justify-between"
         >
           <div className="flex flex-wrap items-center gap-3">
             <Swatch tone={activeTone} size="md" />
             <span className="text-sm font-bold text-foreground">{activeTone.name}</span>
             <span className="text-xs text-muted-foreground">
-              {decor.name} · {kebaya.name} + {kebaya.groomName}
+              {decor.name} · {kebaya.name} + {kebaya.groomName} · Makeup {makeup?.name}
             </span>
           </div>
           <div className="flex flex-wrap gap-2">
