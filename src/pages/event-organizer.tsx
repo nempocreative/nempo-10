@@ -7,6 +7,7 @@ import {
   MessageCircle, ClipboardList, Palette, Wrench, FileCheck,
   Check, ChevronDown, MapPin, ArrowRight,
 } from "lucide-react";
+import { eoTestimonials as testimonials } from "@/data/eo-testimonials";
 
 const hand = "font-[family-name:var(--font-wed-hand)]";
 
@@ -39,11 +40,6 @@ const stats = [
   { value: "Jabar", label: "Area layanan" },
 ];
 
-const testimonials = [
-  { name: "Rani Nurhaliza", role: "Staff HRD", text: "Panggung, sound, sampai tiket digital semua diatur NEMPO. Ramai, aman, dan tepat waktu." },
-  { name: "Dimas Prakoso", role: "Divisi Acara", text: "Tim NEMPO responsif dan kreatif. Karyawan senang, acaranya rapi dari awal sampai akhir." },
-  { name: "Salma Aulia", role: "Humas & Pendaftaran", text: "Tiket digital dan scan QR bikin antrean masuk lancar. Recommended!" },
-];
 
 const faqs = [
   { q: "Berapa lama sebelum acara sebaiknya booking?", a: "Idealnya 1–3 bulan untuk acara besar dan 2–4 minggu untuk acara kecil. Jadwal mendadak tetap bisa kami bantu bila tersedia." },
