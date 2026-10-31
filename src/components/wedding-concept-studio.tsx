@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { Crown, Eye, Brush, Palette, Heart, Check } from "lucide-react";
 import { Link } from "@/lib/wouter";
 import {
@@ -14,9 +14,6 @@ import {
   type WeddingOutfit,
   type WeddingTone,
 } from "@/data/wedding-concepts";
-import { NEMPO_INSTAGRAM_HANDLE, NEMPO_WA_NUMBER } from "@/lib/contact";
-import { deliverFile } from "@/lib/download";
-import { moodboardFilename, renderMoodboardCard } from "@/lib/moodboard-card";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -152,10 +149,6 @@ export function WeddingConceptStudio() {
   const [decorKey, setDecorKey] = useState(weddingDecor[0]?.key ?? "garden");
   const [kebayaKey, setKebayaKey] = useState(weddingKebaya[0]?.key ?? "ivory");
   const [makeupKey, setMakeupKey] = useState("natural");
-  const [downloading, setDownloading] = useState(false);
-  const [downloaded, setDownloaded] = useState(false);
-  const [error, setError] = useState("");
-  const [hint, setHint] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const activeTone = useMemo(() => weddingTones.find((t) => t.key === tone) ?? weddingTones[0], [tone]);
@@ -169,12 +162,6 @@ export function WeddingConceptStudio() {
   );
   const makeup = weddingMakeup.find((option) => option.key === makeupKey);
 
-  useEffect(() => {
-    if (!downloaded) return;
-    const t = window.setTimeout(() => setDownloaded(false), 4000);
-    return () => window.clearTimeout(t);
-  }, [downloaded]);
-
   const consultUrl = useMemo(() => activeTone && decor && kebaya ? weddingMoodConsultUrl({ tone: activeTone, decor, kebaya, makeup }) : "", [
     activeTone,
     decor,
@@ -183,32 +170,6 @@ export function WeddingConceptStudio() {
   ]);
 
   if (!activeTone || !decor || !kebaya) return null;
-
-  async function downloadMoodboard() {
-    if (!activeTone || !decor || !kebaya) return;
-    setDownloading(true);
-    setError("");
-    try {
-      const blob = await renderMoodboardCard({
-        toneName: activeTone.name,
-        toneHexes: activeTone.hexes,
-        toneNote: activeTone.note,
-        decorName: decor.name,
-        decorImage: decor.images[tone],
-        kebayaName: `${kebaya.name} + ${kebaya.groomName}`,
-        kebayaImage: kebaya.images[tone],
-        makeupName: makeup?.name,
-      });
-      await deliverFile(blob, moodboardFilename(activeTone.name));
-      setDownloaded(true);
-    } catch {
-      setError(
-        `Belum bisa dibuat di perangkat ini. Screenshot bagian ini, atau kirim pilihan kamu ke WhatsApp ${NEMPO_WA_NUMBER}.`,
-      );
-    } finally {
-      setDownloading(false);
-    }
-  }
 
   function scrollIntoViewOnMobile() {
     if (window.matchMedia("(max-width: 640px)").matches) {
@@ -305,7 +266,6 @@ export function WeddingConceptStudio() {
               active={option.key === tone}
               onSelect={() => {
                 setTone(option.key);
-                setHint(true);
                 scrollIntoViewOnMobile();
               }}
             />
@@ -349,51 +309,17 @@ export function WeddingConceptStudio() {
               {decor.name} · {kebaya.name} + {kebaya.groomName} · Makeup {makeup?.name}
             </span>
           </div>
-          <div className="flex flex-wrap gap-2">
-            <Button
-      variant="ghost"
-              type="button"
-              onClick={downloadMoodboard}
-              disabled={downloading}
-              className={cn(
-                "rounded-md border px-4 py-2.5 text-xs font-bold transition-colors",
-                downloading
-                  ? "border-border bg-muted text-muted-foreground"
-                  : "border-border bg-background text-foreground hover:border-primary/60 hover:text-primary",
-              )}
-            >
-              {downloading
-                ? "Membuat moodboard…"
-                : downloaded
-                  ? "Moodboard tersimpan ✓"
-                  : "Download moodboard"}
-            </Button>
+          <div className="shrink-0">
             <a
               href={consultUrl}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => {
-                if (!downloaded) setHint(true);
-              }}
               className="rounded-md bg-primary px-4 py-2.5 text-center text-xs font-bold text-primary-foreground transition-transform hover:-translate-y-0.5"
             >
               Konsultasikan pilihan ini
             </a>
           </div>
         </div>
-
-        {hint ? (
-          <p className="mt-3 text-xs text-muted-foreground">
-            Suka hasilnya? Download moodboard-nya, atau langsung kirim ke WhatsApp {NEMPO_WA_NUMBER}.
-            Ikuti {NEMPO_INSTAGRAM_HANDLE} untuk update portofolio.
-          </p>
-        ) : null}
-
-        {error ? (
-          <p role="alert" className="mt-3 rounded-md border border-border bg-muted/40 p-3 text-xs text-muted-foreground">
-            {error}
-          </p>
-        ) : null}
 
         <p className="mt-3 text-[11px] text-muted-foreground">
           Foto adalah ilustrasi konsep; realisasi dekor, bunga, dan busana bisa disesuaikan budget
